@@ -1,0 +1,19 @@
+/* v15 site-wide visual polish: existing destinations, no new screens. */
+.premium-page-enter{--v15-easing:cubic-bezier(.18,.8,.24,1)}
+.premium-main{background-image:radial-gradient(circle at 92% 2%,rgba(38,193,160,.055),transparent 30%),radial-gradient(circle at 13% 35%,rgba(60,155,216,.05),transparent 32%)}
+.premium-main .premium-dashboard-hero{isolation:isolate;overflow:hidden;transition:box-shadow .35s ease}
+.premium-dashboard-hero:hover{box-shadow:0 35px 77px rgba(15,64,88,.23)}
+.premium-dashboard-photo{filter:saturate(1.13) contrast(1.03)}
+.premium-feature-tile{border:1px solid rgba(214,234,239,.9);box-shadow:0 14px 37px rgba(22,73,92,.085)}
+.premium-feature-tile:focus-visible{outline:3px solid #21bea9;outline-offset:3px}
+.premium-feature-tile:hover,.premium-landing-photo-card:hover{transform:translateY(-6px) scale(1.006)}
+.premium-teacher-feature,.premium-learning-ribbon,.premium-workspace-ribbon{box-shadow:0 12px 32px rgba(25,71,88,.07)}
+.premium-main .premium-learning-ribbon{background:linear-gradient(115deg,#eafaf3,#e7f7fe 80%)}
+.premium-landing-photo-card img,.cilik-life-media img{filter:saturate(1.13) contrast(1.025)}
+.premium-sidebar button,.premium-topbar button{transition:background .2s ease,color .2s ease,transform .2s var(--v15-easing),box-shadow .2s ease}
+.premium-sidebar button:focus-visible,.premium-topbar button:focus-visible{outline:3px solid #5ad0c0;outline-offset:2px}
+.premium-page-enter .bg-white.rounded-xl,.premium-page-enter .bg-white.rounded-2xl{transition:border-color .25s,box-shadow .25s,transform .25s}
+.premium-page-enter .bg-white.rounded-xl:hover,.premium-page-enter .bg-white.rounded-2xl:hover{box-shadow:0 15px 34px rgba(25,80,96,.085)}
+.premium-landing-photo-card:focus-visible{outline:3px solid #1fc2a1;outline-offset:4px}
+.premium-landing main>section:first-child .premium-hero-image{object-position:center 45%}
+@media (prefers-reduced-motion:reduce){.premium-sidebar button,.premium-topbar button,.premium-feature-tile,.premium-dashboard-hero,.premium-main .bg-white.rounded-xl,.premium-main .bg-white.rounded-2xl{transition:none!important;animation:none!important}}

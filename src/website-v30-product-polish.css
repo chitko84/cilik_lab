@@ -1,0 +1,47 @@
+/* V30: accessible final UI corrections, added last. No game-state rules modified. */
+:root{--v30-ink:#193a2d;--v30-muted:#50675d;--v30-line:#dfebe1}body{color:var(--v30-ink)}
+/* No overlapping hero pills/cards: badges are inline within slideshow, never laid over controls. */
+.v30-clean .premium-landing-hero,.v30-clean .landing-hero{isolation:isolate}
+.cilik-slide-controls{width:auto!important;max-width:calc(100% - 24px)!important;background:rgba(18,50,40,.94)!important;border:1px solid rgba(255,255,255,.28)!important;box-shadow:0 8px 24px #0003!important;gap:4px!important;padding:5px 8px!important;left:auto!important;right:12px!important;bottom:12px!important;transform:none!important}
+.cilik-slide-controls .cilik-slide-arrow,.cilik-slide-controls .cilik-slide-toggle{width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;padding:0!important;border:0!important;background:transparent!important;position:static!important;transform:none!important}
+.cilik-slide-controls button svg{width:17px!important;height:17px!important;display:block!important;flex:none!important}
+.cilik-slide-controls .cilik-slide-dots{display:flex!important;align-items:center!important;gap:5px!important;position:static!important;transform:none!important}
+.cilik-slide-controls .cilik-slide-dot{width:8px!important;height:8px!important;min-width:8px!important;min-height:8px!important;flex:0 0 8px!important;border:0!important;padding:0!important;transform:none!important;border-radius:20px!important;background:#fff7!important}
+.cilik-slide-controls .cilik-slide-dot.on{width:20px!important;min-width:20px!important;flex-basis:20px!important;background:white!important}
+.cilik-slide-compact .cilik-slide-controls{bottom:7px!important;right:7px!important;transform:none!important;padding:3px 5px!important;max-width:calc(100% - 14px)!important}
+.cilik-slide-compact .cilik-slide-controls .cilik-slide-arrow,.cilik-slide-compact .cilik-slide-controls .cilik-slide-toggle{width:25px!important;height:25px!important;min-width:25px!important;min-height:25px!important}
+.cilik-slide-compact .cilik-slide-controls .cilik-slide-dot{width:5px!important;height:5px!important;min-width:5px!important;min-height:5px!important;flex-basis:5px!important}
+.cilik-slide-compact .cilik-slide-controls .cilik-slide-dot.on{width:12px!important;min-width:12px!important;flex-basis:12px!important}
+/* Dashboard coach: full-width copy and action layout that never makes vertical letter stacks. */
+.v30-coach-card{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;gap:18px!important;align-items:center!important;min-width:0;overflow:hidden}
+.v30-coach-card .v30-coach-copy{min-width:0!important;max-width:100%;width:auto!important;overflow-wrap:normal!important;word-break:normal!important;flex:none!important}
+.v30-coach-card .v30-coach-copy h2,.v30-coach-card .v30-coach-copy p{white-space:normal!important;overflow-wrap:break-word!important;word-break:normal!important;max-width:580px!important;line-height:1.55!important}
+.v30-coach-card>button{min-width:0;justify-self:end;white-space:normal;flex-shrink:0}
+/* Coding lab must be a true dark editor, regardless of prior component utility layers. */
+.premium-main .v30-code-editor,.premium-main .v30-code-editor textarea,.premium-main .v30-code-editor textarea:focus{background:#091421!important;color:#d9f7e4!important;-webkit-text-fill-color:#d9f7e4!important;opacity:1!important;caret-color:#8bf0b8!important}
+.premium-main .v30-code-editor textarea{border:0!important;box-shadow:none!important;font-size:13px!important;tab-size:4!important}
+.premium-main .v30-code-editor .v30-code-gutter{background:#07101e!important;color:#8194a9!important;border-right:1px solid #253648!important}
+.v30-code-editor textarea::selection{background:#375d70!important;color:white!important}
+.v30-space-levels{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px!important;overflow:visible!important;align-items:stretch!important}
+.v30-space-levels button{height:auto!important;min-height:64px!important;min-width:0!important;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;gap:3px;padding:11px!important;border-radius:15px!important;white-space:normal!important}
+.v30-space-levels button small{font-size:10px;line-height:1.35;font-weight:650;opacity:.9;display:block;overflow-wrap:anywhere}
+.premium-main button,.premium-main a{transition:background-color .2s,border-color .2s,box-shadow .2s,transform .2s}.premium-main button:focus-visible,.premium-main a:focus-visible{outline:3px solid #54a485;outline-offset:3px}
+.premium-main p,.premium-main label{overflow-wrap:break-word}.premium-main h1,.premium-main h2,.premium-main h3{letter-spacing:-.018em}
+@media(max-width:1040px){.v30-coach-card{grid-template-columns:auto minmax(0,1fr)!important}.v30-coach-card>button{grid-column:2;justify-self:start}}
+@media(max-width:640px){.v30-coach-card{grid-template-columns:1fr!important;text-align:left;gap:12px!important}.v30-coach-card>span{width:48px;height:48px}.v30-coach-card>button{grid-column:1;width:100%!important;justify-self:stretch!important}.v30-space-levels{grid-template-columns:repeat(2,minmax(0,1fr))!important}.cilik-slide-controls{bottom:8px!important;right:8px!important;padding:3px 5px!important}.premium-main{overflow-x:hidden}.premium-main .v30-code-editor{min-height:460px!important;height:min(76vh,670px)!important}}
+@media(prefers-reduced-motion:reduce){.premium-main button,.premium-main a{transition:none!important}}
+/* Genuine side-by-side benefit chips, no floating image overlaps. */
+.v30-hero-benefits{position:relative!important;display:flex!important;flex-wrap:wrap!important;gap:8px!important;align-items:center!important;margin-top:14px!important;z-index:auto!important;transform:none!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;box-shadow:none!important;background:transparent!important;border:0!important;padding:0!important}
+.v30-benefit-chip{display:inline-flex;align-items:center;gap:8px;max-width:100%;padding:9px 12px;background:#eaf6ee;color:#214c39;border:1px solid #d7e9da;border-radius:999px;font-size:11px;font-weight:800;line-height:1.5;overflow-wrap:break-word}
+/* Ciko: more dimensional, animated CSS model, maintaining live voice lip sync. */
+.ciko-robot-sky{background:radial-gradient(ellipse at 50% 26%,#fff9 0%,transparent 54%),linear-gradient(150deg,#e2f6ef,#ddf0f2 58%,#c8ebda)!important}
+.ciko-3d-stage{perspective:1000px!important;filter:drop-shadow(0 22px 22px #134d4340)!important}
+.ciko-robot{transform-style:preserve-3d!important;will-change:transform}
+.ciko-robot-head{background:linear-gradient(140deg,#f9ffff 1%,#e1fffb 20%,#7bcfce 57%,#278ca1 100%)!important;box-shadow:inset -18px -13px 22px #08576744,inset 16px 17px 18px #fff,0 8px 0 #0a657c,0 14px 27px #1a6a7d3b!important;border:5px solid #fcffff!important}
+.ciko-robot-head:before{content:'';position:absolute;left:18px;top:12px;width:69%;height:24px;background:linear-gradient(180deg,#ffffffc9,#ffffff00);transform:rotate(-5deg);border-radius:60%;pointer-events:none}
+.ciko-robot-body{background:linear-gradient(120deg,#f0fffd,#a8eadb 52%,#35a4a9 100%)!important;box-shadow:inset -15px -9px 15px #08675e33,inset 9px 10px 13px #fff,0 11px 16px #26756e22!important}
+.ciko-robot-speaking .ciko-robot-head{box-shadow:inset -18px -13px 22px #08576744,inset 16px 17px 18px #fff,0 8px 0 #0a657c,0 0 33px #4be5d499!important}
+.ciko-robot-sky .ciko-sparkle{filter:drop-shadow(0 3px 4px #fff9)}
+.ciko-question-card:hover{box-shadow:0 11px 25px #115b5320;border-color:#7dc6ae}
+@media(max-width:620px){.v30-hero-benefits{flex-direction:column;align-items:flex-start!important}}
+@media(prefers-reduced-motion:reduce){.ciko-robot{will-change:auto!important}}

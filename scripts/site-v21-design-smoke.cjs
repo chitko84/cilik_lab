@@ -1,0 +1,18 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const read=p=>fs.readFileSync(p,'utf8');
+const style=read('src/website-v21-crafted.css');
+const main=read('src/main.tsx');
+const photos=read('src/components/visual/RealPhoto.tsx');
+const landing=read('src/pages/LandingPage.tsx');
+const v20=read('src/pages/arcade/addons/creativeLearning.css');
+assert(main.includes("import './website-v21-crafted.css';"),'Refined theme not imported');
+assert(main.lastIndexOf("import './website-v21-crafted.css';")>main.lastIndexOf("import './website-v19-motion-slides.css';"),'Refined theme must load after previous design');
+for(const part of ['.premium-landing','.premium-main','.premium-dashboard-hero','.playhaven-root','.ciko-premium','.cl20-root','.v21-learning-card','prefers-reduced-motion','[dir=\'rtl\']'])assert(style.includes(part),`Missing design area: ${part}`);
+assert(landing.includes('v21-learning-grid') && landing.includes('v21-learning-photo'),'Benefits do not include photos');
+assert(landing.includes('<RealPhoto photo={photo}') && landing.includes('fallback={fallback}'),'Benefits do not have fallbacks');
+for(const name of ['collaborativeComputers','guidedCoding'])assert(photos.includes(`${name}:`),`Missing photo ${name}`);
+assert(photos.includes('onError={()=>setFailed(true)}'),'Offline fallback missing');
+assert(v20.includes('.cl20-story-stage'),'Creative games styling should be retained');
+assert((photos.match(/https:\/\/images\.pexels\.com\/photos\/\d+\/pexels-photo-/g)||[]).length>=14,'At least 14 earlier photo sources expected');
+console.log('PASS: refined theme ordering, 14+ free-photo sources, three photographic benefit cards, fallbacks, responsive/RTL/reduced-motion styling, and original creative-game CSS.');

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" fill="none">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d1e6d0"/><stop offset="1" stop-color="#fbe8bc"/></linearGradient><linearGradient id="hill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9dc7a8"/><stop offset="1" stop-color="#40887a"/></linearGradient></defs>
+<rect width="1200" height="660" fill="url(#sky)"/><circle cx="920" cy="124" r="78" fill="#fff2c5" opacity=".85"/>
+<path d="M0 390C172 280 290 400 461 332C608 266 761 355 905 302C1079 244 1190 311 1200 278V660H0Z" fill="#a3caa9"/><path d="M0 472C200 343 360 500 593 414C797 340 1002 462 1200 379V660H0Z" fill="#79af91"/>
+<path d="M0 530Q300 420 640 500T1200 482V660H0Z" fill="url(#hill)"/>
+<path d="M535 660Q623 548 608 500Q583 440 644 423Q770 399 818 332" stroke="#f5e8c7" stroke-width="85" stroke-linecap="round"/>
+<g fill="#316d59"><path d="M112 450V212" stroke="#5a6641" stroke-width="27"/><path d="M16 235Q102 68 214 235Z"/><path d="M36 182Q116 23 204 182Z"/><path d="M1100 411V190" stroke="#5a6641" stroke-width="27"/><path d="M1000 208Q1100 37 1199 208Z"/><path d="M1013 152Q1100-1 1189 152Z"/></g>
+<g fill="#f5d89a"><circle cx="180" cy="495" r="10"/><circle cx="1015" cy="528" r="12"/><circle cx="301" cy="550" r="9"/><circle cx="840" cy="560" r="11"/></g>
+<rect x="56" y="53" width="365" height="81" rx="27" fill="#ffffff" fill-opacity=".88"/><text x="80" y="102" font-size="35" font-weight="800" fill="#355f57" font-family="Arial,sans-serif">CIKO STORY QUEST</text>
+<g transform="translate(855 351)"><rect x="0" y="18" width="142" height="122" rx="51" fill="#e9fcf3" stroke="#78b9ad" stroke-width="8"/><rect x="19" y="-19" width="106" height="83" rx="28" fill="#f9fffe" stroke="#7fbcae" stroke-width="8"/><circle cx="53" cy="22" r="9" fill="#346b65"/><circle cx="90" cy="22" r="9" fill="#346b65"/><path d="M52 42Q72 59 93 42" stroke="#edab76" stroke-width="5" stroke-linecap="round"/><path d="M70-19V-40" stroke="#7fbcae" stroke-width="6"/><circle cx="70" cy="-48" r="10" fill="#ffc16a"/><rect x="-14" y="68" width="18" height="54" rx="9" fill="#e9fcf3" stroke="#7fbcae" stroke-width="6"/><rect x="138" y="68" width="18" height="54" rx="9" fill="#e9fcf3" stroke="#7fbcae" stroke-width="6"/></g>
+<path d="M410 265C458 240 511 260 535 305" stroke="#ffffff" stroke-opacity=".7" stroke-width="7" stroke-dasharray="14 13"/>
+</svg>

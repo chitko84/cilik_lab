@@ -1,0 +1,198 @@
+/* CilikLab v27 | Crafted, human-centred design system.
+ * Presentation-only: existing gameplay, navigation, localization and storage untouched.
+ * A deliberate final visual layer for the inherited styling stack.
+ */
+:root {
+  --v27-paper:#f8f8f3;
+  --v27-white:#fffefd;
+  --v27-green:#245b45;
+  --v27-forest:#193d30;
+  --v27-leaf:#e7f0e5;
+  --v27-ink:#203c30;
+  --v27-muted:#66776d;
+  --v27-stroke:#e0e9df;
+  --v27-amber:#f1bf71;
+  --v27-radius:18px;
+  --v27-surface-shadow:0 7px 28px rgba(28,67,47,.052);
+  --v27-raised-shadow:0 16px 38px rgba(28,67,47,.10);
+  --v27-ease:cubic-bezier(.22,.7,.25,1);
+}
+html {scroll-padding-top:86px}
+body {background:var(--v27-paper);color:var(--v27-ink);-webkit-font-smoothing:antialiased}
+/* A focused visual hierarchy with predictable sizes throughout the platform. */
+.premium-site-shell {background:var(--v27-paper)!important}
+.premium-main {color:var(--v27-ink);line-height:1.55}
+.premium-main .premium-page-enter {max-width:1400px;margin-inline:auto}
+.premium-main .premium-page-enter :is(h1,h2,h3) {color:inherit;letter-spacing:-.033em;line-height:1.22;text-wrap:balance}
+.premium-main .premium-page-enter h1 {letter-spacing:-.047em}
+.premium-main .premium-page-enter :is(p,small) {line-height:1.66}
+.premium-main .premium-page-enter :is(.text-slate-500,.text-slate-600) {color:#65766c}
+.premium-main .premium-page-enter :is(.bg-white.rounded-xl,.bg-white.rounded-2xl,.bg-white.rounded-3xl) {
+  background:var(--v27-white);border-color:var(--v27-stroke)!important;box-shadow:var(--v27-surface-shadow)!important;
+}
+/* Navigation: fewer competing dividers, more legible selected state. */
+.premium-topbar {background:rgba(255,254,251,.97)!important;border-bottom:1px solid var(--v27-stroke)!important;box-shadow:0 3px 12px rgba(26,60,40,.035)!important}
+.premium-sidebar {background:#fffefd!important;border-inline-end:1px solid var(--v27-stroke)!important}
+.premium-side-item {border-radius:12px!important;min-height:43px;transition:background .19s ease,color .19s ease!important}
+.premium-side-item:hover {background:#f0f4ed!important}
+.premium-side-item[aria-current="page"],.premium-side-item[aria-current="true"] {background:#e8f1e8!important;color:var(--v27-green)!important;box-shadow:inset 3px 0 0 var(--v27-green)!important;font-weight:750}
+.premium-main :is(button,a,input,select,textarea):focus-visible,.premium-landing :is(button,a,input,textarea):focus-visible {outline:3px solid #cf9553!important;outline-offset:3px!important}
+.premium-main :is(button,a),.premium-landing :is(button,a) {touch-action:manipulation}
+.premium-main :is(input:not([type="checkbox"]):not([type="radio"]),textarea,select) {background-color:var(--v27-white);border-color:#d8e4d8!important;border-radius:12px}
+.premium-main :is(input,textarea,select):focus-visible {border-color:#367959!important}
+/* LANDING — an editorial learning website, not an AI dashboard. */
+.premium-landing {background:var(--v27-paper)!important;color:var(--v27-ink)!important}
+.premium-landing>header {background:rgba(255,254,251,.96)!important;border-color:var(--v27-stroke)!important;box-shadow:0 2px 14px rgba(24,61,40,.04)!important}
+.premium-landing>header nav a {color:#4b6556;letter-spacing:.008em}
+.premium-landing>header nav a:hover {color:var(--v27-green)!important}
+.premium-landing>header button:last-child {background:var(--v27-forest)!important;border-radius:13px!important;box-shadow:none!important}
+.premium-landing main>section:first-child {padding-block:clamp(60px,7vw,100px) clamp(76px,8vw,114px)!important}
+/* Legacy blurred gradient orbs created a futuristic appearance; photographs provide the visual interest instead. */
+.premium-landing main>section:first-child>div.absolute.pointer-events-none {display:none!important}
+.premium-landing main>section:first-child>.relative.grid {gap:clamp(30px,5vw,76px)!important}
+.premium-landing main>section:first-child h1 {font-size:clamp(2.7rem,5.1vw,5.3rem)!important;font-weight:820!important;letter-spacing:-.066em!important;line-height:1.085!important;color:#1b3c2e!important}
+.premium-landing main>section:first-child h1 span {background:none!important;color:#33765a!important;-webkit-text-fill-color:currentColor!important}
+.premium-landing main>section:first-child p {color:#62776b!important;line-height:1.75!important;font-size:clamp(1rem,1.65vw,1.125rem)}
+.premium-landing main>section:first-child .space-y-7>span:first-child {background:#edf3e9!important;color:#2b6149!important;border-color:#d9e7d6!important;border-radius:100px!important;letter-spacing:.02em}
+.premium-landing main>section:first-child button {border-radius:13px!important;box-shadow:none!important;min-height:48px;transition:transform .2s var(--v27-ease),background-color .2s ease,box-shadow .2s ease}
+.premium-landing main>section:first-child button:not(:disabled):hover {transform:translateY(-2px);box-shadow:0 10px 25px rgba(27,65,42,.12)!important}
+.premium-landing main>section:first-child button:not(:disabled):active {transform:translateY(0)}
+.premium-landing main>section:first-child button.bg-\[\#143866\] {background:var(--v27-forest)!important}
+.premium-landing .premium-hero-photo-show {border-radius:23px!important;overflow:hidden;box-shadow:none!important}
+.premium-landing main>section:first-child .relative.h-\[365px\] {border-radius:23px!important;background:#e8efe6!important;box-shadow:0 22px 56px rgba(36,69,47,.15)!important}
+.premium-landing .premium-hero-photo-show img {filter:contrast(1.02) saturate(.96);object-position:center 42%}
+.premium-landing .premium-hero-mascot {filter:drop-shadow(0 4px 12px rgba(26,61,39,.07));animation-duration:8s!important;opacity:.97}
+.premium-landing main>section:first-child .absolute.-bottom-5,.premium-landing main>section:first-child .absolute.-top-5 {box-shadow:0 10px 28px rgba(21,58,36,.1)!important;border:1px solid #e6ece4!important;border-radius:14px!important;animation:none!important}
+.premium-landing .cilik-slide-caption {font-weight:750;letter-spacing:-.01em}
+/* Real-photo destination cards: keep all existing buttons and actions. */
+.premium-landing-discover {padding-bottom:clamp(58px,7vw,98px)!important}
+.premium-landing-discover-head {padding-bottom:26px}
+.premium-landing-discover-head h2 {color:#1f4032!important;letter-spacing:-.043em!important;max-width:650px}
+.premium-landing-discover-head span {color:#477660!important;letter-spacing:.15em}
+.premium-landing-discover .premium-landing-image-grid {gap:16px!important;grid-template-columns:1.14fr .86fr!important;grid-template-rows:repeat(2,minmax(195px,1fr))!important}
+.premium-landing-discover .premium-landing-photo-card {height:auto!important;min-height:190px!important;border-radius:20px!important;box-shadow:0 9px 27px rgba(21,61,36,.09)!important;transition:transform .28s var(--v27-ease),box-shadow .28s ease!important}
+.premium-landing-discover .premium-landing-photo-card:hover {transform:translateY(-3px);box-shadow:0 18px 40px rgba(22,60,36,.16)!important}
+.premium-landing-discover .premium-landing-photo-card:first-child {grid-row:span 2;min-height:395px!important}
+.premium-landing-discover .premium-landing-photo-card:last-child {grid-column:auto!important}
+.premium-landing-discover .premium-landing-photo-card img {filter:saturate(.95) contrast(1.04);object-position:center 44%;transition:transform .55s var(--v27-ease)}
+.premium-landing-discover .premium-landing-photo-card:hover img {transform:scale(1.028)}
+.premium-landing-discover .premium-landing-photo-card::after {background:linear-gradient(0deg,rgba(17,42,31,.91),rgba(17,42,31,.45) 36%,transparent 78%)!important}
+.premium-landing-discover .premium-landing-photo-card small {letter-spacing:.13em;opacity:.9}
+.premium-landing-discover .premium-landing-photo-card strong {font-size:clamp(19px,2.1vw,27px);max-width:360px;line-height:1.17}
+/* Three quiet documentary tiles sit below the action cards. These have no controls. */
+.premium-landing-discover .cilik-photo-story-grid {display:grid!important;grid-template-columns:1.1fr .92fr .92fr!important;gap:15px!important;margin-top:16px!important}
+.premium-landing-discover .cilik-photo-story {height:205px!important;border-radius:16px!important;box-shadow:0 7px 20px rgba(22,61,37,.06)!important}
+.premium-landing-discover .cilik-photo-story img {object-fit:cover;object-position:center 43%;filter:saturate(.94)}
+.premium-landing-discover .cilik-photo-story span {font-size:clamp(13px,1.1vw,16px);font-weight:750}
+/* Learning benefits: photograph above editorial copy, rather than gradient tiles. */
+.premium-landing #explore {background:#fffefd!important;border-color:#e8eee5!important}
+.v21-learning-grid {gap:22px!important}
+.v21-learning-card {border-radius:18px!important;border:1px solid #e2eadf!important;box-shadow:0 6px 22px rgba(28,65,42,.052)!important;overflow:hidden}
+.v21-learning-card:hover {transform:translateY(-4px)!important;box-shadow:0 16px 33px rgba(26,65,40,.1)!important}
+.v21-learning-photo {aspect-ratio:1.63!important;overflow:hidden}
+.v21-learning-photo img {width:100%;height:100%;object-fit:cover;object-position:center 39%;filter:saturate(.94)}
+.v21-learning-body {padding:23px!important}
+.v21-learning-body h3 {color:#234536!important;font-size:19px!important}
+.v21-learning-body p {color:#64766c!important;line-height:1.65}
+.v21-learning-icon {border-radius:13px!important;box-shadow:none!important}
+/* Real Python sampler and teacher invitation: keep all editors and actions unchanged. */
+.premium-landing #python {gap:clamp(38px,6vw,86px)}
+.premium-v18-python-photo {max-height:238px;overflow:hidden;border-radius:17px!important;box-shadow:var(--v27-surface-shadow)!important}
+.premium-v18-python-photo img {object-fit:cover;object-position:center 48%}
+.premium-landing #python>div:last-child {box-shadow:0 20px 50px rgba(14,34,28,.13)!important;border-color:#293d3c!important;border-radius:20px!important}
+.premium-landing #python textarea {line-height:1.9}
+.premium-landing #educators {background:#eff4ed!important}
+.premium-v18-educators {gap:clamp(32px,6vw,76px)!important}
+.premium-v18-educators-photo {border-radius:19px!important;border-color:#e0e9dc!important;box-shadow:0 18px 36px rgba(27,70,46,.085)!important}
+.premium-v18-educators-photo img {object-position:center 38%;filter:saturate(.96)}
+.premium-v18-educators-copy h2 {color:#1e4131!important;letter-spacing:-.045em!important;line-height:1.16}
+.premium-v18-educators-copy button {background:var(--v27-forest)!important;border-radius:12px!important;box-shadow:none!important}
+.premium-landing footer {background:#fffefd!important;border-color:var(--v27-stroke)!important}
+/* STUDENT / TEACHER: contrast and calm composition, without hiding data. */
+.premium-main .premium-dashboard-hero {min-height:236px;border-radius:21px!important;background:var(--v27-forest)!important;border-color:#25533e!important;box-shadow:0 16px 36px rgba(28,63,40,.12)!important;padding:clamp(23px,3vw,35px)!important}
+.premium-main .premium-dashboard-photo {width:59%!important;object-fit:cover;object-position:center 42%;filter:saturate(.93) contrast(1.015)!important;opacity:1!important}
+.premium-main .premium-dashboard-hero::after {background:linear-gradient(90deg,rgba(23,62,45,.99),rgba(23,62,45,.90) 39%,rgba(23,62,45,.13) 100%)!important;animation:none!important}
+.premium-main .premium-dashboard-hero>div {z-index:2}
+.premium-main .premium-dashboard-hero h1 {font-size:clamp(26px,2.85vw,37px);max-width:610px;line-height:1.16!important;font-weight:800;color:#fff!important}
+.premium-main .premium-dashboard-hero p {color:#e3efe6!important;max-width:590px}
+.premium-main .premium-dashboard-hero .bg-white\/10 {border-radius:14px!important;border-color:rgba(255,255,255,.25)!important;background:rgba(255,255,255,.12)!important;box-shadow:none!important;backdrop-filter:blur(9px)}
+.premium-main .premium-dashboard-hero button {border-radius:10px!important;min-height:41px;transition:transform .2s var(--v27-ease)}
+.premium-main .premium-dashboard-hero button:hover {transform:translateY(-2px)}
+/* Dashboard photo ribbons and action tiles */
+.premium-main :is(.premium-teacher-feature,.premium-learning-ribbon,.cilik-life-strip) {background:#f5f7f1!important;border:1px solid var(--v27-stroke)!important;border-radius:19px!important;box-shadow:var(--v27-surface-shadow)!important;overflow:hidden}
+.premium-main :is(.premium-teacher-feature,.premium-learning-ribbon,.cilik-life-strip) h2 {color:#214535!important;letter-spacing:-.025em}
+.premium-main :is(.premium-teacher-feature,.premium-learning-ribbon,.cilik-life-strip) p {color:#637669!important}
+.premium-main :is(.premium-teacher-feature,.premium-learning-ribbon,.cilik-life-strip)>button {background:var(--v27-green)!important;color:#fff!important;border-radius:12px!important;min-height:43px;box-shadow:none!important}
+.premium-main :is(.premium-feature-tile,.playhaven-card,.quiz-topic-card) {border-color:#dfE9df!important;border-radius:17px!important;box-shadow:var(--v27-surface-shadow)!important}
+.premium-main :is(.premium-feature-tile,.playhaven-card,.quiz-topic-card):hover {box-shadow:var(--v27-raised-shadow)!important}
+.premium-main .premium-feature-tile img {filter:saturate(.95) contrast(1.02)}
+.premium-main .v25-quiz-promo {background:#eef4ea!important;border:1px solid #dfebdc!important;border-radius:19px!important;box-shadow:var(--v27-surface-shadow)!important}
+.premium-main .v25-quiz-promo button {background:var(--v27-green)!important;color:#fff!important;border-radius:11px!important}
+.premium-main .v26-progress-photo {height:169px;border-radius:19px;box-shadow:var(--v27-surface-shadow)}
+.premium-main .v26-progress-photo::after {background:linear-gradient(90deg,rgba(18,53,37,.92),rgba(18,53,37,.59) 56%,rgba(18,53,37,.08))}
+.premium-main .v26-progress-photo strong {font-size:clamp(19px,2.25vw,26px)}
+/* Comics: photographed library vignette layered on existing banner, not linked. */
+.premium-main .v26-reading-ribbon {position:relative;isolation:isolate;min-height:181px!important;overflow:hidden}
+.premium-main .v26-reading-ribbon>img:first-child {width:43%;object-position:center 40%}
+.premium-main .v26-reading-ribbon .v27-library-photo {position:absolute;z-index:2;inset-inline-start:32%;bottom:12px;width:108px!important;height:121px!important;object-fit:cover;object-position:center 32%;border:4px solid #fffefd;border-radius:12px;box-shadow:0 10px 30px rgba(17,52,35,.18);transform:rotate(4deg);pointer-events:none}
+.premium-main .v26-reading-ribbon>div {position:relative;z-index:1}
+/* Quiz: keep answer colors / correctness states, improve surrounding shell only. */
+.premium-main .quiz-hero {border-radius:20px!important;box-shadow:var(--v27-surface-shadow)!important}
+.premium-main .quiz-hero-photo {filter:saturate(.94) contrast(1.02)!important}
+.premium-main .quiz-topic-card {border-color:var(--v27-stroke)!important;transition:transform .2s var(--v27-ease),box-shadow .2s ease!important}
+.premium-main .quiz-play-panel,.premium-main .quiz-tip-panel,.premium-main .quiz-results,.premium-main .quiz-review-item {border-radius:19px;box-shadow:var(--v27-surface-shadow)}
+.premium-main .quiz-answer:focus-visible {outline:3px solid #c8914e!important;outline-offset:3px}
+.premium-main .playhaven-card-body {padding:21px!important}
+.premium-main .playhaven-cover img {filter:contrast(1.015) saturate(.97)}
+/* Useful, restrained delight: only interactive surfaces move; reduced-motion respected. */
+.premium-main :is(.premium-feature-tile,.playhaven-card,.quiz-topic-card,.v21-learning-card) {transition:transform .23s var(--v27-ease),box-shadow .23s ease,border-color .23s ease}
+.premium-main :is(.premium-feature-tile,.playhaven-card,.quiz-topic-card):not(:disabled):active {transform:scale(.992)}
+@media (min-width:1000px) {
+  .premium-landing-discover .premium-landing-photo-card:first-child strong {font-size:30px}
+  .premium-landing-discover .cilik-photo-story-grid .cilik-photo-story:first-child {height:223px!important}
+}
+@media (max-width:1050px) {
+  .premium-landing-discover .premium-landing-image-grid {grid-template-columns:1fr 1fr!important}
+  .premium-landing-discover .cilik-photo-story-grid {grid-template-columns:1fr 1fr!important}
+  .premium-landing-discover .v27-photo-story-third {grid-column:span 2}
+}
+@media (max-width:760px) {
+  .premium-landing main>section:first-child {padding-top:36px!important;padding-bottom:64px!important}
+  .premium-landing main>section:first-child h1 {font-size:clamp(2.5rem,8.5vw,3.8rem)!important}
+  .premium-landing main>section:first-child .relative.h-\[365px\] {border-radius:18px!important}
+  .premium-landing-discover .premium-landing-photo-card:first-child {min-height:285px!important}
+  .premium-main .premium-dashboard-hero {min-height:225px!important;border-radius:17px!important}
+  .premium-main .premium-dashboard-photo {width:74%!important;opacity:.7!important}
+  .premium-main .premium-dashboard-hero::after {background:linear-gradient(90deg,rgba(24,61,44,.98),rgba(24,61,44,.79) 55%,rgba(24,61,44,.42))!important}
+  .premium-main .v26-reading-ribbon .v27-library-photo {width:85px!important;height:96px!important;inset-inline-start:31%}
+}
+@media (max-width:620px) {
+  .premium-landing-discover .premium-landing-image-grid {display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto!important;gap:12px!important}
+  .premium-landing-discover .premium-landing-photo-card,.premium-landing-discover .premium-landing-photo-card:first-child,.premium-landing-discover .premium-landing-photo-card:last-child {grid-column:auto!important;grid-row:auto!important;height:219px!important;min-height:219px!important;border-radius:16px!important}
+  .premium-landing-discover .cilik-photo-story-grid {grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:11px!important}
+  .premium-landing-discover .cilik-photo-story {height:140px!important;border-radius:13px!important}
+  .premium-landing-discover .v27-photo-story-third {grid-column:span 2;height:155px!important}
+  .premium-landing-discover .cilik-photo-story span {font-size:13px!important;left:12px!important;bottom:12px!important}
+  .premium-landing .premium-hero-mascot {width:71px;height:71px;top:12px;right:12px}
+  .premium-landing main>section:first-child .absolute.-bottom-5,.premium-landing main>section:first-child .absolute.-top-5 {display:none}
+  .premium-main .premium-dashboard-hero {padding:20px!important}
+  .premium-main .premium-dashboard-photo {width:92%!important;opacity:.43!important}
+  .premium-main .premium-dashboard-hero::after {background:linear-gradient(90deg,rgba(22,60,43,.96),rgba(22,60,43,.7))!important}
+  .premium-main .v26-reading-ribbon {min-height:176px!important}
+  .premium-main .v26-reading-ribbon>img:first-child {width:39%}
+  .premium-main .v26-reading-ribbon .v27-library-photo {display:none}
+  .premium-main .v26-progress-photo {height:147px}
+  .premium-main .v26-progress-photo>div {max-width:75%}
+  .premium-main .playhaven-card-body {padding:16px!important}
+}
+@media (max-width:390px) {
+  .premium-landing-discover .cilik-photo-story-grid {grid-template-columns:1fr!important}
+  .premium-landing-discover .v27-photo-story-third {grid-column:auto;height:145px!important}
+  .premium-landing main>section:first-child h1 {font-size:2.45rem!important}
+}
+[dir="rtl"] .premium-main .premium-dashboard-hero::after {background:linear-gradient(270deg,rgba(23,62,45,.98),rgba(23,62,45,.84) 42%,rgba(23,62,45,.13))!important}
+[dir="rtl"] .premium-main .v26-progress-photo::after {background:linear-gradient(270deg,rgba(18,53,37,.93),rgba(18,53,37,.58),transparent)!important}
+@media (prefers-reduced-motion:reduce) {
+  .premium-landing :is(button,.premium-landing-photo-card,img),.premium-main :is(button,a,.premium-feature-tile,.playhaven-card,.quiz-topic-card),.v21-learning-card {transition:none!important;animation:none!important;transform:none!important}
+  .premium-landing-discover .premium-landing-photo-card:hover img {transform:none!important}
+}

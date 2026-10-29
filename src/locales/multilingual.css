@@ -1,0 +1,24 @@
+/* Language support is deliberately scoped to typography and direction, not gameplay. */
+:root[data-locale="my"]{font-family:"Noto Sans Myanmar","Myanmar Text",system-ui,sans-serif}
+:root[data-locale="bn"]{font-family:"Noto Sans Bengali","Nirmala UI",system-ui,sans-serif}
+:root[data-locale="ar"],:root[data-locale="fa"]{font-family:"Noto Naskh Arabic","Noto Sans Arabic","Segoe UI",sans-serif}
+html[dir="rtl"] :is(input[type="text"],textarea,select){text-align:start}
+html[dir="rtl"] :is(code,pre,[contenteditable="true"],.nova-editor textarea,.arcade-codepanel textarea,.code-editor){direction:ltr;text-align:left;unicode-bidi:isolate}
+html[dir="rtl"] .arcade-map-grid,html[dir="rtl"] .nova-pixel-stage,html[dir="rtl"] .bridge-river,
+html[dir="rtl"] .nova-garden-plots,html[dir="rtl"] .arcade-direction-pad,
+html[dir="rtl"] .nova-gameboard,html[dir="rtl"] .nova-pixel-grid{direction:ltr}
+html[dir="rtl"] .language-switch select{direction:rtl}
+html[dir="rtl"] .ciko-question-card,html[dir="rtl"] .ciko-bubble-panel{unicode-bidi:plaintext}
+@media(max-width:520px){.language-switch{max-width:130px}.language-choice{max-width:110px}}
+
+/* CilikLab v28: preserve mathematical board coordinates even inside RTL pages. */
+html[dir="rtl"] :is(.spark-board,.rescue-grid,.nova-pixel-grid,.arcade-maze,.cl20-pet-actions,.cl20-story-stage){direction:ltr}
+html[dir="rtl"] :is(.quiz-root,.spark-root,.playhaven-root,.achievement-polish){text-align:start}
+:root[data-locale="bn"] :is(.quiz-root,.spark-root,.playhaven-root),
+:root[data-locale="my"] :is(.quiz-root,.spark-root,.playhaven-root),
+:root[data-locale="ar"] :is(.quiz-root,.spark-root,.playhaven-root),
+:root[data-locale="fa"] :is(.quiz-root,.spark-root,.playhaven-root){line-height:1.65}
+:root[data-locale="bn"] :is(button,h1,h2,h3),
+:root[data-locale="my"] :is(button,h1,h2,h3),
+:root[data-locale="ar"] :is(button,h1,h2,h3),
+:root[data-locale="fa"] :is(button,h1,h2,h3){overflow-wrap:anywhere;min-width:0}

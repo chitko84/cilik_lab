@@ -1,0 +1,61 @@
+import type {UILocale} from '../../locales/registry';
+const UI:Record<string,[string,string,string,string,string,string]>={
+
+ 'No compatible voice is installed for this language. Read the subtitles instead.':['এই ভাষায় কণ্ঠ নেই। উত্তরটি পড়তে পারো।','ဒီဘာသာအတွက် အသံမရှိသေးပါ။ စာတန်းကို ဖတ်နိုင်ပါတယ်။','Voice for this language no dey. Read the answer.','برای این زبان صدا نصب نیست. زیرنویس را بخوان.','لا يوجد صوت لهذه اللغة. اقرأ النص بدلًا من ذلك.','Belum ada suara untuk bahasa ini. Bacalah teksnya.'],
+ 'No compatible voice is installed for this language. You can still read the translated answer.':['এই ভাষায় কণ্ঠ নেই। অনুবাদ করা উত্তর পড়ো।','ဒီဘာသာအတွက် အသံမရှိသေးပါ။ ဘာသာပြန်အဖြေကို ဖတ်နိုင်ပါတယ်။','Voice no dey. You fit read answer.','صدای این زبان نصب نیست. می‌توانی پاسخ ترجمه‌شده را بخوانی.','لا يوجد صوت لهذه اللغة. يمكنك قراءة الإجابة المترجمة.','Belum ada suara untuk bahasa ini. Kamu tetap bisa membaca jawaban.'],
+ 'This language currently has a translated starter collection. The full question library is available in Malay and English.':['এই ভাষায় কিছু প্রশ্ন অনুবাদ করা হয়েছে। সম্পূর্ণ সংগ্রহ মালয় ও ইংরেজিতে আছে।','ဒီဘာသာနဲ့ မေးခွန်းအချို့ကို ဘာသာပြန်ထားပါတယ်။ အပြည့်အစုံကို မလေးနဲ့ အင်္ဂလိပ်လို ရနိုင်ပါတယ်။','Some questions don get translation. Full library dey for Malay and English.','بخشی از پرسش‌ها ترجمه شده‌اند. کتابخانهٔ کامل به مالایی و انگلیسی موجود است.','تمت ترجمة بعض الأسئلة. المكتبة الكاملة متاحة بالملايوية والإنجليزية.','Sebagian pertanyaan sudah diterjemahkan. Pustaka lengkap tersedia dalam bahasa Melayu dan Inggris.'],
+ 'Answers come from a curated bilingual library — not an open-ended AI chat.':['উত্তরগুলো প্রস্তুত করা সংগ্রহ থেকে আসে, খোলা AI চ্যাট নয়।','အဖြေတွေက ကြိုတင်ပြင်ဆင်ထားတဲ့ စာရင်းထဲကပါ၊ အဖွင့် AI ချတ် မဟုတ်ပါ။','Answers na from prepared list, no be open AI chat.','پاسخ‌ها از کتابخانهٔ آماده است، نه گفتگوی آزاد هوش مصنوعی.','الإجابات من مكتبة معدّة مسبقًا، وليست دردشة ذكاء اصطناعي مفتوحة.','Jawaban berasal dari pustaka terkurasi, bukan obrolan AI terbuka.'],
+ 'For example: What is a loop?':['যেমন: লুপ কী?','ဥပမာ Loop ဆိုတာဘာလဲ။','Like: Wetin be loop?','مثلاً: حلقه چیست؟','مثلًا: ما هي الحلقة؟','Contoh: Apa itu perulangan?'],
+ 'For example: Why does my code not work?':['যেমন: আমার কোড কাজ করছে না কেন?','ဥပမာ ကုဒ်က ဘာလို့မလုပ်တာလဲ။','Like: Why my code no dey work?','مثلاً: چرا کدم کار نمی‌کند؟','مثلًا: لماذا لا يعمل الكود؟','Contoh: Mengapa kode saya tidak bekerja?'],
+ 'Find questions, for example loops, errors, stars…':['লুপ, ভুল, তারা—এমন প্রশ্ন খুঁজো…','Loop၊ အမှား၊ ကြယ် စတာတွေရှာမယ်…','Find question about loop, error, star…','جستجوی حلقه، خطا، ستاره…','ابحث عن الحلقات أو الأخطاء أو النجوم…','Cari pertanyaan: perulangan, kesalahan, bintang…'],
+ 'Ciko, your learning buddy':['সিকো, শেখার বন্ধু','Ciko၊ သင်ယူဖော်','Ciko your learning padi','سیکو، دوست یادگیری','سيكو، صديقك في التعلّم','Ciko, teman belajarmu'],
+ 'Ciko does not need personal information and does not execute typed code. Use Listen for audible speech when the browser supports it.':['সিকোর ব্যক্তিগত তথ্য লাগে না এবং সে লেখা কোড চালায় না। কণ্ঠ থাকলে শোনো বোতাম ব্যবহার করো।','Ciko က ကိုယ်ရေးအချက်အလက် မတောင်းသလို ရေးတဲ့ကုဒ်ကိုလည်း မလုပ်ဆောင်ပါ။ အသံရရင် နားထောင်ခလုတ်ကို နှိပ်ပါ။','Ciko no need your private details and e no dey run code. Use Listen if voice dey.','سیکو اطلاعات شخصی نمی‌خواهد و کد نوشته‌شده را اجرا نمی‌کند. اگر صدا موجود است، دکمهٔ گوش‌دادن را بزن.','سيكو لا يحتاج بياناتك الشخصية ولا يشغّل الكود المكتوب. استخدم الاستماع إذا كان الصوت متاحًا.','Ciko tidak membutuhkan data pribadi atau menjalankan kode yang diketik. Gunakan Dengarkan jika suara tersedia.'],
+ 'Ask Ciko about coding!':['সিকোকে কোডিং নিয়ে প্রশ্ন করো!','Ciko ကို ကုဒ်ရေးအကြောင်း မေးပါ။','Ask Ciko about coding!','از سیکو دربارهٔ کدنویسی بپرس!','اسأل سيكو عن البرمجة!','Tanya Ciko tentang koding!'],
+ 'YOUR CILIKLAB LEARNING BUDDY':['তোমার শেখার বন্ধু','မင်းရဲ့ သင်ယူဖော်','Your learning padi','دوست یادگیری شما','صديقك في التعلّم','TEMAN BELAJARMU'],
+ 'Explore Python, fix bugs, and solve missions. Ask a question, read an answer, or hear Ciko speak.':['Python শিখো, ভুল ঠিক করো আর মিশন শেষ করো। প্রশ্ন করে উত্তর পড়ো বা শোনো।','Python လေ့လာ၊ အမှားပြင်၊ မစ်ရှင်တွေ ဖြေရှင်းပါ။ မေးပြီး ဖတ်နိုင်၊ နားထောင်နိုင်ပါတယ်။','Learn Python, fix mistake and finish mission. Ask, read or hear Ciko talk.','پایتون بیاموز، خطاها را رفع کن و مأموریت‌ها را حل کن. بپرس، بخوان یا گوش بده.','تعلّم بايثون وأصلح الأخطاء وأكمل المهمات. اسأل أو اقرأ أو استمع إلى سيكو.','Pelajari Python, perbaiki kesalahan, dan selesaikan misi. Tanya, baca, atau dengarkan Ciko.'],
+ 'Back to Arcade':['আর্কেডে ফিরি','Arcade သို့ပြန်မယ်','Back to Arcade','بازگشت به بازی‌ها','العودة إلى الألعاب','Kembali ke Arcade'],
+ 'How Ciko works':['সিকো কীভাবে সাহায্য করে','Ciko ဘယ်လိုကူညီလဲ','How Ciko dey help','سیکو چگونه کمک می‌کند','كيف يساعد سيكو','Cara Ciko membantu'],
+ 'Ciko is ready to help!':['সিকো সাহায্যের জন্য প্রস্তুত!','Ciko ကူညီဖို့ အသင့်ပါ။','Ciko ready to help!','سیکو آمادهٔ کمک است!','سيكو مستعد للمساعدة!','Ciko siap membantu!'],
+ 'Ciko is speaking…':['সিকো কথা বলছে…','Ciko စကားပြောနေပါတယ်…','Ciko dey talk…','سیکو صحبت می‌کند…','سيكو يتحدث…','Ciko sedang berbicara…'],
+ 'Chat with Ciko':['সিকোর সঙ্গে কথা বলো','Ciko နဲ့စကားပြောမယ်','Talk with Ciko','گفتگو با سیکو','تحدث مع سيكو','Mengobrol dengan Ciko'],
+ 'Ask Ciko':['সিকোকে জিজ্ঞেস করো','Ciko ကိုမေးမယ်','Ask Ciko','از سیکو بپرس','اسأل سيكو','Tanya Ciko'],
+ 'What would you like to know?':['তুমি কী জানতে চাও?','ဘာကို သိချင်သလဲ။','Wetin you wan know?','می‌خواهی چه بدانی؟','ماذا تريد أن تعرف؟','Apa yang ingin kamu ketahui?'],
+ 'Ciko replies':['সিকোর উত্তর','Ciko ရဲ့အဖြေ','Ciko answer','پاسخ سیکو','رد سيكو','Jawaban Ciko'],
+ 'Listen to answer':['উত্তর শোনো','အဖြေကို နားထောင်မယ်','Hear answer','شنیدن پاسخ','استمع إلى الإجابة','Dengarkan jawaban'],
+ 'Replay':['আবার শোনো','ထပ်နားထောင်မယ်','Play again','پخش دوباره','إعادة التشغيل','Putar ulang'],
+ 'Stop':['বন্ধ করো','ရပ်မယ်','Stop','توقف','إيقاف','Berhenti'],
+ 'Mute':['শব্দ বন্ধ','အသံပိတ်မယ်','Mute','بی‌صدا','كتم الصوت','Bisukan'],
+ 'Unmute':['শব্দ চালু','အသံဖွင့်မယ်','Unmute','فعال‌کردن صدا','تشغيل الصوت','Aktifkan suara'],
+ 'Speak answers automatically when I choose a question':['প্রশ্ন বাছলে উত্তর স্বয়ংক্রিয়ভাবে শোনাও','မေးခွန်းရွေးတာနဲ့ အဖြေကို အသံထွက်ဖတ်ပါ။','Talk answer when I choose question','هنگام انتخاب سؤال، پاسخ را خودکار بخوان','اقرأ الإجابة تلقائيًا عند اختيار سؤال','Bacakan jawaban otomatis saat saya memilih pertanyaan'],
+ 'You could also ask':['আরও জিজ্ঞেস করতে পারো','ဒါတွေကိုလည်း မေးနိုင်ပါတယ်','You fit ask too','همچنین می‌توانی بپرسی','يمكنك أن تسأل أيضًا','Kamu juga bisa bertanya'],
+ 'Question library':['প্রশ্নের সংগ্রহ','မေးခွန်းစာရင်း','Question library','کتابخانهٔ پرسش‌ها','مكتبة الأسئلة','Pustaka pertanyaan'],
+ 'EXPLORE WITH CIKO':['সিকোর সঙ্গে শেখো','Ciko နဲ့လေ့လာပါ','Learn with Ciko','با سیکو بیاموز','تعلّم مع سيكو','JELAJAH BERSAMA CIKO'],
+ 'All':['সব','အားလုံး','All','همه','الكل','Semua'],
+ 'Find questions':['প্রশ্ন খুঁজো','မေးခွန်းရှာမယ်','Find question','جستجوی سؤال','ابحث عن الأسئلة','Cari pertanyaan'],
+ 'Choose topic':['বিষয় বেছে নাও','ခေါင်းစဉ်ရွေးပါ','Choose topic','انتخاب موضوع','اختر الموضوع','Pilih topik'],
+ 'Clear search':['খোঁজা মুছো','ရှာဖွေမှုဖျက်မယ်','Clear search','پاک‌کردن جستجو','مسح البحث','Hapus pencarian'],
+ 'Show more questions':['আরও প্রশ্ন দেখো','နောက်ထပ်မေးခွန်းများ','Show more questions','نمایش پرسش‌های بیشتر','عرض المزيد من الأسئلة','Lihat pertanyaan lainnya'],
+ 'Recently asked questions':['সাম্প্রতিক প্রশ্ন','မကြာသေးမီကမေးထားသောမေးခွန်းများ','Questions wey you ask before','پرسش‌های اخیر','الأسئلة الأخيرة','Pertanyaan terbaru'],
+ 'questions':['প্রশ্ন','မေးခွန်း','questions','پرسش','أسئلة','pertanyaan'],
+ 'topics':['বিষয়','ခေါင်းစဉ်','topics','موضوع','مواضيع','topik'],
+ 'Start with a little question':['সহজ প্রশ্ন দিয়ে শুরু করো','လွယ်တဲ့မေးခွန်းကနေ စပါ။','Start with small question','با پرسش ساده شروع کن','ابدأ بسؤال بسيط','Mulai dengan pertanyaan mudah'],
+ 'No matching questions. Try another keyword.':['প্রশ্ন পাওয়া যায়নি। অন্য শব্দ চেষ্টা করো।','ကိုက်ညီတဲ့မေးခွန်းမရှိပါ။ စကားလုံးတစ်ခု ထပ်စမ်းပါ။','No question match. Try another word.','پرسشی پیدا نشد. واژهٔ دیگری امتحان کن.','لا توجد أسئلة مطابقة. جرب كلمة أخرى.','Tidak ada pertanyaan yang cocok. Coba kata lain.'],
+ 'Let us try another question':['অন্য প্রশ্ন চেষ্টা করি','နောက်မေးခွန်းတစ်ခု စမ်းကြည့်ရအောင်။','Make we try another question','پرسش دیگری امتحان کنیم','لنجرّب سؤالًا آخر','Ayo coba pertanyaan lain'],
+ 'No prepared answer available.':['এখনো উত্তর নেই।','ဒီမေးခွန်းအတွက် အဖြေမရှိသေးပါ။','Answer never ready yet.','هنوز پاسخی آماده نیست.','لا توجد إجابة جاهزة بعد.','Jawaban belum tersedia.'],
+ 'A matching voice may not be installed. For better pronunciation, install a language voice on your device.':['এই ভাষার কণ্ঠ নেই। ডিভাইসে উপযুক্ত কণ্ঠ যোগ করো।','သက်ဆိုင်ရာဘာသာစကားအသံ မရှိသေးပါ။ စက်မှာ အသံထည့်သွင်းပါ။','Voice for this language fit no dey. Install voice for your device.','شاید صدای این زبان نصب نشده باشد. صدای مناسب را نصب کن.','قد لا يكون الصوت المناسب مثبتًا. ثبّت صوتًا لهذه اللغة.','Suara yang cocok mungkin belum terpasang. Pasang suara bahasa di perangkat.'],
+ 'Speech is not supported in this browser. You can still read the answer.':['এই ব্রাউজারে কণ্ঠ নেই। উত্তর পড়তে পারো।','ဒီ browser မှာ အသံမရပါ။ စာသားကို ဖတ်နိုင်ပါတယ်။','Browser no fit talk. You fit read answer.','این مرورگر صدا را پشتیبانی نمی‌کند. پاسخ را بخوان.','هذا المتصفح لا يدعم الصوت. يمكنك قراءة الإجابة.','Browser tidak mendukung suara. Kamu masih bisa membaca jawabannya.'],
+ 'I do not have a prepared answer to that question yet. Choose a question from the library below, or ask your teacher.':['এই প্রশ্নের উত্তর এখনো নেই। নিচের তালিকা থেকে বেছে নাও বা শিক্ষককে জিজ্ঞেস করো।','ဒီမေးခွန်းအတွက် အဖြေမရှိသေးပါ။ အောက်ကမေးခွန်းကိုရွေးပါ သို့မဟုတ် ဆရာကိုမေးပါ။','I never get answer for that one yet. Pick one question or ask teacher.','هنوز پاسخ این پرسش آماده نیست. پرسشی از فهرست انتخاب کن یا از آموزگار بپرس.','لا أملك إجابة جاهزة لهذا السؤال بعد. اختر سؤالًا من القائمة أو اسأل معلمك.','Aku belum punya jawaban untuk pertanyaan itu. Pilih pertanyaan di bawah atau tanya gurumu.'],
+};
+const column:Record<Exclude<UILocale,'ms'|'en'>,number>={bn:0,my:1,pcm:2,fa:3,ar:4,id:5};
+export function localizeCikoUi(english:string,locale:UILocale):string|undefined {
+ if(locale==='ms'||locale==='en')return undefined;
+ return UI[english]?.[column[locale]];
+}
+export const CIKO_TOPIC_NAMES:Record<Exclude<UILocale,'en'|'ms'>,string[]>={
+ bn:['সিকো পরিচিতি','পাইথনের শুরু','সংখ্যা ও লেখা','লুপ','শর্ত','ভুল ঠিক করা','ধাঁধা ও রোবট','মহাকাশযান','নতুন কিছু বানাও','গেমে সাহায্য','আত্মবিশ্বাস নিয়ে শেখো','অনলাইনে নিরাপত্তা'],
+ my:['Ciko ကိုသိကြမယ်','Python အခြေခံ','ကိန်းဂဏန်းနှင့်စာသား','Loop','အခြေအနေ','ကုဒ်အမှားပြင်','လမ်းဝင်္ကပါနှင့်ရိုဘော့','အာကာသယာဉ်','ဖန်တီးကြမယ်','ဂိမ်းအကူအညီ','ယုံကြည်မှုနဲ့သင်ယူမယ်','အွန်လိုင်းလုံခြုံရေး'],
+ pcm:['Meet Ciko','Python basics','Number and text','Loops','Conditions','Fix code','Maze and robot','Spaceship','Make things','Game help','Learn with mind','Online safety'],
+ fa:['آشنایی با سیکو','مبانی پایتون','عدد و متن','حلقه‌ها','شرط‌ها','رفع خطا','ماز و ربات','سفینه‌ها','ساختن چیزها','کمک بازی','یادگیری با اعتماد','امنیت آنلاین'],
+ ar:['تعرّف على سيكو','أساسيات بايثون','الأرقام والنصوص','الحلقات','الشروط','تصحيح الأخطاء','المتاهة والروبوت','المركبات الفضائية','صنع الأشياء','مساعدة الألعاب','تعلّم بثقة','السلامة عبر الإنترنت'],
+ id:['Kenali Ciko','Dasar Python','Angka & teks','Perulangan','Kondisi','Memperbaiki kode','Labirin & robot','Pesawat luar angkasa','Berkreasi','Bantuan permainan','Belajar dengan percaya diri','Keamanan online'],
+};

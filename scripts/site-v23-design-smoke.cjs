@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const style=fs.readFileSync('src/website-v23-studio.css','utf8');
+const entry=fs.readFileSync('src/main.tsx','utf8');
+const app=fs.readFileSync('src/App.tsx','utf8');
+assert(entry.indexOf("import './website-v23-studio.css'")>entry.indexOf("import './website-v22-refined.css'"),'v23 design layer must load last');
+for(const selector of ['.premium-landing','.premium-topbar','.premium-sidebar','.premium-main','.premium-dashboard-hero','.playhaven-card','.ciko-premium','.cl20-paper','.cilik-slideshow']) assert(style.includes(selector),`Missing design coverage: ${selector}`);
+for(const selector of ['@media(max-width:640px)','@media(max-width:767px)','@media(prefers-reduced-motion:reduce)','[dir=rtl]',':focus-visible']) assert(style.includes(selector),`Missing responsiveness: ${selector}`);
+assert(app.includes('<PremiumMotion />'),'Existing motion component preserved');
+assert(app.includes('return <ArcadeView />'),'Existing Arcade route preserved');
+assert(app.includes('return <CikoAssistant />'),'Existing Ciko route preserved');
+assert(!style.includes('display:none!important'),'No features hidden via design layer');
+console.log('PASS: v23 studio design import order, key existing views, keyboard focus, RTL, mobile and reduced-motion styling.');

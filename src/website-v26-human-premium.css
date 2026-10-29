@@ -1,0 +1,142 @@
+/* CilikLab v26 — human-centred editorial finish.
+ * Visual presentation only: no gameplay, routing, storage, or form logic changed.
+ * Warm paper, generous rhythm, natural photography, readable contrast, quiet motion.
+ */
+:root{
+  --v26-paper:#fcfcf8; --v26-surface:#ffffff; --v26-ink:#203930;
+  --v26-secondary:#617267; --v26-forest:#27674f; --v26-forest-deep:#1d503e;
+  --v26-line:#e1e8e0; --v26-warm:#efe9dd;
+  --v26-shadow:0 6px 24px rgba(33,62,46,.055);
+  --v26-shadow-raised:0 18px 42px rgba(33,62,46,.11);
+  --v26-ease:cubic-bezier(.22,.74,.24,1);
+}
+html{scroll-padding-top:80px}
+body{background:var(--v26-paper);color:var(--v26-ink)}
+.premium-site-shell{background:linear-gradient(180deg,#fcfcfa 0%,#f8faf6 70%,#f8faf9 100%)!important}
+.premium-main{max-width:100%;scrollbar-color:#cbd8cf transparent}
+.premium-page-enter{max-width:1400px;margin:0 auto}
+/* Page rhythm: readable typography on existing pages, no new content surfaces. */
+.premium-main .premium-page-enter :is(h1,h2,h3){text-wrap:balance;letter-spacing:-.024em}
+.premium-main .premium-page-enter h1{letter-spacing:-.042em}
+.premium-main .premium-page-enter :is(p,.text-slate-500,.text-slate-600){line-height:1.62}
+.premium-main .premium-page-enter :is(.rounded-xl,.rounded-2xl,.rounded-3xl){background-clip:padding-box}
+.premium-main .premium-page-enter :is(.bg-white.rounded-xl,.bg-white.rounded-2xl,.bg-white.rounded-3xl){border-color:var(--v26-line);box-shadow:var(--v26-shadow)}
+/* Chrome and navigation—contrast and tactile click targets, no behavior changes. */
+.premium-topbar{background:rgba(255,255,253,.97)!important;border-bottom:1px solid var(--v26-line)!important;box-shadow:0 3px 14px rgba(29,64,43,.04)!important}
+.premium-sidebar{background:#fffefa!important;border-inline-end:1px solid var(--v26-line)!important}
+.premium-side-item{border-radius:12px!important;min-height:41px;transition:background .18s ease,color .18s ease,box-shadow .2s ease!important}
+.premium-side-item:is(:hover,:focus-visible){background:#eff5ed}
+.premium-side-item[aria-current=page],.premium-side-item[aria-current=true]{box-shadow:inset 3px 0 0 #398363}
+.premium-main :is(button,a):focus-visible,.premium-landing :is(button,a):focus-visible{outline:3px solid #c18647!important;outline-offset:3px!important}
+.premium-main :is(input,textarea,select){accent-color:var(--v26-forest)}
+.premium-main :is(input:not([type=checkbox]):not([type=radio]),textarea,select){border-color:#d9e3d9!important}
+.premium-main :is(input:not([type=checkbox]):not([type=radio]),textarea,select):focus-visible{border-color:#41876b!important;outline:2px solid #b9d9c6!important;outline-offset:1px!important}
+/* Landing: authentic photos, unhurried composition, solid action surfaces. */
+.premium-landing{background:var(--v26-paper)!important;color:var(--v26-ink)!important}
+.premium-landing>header{background:rgba(255,255,251,.96)!important;border-color:var(--v26-line)!important;box-shadow:0 4px 20px rgba(28,53,36,.03)}
+.premium-landing>header nav a{font-size:13px;transition:color .16s}
+.premium-landing main>section:first-child{padding-top:clamp(40px,6.2vw,90px);padding-bottom:clamp(65px,8vw,110px)}
+.premium-landing main>section:first-child h1{font-size:clamp(2.7rem,5vw,5.55rem);font-weight:830;letter-spacing:-.063em;line-height:1.08;max-width:680px}
+.premium-landing main>section:first-child h1 span{background:none!important;color:#2b8065!important;-webkit-text-fill-color:currentColor!important}
+.premium-landing main>section:first-child p{color:#586e63;max-width:560px;line-height:1.75}
+.premium-landing main>section:first-child .rounded-full.bg-\[\#e9f8f5\]{background:#edf4e9!important;border-color:#dfe9d9!important;color:#28634c!important}
+.premium-landing main>section:first-child button{transition:background .2s,box-shadow .24s,transform .2s var(--v26-ease)}
+.premium-landing main>section:first-child button:not(:disabled):hover{transform:translateY(-2px)}
+.premium-landing main>section:first-child button:not(:disabled):active{transform:translateY(0)}
+.premium-landing .premium-hero-photo-show{border-radius:23px!important;overflow:hidden;box-shadow:0 22px 54px rgba(27,54,41,.14)!important}
+.premium-landing .premium-hero-photo-show img{filter:saturate(.95) contrast(1.025);object-position:center 42%}
+.premium-landing-discover .premium-landing-image-grid{grid-template-columns:1.12fr .88fr;gap:18px}
+.premium-landing-discover .premium-landing-photo-card{border-radius:20px!important;box-shadow:0 10px 26px rgba(27,59,42,.09);min-height:228px;outline-offset:4px}
+.premium-landing-discover .premium-landing-photo-card img{object-position:center 41%;filter:contrast(1.025) saturate(.97)}
+.premium-landing-discover .premium-landing-photo-card::after{background:linear-gradient(0deg,rgba(13,32,24,.89),rgba(13,32,24,.36) 36%,transparent 76%)}
+.premium-landing-discover .premium-landing-photo-card span{padding:0 4px 2px}
+.premium-landing-discover .premium-landing-photo-card strong{font-size:clamp(19px,2vw,28px);line-height:1.13;font-weight:840}
+.premium-landing-discover .cilik-photo-story{border-radius:18px;box-shadow:0 8px 25px rgba(26,64,40,.08)}
+.premium-landing-discover .cilik-photo-story img{object-position:center 40%;filter:saturate(.98)}
+.v21-learning-card{background:#fff;border:1px solid #e0e9dd!important;border-radius:19px!important;box-shadow:var(--v26-shadow)!important;transition:transform .22s var(--v26-ease),box-shadow .22s ease}
+.v21-learning-card:hover{transform:translateY(-3px);box-shadow:var(--v26-shadow-raised)!important}
+.v21-learning-photo{aspect-ratio:1.7;overflow:hidden}
+.v21-learning-photo img{object-fit:cover;object-position:center 41%;filter:saturate(.97)}
+.v21-learning-body{padding:22px!important}
+.premium-v18-educators{gap:clamp(20px,3vw,55px)}
+.premium-v18-educators-photo,.premium-v18-python-photo{border-radius:19px!important;box-shadow:0 12px 32px rgba(29,64,42,.095)}
+.premium-v18-educators-photo img,.premium-v18-python-photo img{object-position:center 41%}
+/* Dashboards: legible content over actual photography instead of muddy overlays. */
+.premium-main .premium-dashboard-hero{border:1px solid rgba(38,89,65,.14)!important;background:#245a49!important;border-radius:22px!important;box-shadow:0 18px 36px rgba(28,66,47,.10)!important}
+.premium-main .premium-dashboard-photo{width:61%!important;opacity:.96!important;mask-image:none!important;object-fit:cover;object-position:center 38%;filter:saturate(.92) contrast(1.02)!important}
+.premium-main .premium-dashboard-hero::after{content:"";position:absolute!important;inset:0;z-index:0;background:linear-gradient(90deg,#1f4e40 0%,rgba(31,78,64,.95) 40%,rgba(31,78,64,.12) 100%)!important;pointer-events:none}
+.premium-main .premium-dashboard-hero>div{position:relative;z-index:1}
+.premium-main .premium-dashboard-hero :is(h1,p){text-shadow:none!important}
+.premium-main .premium-dashboard-hero h1{font-weight:840;line-height:1.18;max-width:620px}
+.premium-main .premium-dashboard-hero p{color:#e0f0e6;max-width:590px}
+.premium-main .premium-dashboard-hero .bg-white\/10{background:rgba(255,255,255,.14)!important;border-color:rgba(255,255,255,.3)!important;box-shadow:0 3px 15px rgba(0,0,0,.08)}
+.premium-main .premium-dashboard-hero button{transition:transform .18s ease,box-shadow .18s ease}
+.premium-main .premium-dashboard-hero button:hover{transform:translateY(-2px)}
+.premium-main :is(.cilik-life-strip,.premium-teacher-feature,.premium-learning-ribbon){border-radius:20px!important;box-shadow:var(--v26-shadow)!important;border:1px solid var(--v26-line)!important}
+.premium-main :is(.cilik-life-media,.premium-learning-ribbon,.premium-teacher-feature) img{filter:saturate(.96) contrast(1.025)}
+.premium-main .premium-feature-tile{border-radius:17px!important;overflow:hidden;box-shadow:var(--v26-shadow)!important}
+.premium-main .premium-feature-tile img{filter:saturate(.97);transition:transform .35s var(--v26-ease)}
+.premium-main .premium-feature-tile:hover img{transform:scale(1.025)}
+.premium-main .premium-class-cover,.premium-main .v24-class-cover{overflow:hidden;isolation:isolate;border-radius:15px 15px 0 0}
+.premium-main .premium-class-cover img{filter:saturate(.96) contrast(1.03)}
+.premium-main .v25-quiz-promo{background:#f4f7f0;border-color:#dfe8d9;box-shadow:var(--v26-shadow)}
+.premium-main .v25-quiz-promo-photo img{object-position:center 40%;filter:saturate(.95)}
+/* The new decorative progress photo includes no fake analytics and introduces no controls. */
+.v26-progress-photo{height:156px;border-radius:20px;position:relative;overflow:hidden;background:#dae8da;box-shadow:var(--v26-shadow);isolation:isolate}
+.v26-progress-photo img{height:100%;width:100%;object-fit:cover;object-position:center 37%;filter:saturate(.92)}
+.v26-progress-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,57,43,.91) 0%,rgba(22,57,43,.61) 49%,rgba(22,57,43,.07) 100%)}
+.v26-progress-photo>div{position:absolute;z-index:1;left:clamp(17px,3vw,28px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;max-width:62%;color:#fff}
+.v26-progress-photo span{font-size:10px;letter-spacing:.17em;font-weight:800;color:#cee9d7}
+.v26-progress-photo strong{font-size:clamp(17px,2.3vw,24px);line-height:1.24;font-weight:800;text-wrap:balance}
+/* Keep comics as illustrated stories, but show genuine readers in the library introduction. */
+.premium-main .v26-reading-ribbon{background:#f4f6f0;min-height:165px;border-radius:20px!important}
+.premium-main .v26-reading-ribbon>img{width:41%;height:100%;object-fit:cover;object-position:center 35%;filter:saturate(.96)}
+/* Quiz / games keep existing playful look; harmonize outer surfaces only. */
+.premium-main :is(.playhaven-card,.quiz-topic-card,.spark-card,.nova-panel){border-color:#e1e9e0!important;box-shadow:var(--v26-shadow)!important}
+.premium-main :is(.playhaven-card,.quiz-topic-card,.spark-card):is(:hover,:focus-visible){box-shadow:var(--v26-shadow-raised)!important}
+.premium-main .playhaven-card-body{padding:19px 20px}
+.premium-main .playhaven-cover img{filter:saturate(.97)}
+.premium-main .quiz-hero{border-radius:22px;overflow:hidden;box-shadow:var(--v26-shadow)}
+.premium-main .quiz-hero-photo{filter:saturate(.92) contrast(1.05)}
+.premium-main .nova-game-hero{box-shadow:0 13px 34px rgba(37,79,56,.11)}
+.premium-main .ciko-card,.premium-main .ciko-answer-card{box-shadow:var(--v26-shadow)}
+/* Tactile feedback is intentionally limited to navigation/cards, not drag, coding, game logic. */
+.premium-main :is(.playhaven-shortcut,.playhaven-card,.premium-feature-tile,.quiz-topic-card){transition:transform .22s var(--v26-ease),box-shadow .22s ease,border-color .22s ease}
+.premium-main :is(.playhaven-shortcut,.playhaven-card,.premium-feature-tile,.quiz-topic-card):not(:disabled):active{transform:translateY(0) scale(.992)}
+.premium-main :is(button,a):not(:disabled){touch-action:manipulation}
+/* Accessible layout: avoid clipping Indic, Burmese, Arabic and longer translations. */
+.premium-site-shell :is(button,a,span,p,h1,h2,h3){overflow-wrap:break-word}
+.premium-main :is(.premium-dashboard-hero,.premium-learning-ribbon) :is(h1,h2,p){text-wrap:pretty}
+[dir="rtl"] .premium-main .premium-dashboard-hero::after{background:linear-gradient(270deg,#1f4e40 0%,rgba(31,78,64,.95) 40%,rgba(31,78,64,.12) 100%)!important}
+[dir="rtl"] .v26-progress-photo::after{background:linear-gradient(270deg,rgba(22,57,43,.91),rgba(22,57,43,.07))}
+[dir="rtl"] .v26-progress-photo>div{left:auto;right:24px}
+@media(max-width:1000px){
+ .premium-main .premium-dashboard-photo{width:75%!important;opacity:.75!important}
+ .premium-main .premium-dashboard-hero::after{background:linear-gradient(90deg,rgba(31,78,64,.98),rgba(31,78,64,.60))!important}
+ .premium-landing main>section:first-child{padding-top:45px}
+ .premium-landing-discover .premium-landing-image-grid{gap:14px}
+}
+@media(max-width:670px){
+ .premium-main{padding-inline:14px!important}
+ .premium-main .premium-page-enter :is(h1,h2){letter-spacing:-.025em}
+ .premium-landing main>section:first-child{padding:35px 17px 55px}
+ .premium-landing main>section:first-child h1{font-size:clamp(2.3rem,8.5vw,3.3rem)}
+ .premium-landing main>section:first-child p{font-size:14px}
+ .premium-landing .premium-hero-photo-show{border-radius:19px!important}
+ .premium-landing-discover .premium-landing-image-grid{display:flex;flex-direction:column;gap:12px}
+ .premium-landing-discover .premium-landing-photo-card{min-height:205px}
+ .premium-landing-discover .cilik-photo-story{height:160px}
+ .v21-learning-body{padding:17px!important}
+ .premium-main .premium-dashboard-photo{width:100%!important;opacity:.48!important;object-position:center 41%}
+ .premium-main .premium-dashboard-hero::after{background:linear-gradient(90deg,rgba(31,78,64,.98),rgba(31,78,64,.76))!important}
+ .premium-main .premium-dashboard-hero{padding:21px!important}
+ .premium-main .premium-dashboard-hero h1{font-size:clamp(22px,5.8vw,29px)}
+ .v26-progress-photo{height:134px;border-radius:16px}
+ .v26-progress-photo>div{max-width:74%}
+ .premium-main .v26-reading-ribbon>img{width:45%;object-position:center 35%}
+ .premium-main .playhaven-card-body{padding:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ .premium-landing main>section:first-child button,.v21-learning-card,.premium-main .premium-dashboard-hero button,
+ .premium-main :is(.playhaven-shortcut,.playhaven-card,.premium-feature-tile,.quiz-topic-card){transition:none!important;transform:none!important}
+}

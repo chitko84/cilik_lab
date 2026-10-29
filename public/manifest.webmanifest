@@ -1,0 +1,13 @@
+{
+  "name": "CilikLab — Little Learners' Lab",
+  "short_name": "CilikLab",
+  "description": "Learn Python with friendly interactive coding lessons.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7fbff",
+  "theme_color": "#0e867e",
+  "icons": [
+    {"src":"/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

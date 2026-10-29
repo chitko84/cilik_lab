@@ -1,0 +1,201 @@
+/* CilikLab v18 — Natural premium design refinement.
+   VISUAL LAYER ONLY: preserves navigation, forms, lesson content, state and Arcade engines.
+   Photographs are editorial Pexels images with local fallbacks (RealPhoto.tsx).
+   Tokens intentionally favor warm paper, restrained forest green and clear ink over neon/UI glow. */
+:root {
+  --natural-ink: #22372e;
+  --natural-muted: #65766c;
+  --natural-accent: #216a56;
+  --natural-accent-dark: #174c3d;
+  --natural-cream: #fbfaf6;
+  --natural-page: #f7f9f5;
+  --natural-line: #e1e9df;
+  --natural-soft: #edf4eb;
+  --natural-shadow: 0 8px 26px rgba(30, 53, 37, .052);
+  --natural-shadow-up: 0 16px 38px rgba(30, 53, 37, .10);
+}
+body {
+  background: var(--natural-page);
+  color: var(--natural-ink);
+  font-family: 'Plus Jakarta Sans', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+/* Non-Latin languages retain their specialized glyph-friendly font stacks. */
+html[data-locale='my'] body { font-family: 'Noto Sans Myanmar','Myanmar Text',system-ui,sans-serif }
+html[data-locale='bn'] body { font-family: 'Noto Sans Bengali','Nirmala UI',system-ui,sans-serif }
+html[data-locale='ar'] body,html[data-locale='fa'] body { font-family: 'Noto Sans Arabic','Noto Naskh Arabic',system-ui,sans-serif }
+.premium-site-shell { background:var(--natural-page); }
+.premium-main { background:transparent; padding-top:clamp(16px,2.3vw,30px); }
+.premium-main h1,.premium-main h2,.premium-main h3,.premium-landing h1,.premium-landing h2,.premium-landing h3 {
+  font-family:inherit;letter-spacing:-.035em;text-wrap:pretty;
+}
+.premium-main p,.premium-landing p { line-height:1.72; }
+
+/* Quiet product chrome with a strong selected location. */
+.premium-topbar { background:#fffefa; border-bottom:1px solid var(--natural-line);box-shadow:0 1px 0 rgba(35,65,48,.035); }
+.premium-sidebar { background:#fffefa; border-color:var(--natural-line); }
+.premium-sidebar nav { padding:3px 0; }
+.premium-side-item { color:#596e61!important; border-radius:11px!important;min-height:46px!important;transition:background-color .2s ease,color .2s ease,box-shadow .2s ease!important; }
+.premium-side-item:hover { color:#205e49!important;background:#eff5ef!important;transform:none!important; }
+.premium-side-item.bg-sky-50,.premium-side-item.bg-indigo-50 { background:#e9f3eb!important;color:#165841!important;box-shadow:inset 3px 0 #367d61!important; }
+.premium-side-item.bg-sky-50 svg,.premium-side-item.bg-indigo-50 svg { color:#247458!important; }
+.premium-quick-trigger { border-radius:11px; background:#f7faf5;color:#4a6559;border-color:#dfebde; }
+.premium-topbar button:focus-visible,.premium-sidebar button:focus-visible,.premium-main button:focus-visible,.premium-landing button:focus-visible,.premium-landing a:focus-visible {
+  outline:3px solid #3b886d!important;outline-offset:3px!important;
+}
+.premium-main input:focus-visible,.premium-main textarea:focus-visible,.premium-main select:focus-visible { outline-color:#347963; }
+.premium-main .bg-white.rounded-xl,.premium-main .bg-white.rounded-2xl,.premium-main .bg-white.rounded-3xl {
+  border-color:var(--natural-line);box-shadow:var(--natural-shadow);background:#fff;
+}
+.premium-main .bg-white.rounded-xl:hover,.premium-main .bg-white.rounded-2xl:hover { box-shadow:var(--natural-shadow-up); }
+
+/* Editorial landing: intentional space and authentic documentary photos. */
+.premium-landing { background:var(--natural-cream); }
+.premium-landing header { background:rgba(255,254,249,.97);border-color:#e4e9df; }
+.premium-landing main>section:first-child { background:#f3f6ef; padding-top:clamp(46px,6vw,94px);padding-bottom:clamp(62px,6vw,100px); }
+.premium-landing h1 { font-size:clamp(2.8rem,5.2vw,5.35rem);line-height:1.09;letter-spacing:-.068em;color:#193d30; }
+.premium-landing h1 .bg-gradient-to-r { background:none!important;-webkit-text-fill-color:#29795c!important;color:#29795c!important; }
+.premium-landing main>section:first-child p { font-size:clamp(15px,1.3vw,18px);color:#657569;max-width:545px;line-height:1.7; }
+.premium-landing main>section:first-child .relative.h-\[365px\] {border-radius:23px!important;box-shadow:0 20px 45px rgba(24,52,36,.13)!important;}
+.premium-landing .premium-hero-image { filter:contrast(1.03) saturate(.94);object-position:center 42%;transition:transform .7s ease; }
+.premium-landing .relative:hover .premium-hero-image { transform:scale(1.024); }
+.premium-landing .premium-hero-mascot {width:77px;height:77px;border-radius:14px;border:3px solid #fff;transform:rotate(2deg);box-shadow:0 9px 25px rgba(29,60,35,.11);}
+.premium-landing .bg-\[\#143866\] { background:var(--natural-accent-dark)!important;box-shadow:0 6px 17px rgba(26,75,48,.14)!important; }
+.premium-landing .bg-\[\#143866\]:hover { background:#206951!important; }
+.premium-landing main>section:first-child button { border-radius:13px; }
+.premium-landing main>section:first-child button:not(:disabled):hover { transform:translateY(-2px); }
+.premium-landing main>section:first-child .absolute.-bottom-5,.premium-landing main>section:first-child .absolute.-top-5 { animation:none!important;border-radius:14px; }
+.premium-landing-discover { padding-block:60px 72px; }
+.premium-landing-discover-head { align-items:end;gap:22px; }
+.premium-landing-discover-head span,.premium-eyebrow { color:#467d62;letter-spacing:.13em;font-weight:850; }
+.premium-landing-discover-head h2 {font-size:clamp(28px,3.2vw,42px);color:#203d2f;letter-spacing:-.045em;}
+.premium-landing-photo-card { height:310px;border-radius:17px;border-color:#e3eadf;box-shadow:var(--natural-shadow);}
+.premium-landing-photo-card:after {background:linear-gradient(to top,rgba(13,32,23,.86),rgba(13,32,23,.06) 76%);}
+.premium-landing-photo-card img { filter:saturate(.91) contrast(1.025);object-position:center 35%;transition:transform .65s ease; }
+.premium-landing-photo-card:hover { transform:translateY(-3px);box-shadow:var(--natural-shadow-up); }
+.premium-landing-photo-card:hover img { transform:scale(1.045); }
+.premium-landing-photo-card small {font-size:10px;letter-spacing:.14em;color:#e3f4cf;}
+.premium-landing-photo-card strong {font-size:clamp(18px,1.85vw,23px);font-weight:800;line-height:1.25;}
+.premium-landing-photo-card em {font-size:12px;}
+.cilik-photo-story-grid {margin-top:18px;gap:18px;grid-template-columns:1fr 1fr;}
+.cilik-photo-story {height:175px;border-radius:16px;box-shadow:var(--natural-shadow);}
+.cilik-photo-story img {filter:saturate(.91);}
+.cilik-photo-story:hover img {transform:scale(1.035);}
+.cilik-photo-story span { font-size:19px;font-weight:750; }
+
+/* Keep the functional Python sample dominant; contextual photo sits quietly beside the lesson copy. */
+.premium-v18-python-photo {position:relative;width:min(100%,430px);height:128px;overflow:hidden;border-radius:14px;border:1px solid #e0e8dd;background:#dcebe0;margin-top:18px;box-shadow:var(--natural-shadow);}
+.premium-v18-python-photo img {width:100%;height:100%;object-fit:cover;object-position:center 45%;filter:saturate(.93);}
+.premium-v18-python-photo:after {content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,32,20,.73),transparent 75%);pointer-events:none;}
+.premium-v18-python-photo span {position:absolute;left:20px;bottom:18px;z-index:1;color:white;font-size:13px;font-weight:750;text-shadow:0 1px 5px rgba(0,0,0,.2)}
+.premium-landing #python>div:last-child {border-radius:18px;box-shadow:0 16px 43px rgba(20,37,37,.13);}
+.premium-landing #python textarea {direction:ltr;text-align:left;unicode-bidi:plaintext;}
+.premium-landing #explore {background:#fff;border-color:#edf0e8;}
+.premium-landing #explore .grid>div {border-color:#e4ebe2;background:#fff;border-radius:17px;box-shadow:var(--natural-shadow);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;}
+.premium-landing #explore .grid>div:hover {transform:translateY(-3px);border-color:#bed8c3;box-shadow:var(--natural-shadow-up);}
+
+/* A single compelling teacher photo instead of more dashboard decoration. */
+.premium-landing #educators {background:#eaf1e6;}
+.premium-v18-educators {display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center;gap:clamp(30px,5vw,90px);}
+.premium-v18-educators-photo {height:335px;min-width:0;border-radius:19px;overflow:hidden;background:#d9e9dd;box-shadow:0 16px 38px rgba(23,61,39,.10);}
+.premium-v18-educators-photo img {height:100%;width:100%;object-fit:cover;object-position:center 43%;filter:saturate(.95);}
+.premium-v18-educators-copy {max-width:600px;}
+.premium-v18-educators-copy h2 {color:#1f4536;line-height:1.22;}
+.premium-v18-educators-copy p {color:#53695a;max-width:490px;}
+.premium-v18-educators-copy button {margin-top:23px;border-radius:12px;background:#245f4b!important;box-shadow:none;}
+.premium-v18-educators-copy button:hover {background:#1a4d3b!important;transform:translateY(-2px);}
+.premium-landing footer {background:#fffefa;border-color:#e7ede4;}
+
+/* Dashboard banners: photo and headline never compete, white actions remain readable. */
+.premium-dashboard-hero {min-height:254px!important;border-radius:20px!important;background:#1c4839!important;border:1px solid #2b5845!important;box-shadow:var(--natural-shadow-up)!important;}
+.premium-student-hero {background:#1a4b40!important;}
+.premium-teacher-hero {background:#2c4d47!important;}
+.premium-dashboard-photo {position:absolute;inset:0 0 0 auto;width:54%;height:100%;opacity:.74;object-fit:cover;object-position:center 36%;mask-image:linear-gradient(90deg,transparent 0%,black 50%);pointer-events:none;}
+.premium-dashboard-hero:before,.premium-dashboard-hero:after {display:none!important;}
+.premium-dashboard-hero>div:not(.premium-dashboard-photo) {position:relative;z-index:1;}
+.premium-dashboard-hero h1 {color:#fff!important;font-size:clamp(24px,2.9vw,36px);line-height:1.18;}
+.premium-dashboard-hero p {color:#e5efe6!important;}
+.premium-dashboard-hero .bg-white\/10 {background:#fffefa!important;color:#224534!important;border-color:#fffefa!important;box-shadow:0 6px 22px rgba(12,43,25,.09)!important;}
+.premium-dashboard-hero .bg-white\/10 .text-white,.premium-dashboard-hero .bg-white\/10 .text-sky-200 {color:#315d48!important;}
+.premium-dashboard-hero .bg-white\/10 button {border-radius:10px!important;background:#e3b95c!important;color:#253c2c!important;}
+.premium-teacher-hero .bg-indigo-500\/20 {background:#ffffff27!important;border-color:#ffffff3a!important;}
+.premium-teacher-hero button {box-shadow:none!important;border-radius:11px!important;}
+.premium-discovery-grid {gap:16px;}
+.premium-feature-tile {border-radius:16px;box-shadow:var(--natural-shadow);border-color:var(--natural-line);background:white;min-height:177px;}
+.premium-feature-tile:hover {transform:translateY(-2px);box-shadow:var(--natural-shadow-up);border-color:#bcd5c2;}
+.premium-feature-tile img {filter:saturate(.95);}
+.premium-feature-tile>span {padding:18px;gap:9px;}
+.premium-feature-tile strong {color:#244434;font-weight:790;}
+.premium-feature-tile small {color:#32785d;}
+.premium-feature-tile b {color:#256c4f;}
+.cilik-life-strip {background:#f0f4ed;border:1px solid #dde8d8;border-radius:16px;box-shadow:var(--natural-shadow);}
+.cilik-life-body h2 {color:#294b36;}
+.cilik-life-body>span {color:#437b5f;}
+.cilik-life-strip>button {background:#23634d;border-radius:10px;}
+.premium-teacher-feature,.premium-learning-ribbon,.premium-workspace-ribbon {border-color:var(--natural-line);border-radius:16px;box-shadow:var(--natural-shadow);background:#fffefa;}
+.premium-teacher-feature img,.premium-learning-ribbon>img,.premium-workspace-ribbon img {border-radius:11px;}
+.premium-teacher-feature:hover,.premium-learning-ribbon:hover {box-shadow:var(--natural-shadow-up);}
+.premium-main .premium-class-cover {background:#e6eee8;}
+.premium-main .premium-class-cover span {background:#fffefaed;color:#286b50;}
+.premium-main .premium-comic-cover {border-radius:0;}
+.premium-main .premium-comic-cover-art {filter:saturate(.94);}
+
+/* The Arcade is intentionally more playful; its own game artwork is part of the product. */
+.playhaven-root {font-family:inherit;}
+.playhaven-hero {background:#edf5ed;border-color:#dce7db;border-radius:18px;box-shadow:var(--natural-shadow);}
+.playhaven-hero h1 {font-weight:820;letter-spacing:-.05em;}
+.playhaven-card {border-radius:15px;border-color:#e1e8df;box-shadow:var(--natural-shadow);}
+.playhaven-card:hover {box-shadow:var(--natural-shadow-up);}
+.playhaven-cover img {filter:saturate(.98);}
+.playhaven-ciko {background:#f5f6ef;border-color:#e4e9df;}
+.ciko-premium .ciko-welcome-hero {background:#255e53;box-shadow:var(--natural-shadow-up);border-radius:19px;}
+.ciko-premium .ciko-character-card,.ciko-premium .ciko-conversation-card,.ciko-premium .ciko-library,.ciko-premium .ciko-recent {box-shadow:var(--natural-shadow);border-color:var(--natural-line);}
+.ciko-premium .ciko-play-button {background:#246e56;}
+
+/* Lightweight feel-good details: not parallax, not flashing or exaggerated. */
+.premium-main button:not(:disabled),.premium-landing button:not(:disabled) {touch-action:manipulation;}
+.premium-main button:not(:disabled):active,.premium-landing button:not(:disabled):active {transform:scale(.985);}
+.premium-page-enter {animation:natural-appear .32s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes natural-appear {from{opacity:.93;transform:translateY(5px)}to{opacity:1;transform:none}}
+.cilik-motion-active .cilik-reveal:not(.cilik-in-view) {opacity:.1;transform:translateY(10px);}
+.cilik-reveal {transition:opacity .44s ease,transform .44s ease;}
+
+/* Mobile-first fixes, long translations and RTL. */
+@media(max-width:1080px){
+  .premium-landing-photo-card {height:265px;}
+  .premium-v18-educators-photo {height:295px;}
+  .premium-dashboard-photo {width:63%;opacity:.52;}
+}
+@media(max-width:760px){
+  .premium-v18-educators {grid-template-columns:1fr;gap:22px;}
+  .premium-v18-educators-photo {height:230px;}
+  .premium-landing-photo-card {height:230px;}
+  .premium-v18-python-photo {height:115px;}
+  .premium-dashboard-photo {width:72%;opacity:.35;}
+  .premium-dashboard-hero {min-height:226px!important;}
+  .premium-discovery-grid {gap:11px;}
+}
+@media(max-width:600px){
+  .premium-landing main>section:first-child {padding-top:35px;}
+  .premium-landing h1 {font-size:clamp(34px,9vw,53px);}
+  .premium-landing-photo-card {height:226px;border-radius:13px;}
+  .premium-landing-discover {padding-block:34px 44px;}
+  .cilik-photo-story-grid {grid-template-columns:1fr;gap:11px;}
+  .cilik-photo-story {height:157px;}
+  .premium-v18-educators-photo {height:215px;}
+  .premium-dashboard-photo {width:100%;opacity:.16;mask-image:linear-gradient(to right,transparent,black 100%);}
+  .premium-dashboard-hero h1 {font-size:25px;}
+  .premium-dashboard-hero .bg-white\/10 {width:100%;}
+  .premium-hero-mascot {width:64px!important;height:64px!important;}
+  .premium-feature-tile {min-height:144px;}
+}
+html[dir='rtl'] .premium-dashboard-photo {right:auto;left:0;mask-image:linear-gradient(270deg,transparent 0%,black 50%);}
+html[dir='rtl'] .premium-v18-python-photo span {left:auto;right:20px;}
+html[dir='rtl'] .premium-landing-photo-card>span {left:20px;right:20px;}
+html[dir='rtl'] .premium-side-item:hover {transform:none;}
+@media(prefers-reduced-motion:reduce){
+  .premium-page-enter {animation:none!important;}
+  .cilik-reveal,.cilik-motion-active .cilik-reveal:not(.cilik-in-view){opacity:1!important;transform:none!important;transition:none!important;}
+  .premium-landing .premium-hero-image,.premium-landing-photo-card,.premium-landing-photo-card img,.premium-feature-tile,.premium-feature-tile img,.cilik-photo-story img,.premium-main button {animation:none!important;transition:none!important;transform:none!important;}
+  html {scroll-behavior:auto;}
+}

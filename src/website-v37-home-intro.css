@@ -1,0 +1,29 @@
+/* v37 · A restrained, readable introduction to the full CilikLab platform. */
+.v37-about{padding:clamp(34px,5vw,75px) 20px;background:#f3f7f2;border-top:1px solid #e4ede3;border-bottom:1px solid #e4ede3;color:#223e34;}
+.v37-about__container{max-width:1176px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(25px,4.5vw,64px);align-items:center;min-width:0}
+.v37-about__story,.v37-about__visual{min-width:0}
+.v37-about__eyebrow{display:inline-flex;align-items:center;gap:9px;letter-spacing:.12em;color:#306d56;font-size:11px;font-weight:850;text-transform:uppercase;line-height:1.45}
+.v37-about__story h2{color:#203e32!important;font-size:clamp(27px,3.25vw,43px);line-height:1.16;letter-spacing:-.045em;font-weight:850;margin:14px 0 17px;max-width:670px;overflow-wrap:anywhere}
+.v37-about__description{font-size:clamp(14px,1.25vw,16px);line-height:1.8;color:#53665d;max-width:655px}
+.v37-about__audience{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:27px}
+.v37-about__audience-card{border:1px solid #e1e9e0;background:#fff;border-radius:18px;padding:19px 18px;display:flex;align-items:flex-start;gap:13px;min-width:0;box-shadow:0 7px 22px rgba(36,73,51,.035);transition:transform .25s ease,box-shadow .25s ease}
+.v37-about__audience-card:hover{transform:translateY(-2px);box-shadow:0 13px 28px rgba(36,73,51,.085)}
+.v37-about__audience-card h3{color:#243f34!important;font-size:14px;line-height:1.4;font-weight:850;overflow-wrap:anywhere}
+.v37-about__audience-card p{color:#697b71;font-size:12px;line-height:1.68;margin-top:7px;overflow-wrap:anywhere}
+.v37-about__symbol{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;background:#e9f2e9;color:#2d7458;border-radius:12px}
+.v37-about__visual{margin:0;min-width:0}
+.v37-about__photo-frame{width:100%;height:clamp(300px,33vw,417px);border:8px solid #fff;border-radius:27px;overflow:hidden;background:#deebe1;box-shadow:0 20px 44px rgba(32,74,55,.13)}
+.v37-about__photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.v37-about__visual:hover img{transform:scale(1.025)}
+.v37-about__visual figcaption{display:flex;align-items:center;gap:10px;line-height:1.55;font-size:13px;font-weight:700;color:#3f6b55;padding:15px 4px 0;min-width:0}
+.v37-about__visual figcaption svg{flex:0 0 auto}
+.v37-about__journey{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 25px;padding:20px 25px;border:1px solid #e1e9e0;border-radius:17px;background:#fff;min-width:0}
+.v37-about__journey-label{color:#47705b;font-size:10px;font-weight:850;letter-spacing:.1em;white-space:normal}
+.v37-about__steps{display:flex;flex:1;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:12px 20px;list-style:none;margin:0;padding:0;min-width:0}
+.v37-about__steps li{display:flex;align-items:center;gap:11px;min-width:0;color:#344f40;font-size:12px;font-weight:800;line-height:1.5}
+.v37-about__number{display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px;border-radius:50%;color:#287058;background:#eaf5ed;font-weight:850;font-size:12px}
+.v37-about__arrow{margin-inline-start:18px;color:#94ae9c;flex:0 0 auto}
+[dir='rtl'] .v37-about__arrow{transform:rotate(180deg)}
+@media(max-width:940px){.v37-about__container{grid-template-columns:1fr;gap:25px}.v37-about__photo-frame{height:320px}.v37-about__visual{max-width:720px;width:100%}.v37-about__journey{gap:14px}}
+@media(max-width:620px){.v37-about{padding:42px 16px}.v37-about__story h2{font-size:clamp(26px,7vw,35px);letter-spacing:-.03em}.v37-about__audience{grid-template-columns:1fr;gap:10px}.v37-about__audience-card{padding:16px}.v37-about__photo-frame{height:248px;border-width:5px;border-radius:19px}.v37-about__journey{padding:17px;display:block}.v37-about__steps{justify-content:flex-start;gap:11px 14px;margin-top:12px}.v37-about__steps li{width:100%}.v37-about__arrow{display:none}}
+@media(prefers-reduced-motion:reduce){.v37-about__audience-card,.v37-about__photo-frame img{transition:none!important}.v37-about__audience-card:hover{transform:none}.v37-about__visual:hover img{transform:none}}

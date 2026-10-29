@@ -1,0 +1,1213 @@
+# CilikLab — Complete React Platform Development Prompt
+
+## 1. Project Overview
+
+Build a complete, polished, responsive React web application called **CilikLab**, a child-friendly coding education platform that helps children learn programming through interactive lessons, coding exercises, quizzes, challenges, games, and guided debugging.
+
+The platform serves two main user groups:
+
+1. **Students (children and beginner programmers):** Learn programming, enroll in coding classes, write and execute code, complete exercises, receive progressive debugging guidance, track their progress, collaborate with classmates, and build confidence in problem-solving.
+2. **Teachers:** Create and manage coding classes, prepare exercises, monitor student performance, review code submissions, identify students who need help, provide feedback, and view class analytics and reports.
+
+The platform should feel like a simplified educational ERP combined with a beginner-friendly coding environment. It should have the organization of a modern learning management system without becoming complicated or overwhelming.
+
+The working name is CilikLab. Use the logo already attached in Google AI Studio. Do not generate a replacement logo or invent a different brand identity. If the logo is available as a project asset, use that asset appropriately throughout the application.
+
+Build the actual React project, not just a landing-page mockup, static HTML page, wireframe, or design preview.
+
+## 2. Critical Development Requirements
+
+- Use React with TypeScript and a clean, maintainable component structure.
+- Use Vite if a build setup needs to be created.
+- Use React Router or an equivalent routing solution for navigation.
+- Use Tailwind CSS or the existing project's styling system consistently.
+- Use Lucide React or the project's existing icon library for professional interface icons.
+- Use a suitable chart library, such as Recharts, for interactive-looking analytics and reports.
+- Use a reliable Python execution approach for the coding workspace. A browser-based Python runtime such as Pyodide may be used if compatible with the environment.
+- Use extensive, carefully designed demo data for students, teachers, classes, exercises, submissions, marks, discussions, support requests, notifications, and reports.
+- Do not connect Supabase, Firebase, an external database, or an external authentication service at this stage.
+- Do not require API keys to demonstrate the core application.
+- Do not invent successful code execution or claim that AI assistance is live when it is actually mocked.
+- Persist suitable demo changes locally when possible, using localStorage or another lightweight browser-based approach.
+- Include a clear demo login experience and realistic student and teacher accounts.
+- Keep the application runnable as a complete project with a package.json, source files, assets, and setup instructions.
+
+**The objective is a fully navigable and interactive front-end prototype with realistic workflows, not a collection of disconnected screens.**
+
+## 3. Product Design Principles
+
+CilikLab is designed for children and beginner programmers. Every screen should be easy to understand without requiring technical knowledge.
+
+Follow these principles:
+
+1. Simplicity over feature overload.
+2. Clear page hierarchy and obvious primary actions.
+3. Friendly, encouraging language without making the interface look childish or unprofessional.
+4. A modern educational technology aesthetic.
+5. Consistent spacing, typography, icons, buttons, cards, forms, and navigation.
+6. Useful information displayed at the right time rather than everything displayed simultaneously.
+7. Progressive disclosure for advanced tools, hints, error details, and teacher analytics.
+8. Responsive layouts for desktop, tablet, and mobile.
+9. Accessible text contrast, visible focus states, keyboard navigation, and appropriately sized controls.
+10. Meaningful empty states, loading states where needed, success messages, validation, and error handling.
+
+Use the supplied CilikLab logo to inform the visual direction. If no brand colors are explicitly supplied, choose a cohesive, accessible palette with a light background, readable dark text, and a restrained primary accent. Use additional colors to distinguish success, warnings, and errors without making every card colorful.
+
+Avoid excessive gradients, excessive rounded containers, unnecessary decorative illustrations, oversized statistics, too many dashboard cards, excessive emojis, and repeated information.
+
+Use a consistent content width and spacing system. On desktop, display coding class cards in a **four-column grid where space allows**, adapting to three, two, and one column on smaller screens.
+
+Do not force four cards into narrow screens or use excessively small text.
+
+## 4. Application Entry and Landing Page
+
+Create a small, attractive landing page that explains CilikLab immediately.
+
+Include:
+
+- CilikLab logo and name.
+- A clear headline explaining that children can learn coding by creating, experimenting, and solving problems.
+- A short description.
+- A primary action to log in as a student.
+- A secondary action to log in as a teacher.
+- A small visual preview of the coding workspace or learning dashboard.
+- A brief explanation of how the platform works in three steps: Join a Class, Learn and Code, Track Your Progress.
+- A compact footer with About, Help, and Privacy links.
+
+Do not create an excessively long marketing page. This is primarily a learning application, so users should reach the login experience quickly.
+
+### Demo Login
+
+Provide a polished login page with a role selector or clear student and teacher entry points.
+
+Create working demo accounts:
+
+- Student: `student@ciliklab.demo`
+- Teacher: `teacher@ciliklab.demo`
+
+Use a clearly documented demo password, such as `CilikLab123!`, for both accounts.
+
+The prototype may use local demo authentication. It must allow users to switch between student and teacher roles and must not imply that this is production-grade security.
+
+Add a convenient demo-account selector or quick-login buttons so evaluators can explore the application without unnecessary steps.
+
+After login, redirect students and teachers to their respective dashboards. Protect the navigation experience from accidental role mixing, and provide a working logout action.
+
+## 5. Application Layout and Navigation
+
+Use a consistent application shell with:
+
+- A left sidebar.
+- A compact top navigation bar.
+- A page title and short contextual description.
+- A notification control.
+- A user profile menu.
+- A responsive sidebar that can collapse or become a mobile navigation drawer.
+
+The sidebar should show only the navigation relevant to the active role.
+
+### Student Sidebar
+
+1. Dashboard
+2. Explore Classes
+3. My Classes
+4. Lessons and Challenges
+5. Coding Workspace
+6. My Progress
+7. Class Community
+8. My Profile
+9. Settings
+
+### Teacher Sidebar
+
+1. Dashboard
+2. My Classes
+3. Create Class
+4. Student Performance
+5. Support Queue
+6. Class Support
+7. Guidance Library
+8. Feedback Review
+9. Reports and Analytics
+10. Class Community
+11. My Profile
+12. Settings
+
+Use sensible grouping and avoid displaying all options as visually equal. Teacher-only management tools should not appear in the student sidebar.
+
+If some related functions can be presented as tabs within an existing page, do that instead of creating redundant pages.
+
+## 6. Student Experience
+
+### 6.1 Student Dashboard
+
+Create a welcoming dashboard that summarizes the student's learning activity.
+
+Include:
+
+- A personalized greeting.
+- Current learning level.
+- Enrolled classes.
+- Lessons completed.
+- Average exercise score.
+- Learning streak or weekly activity.
+- Recent achievements.
+- Continue Learning section.
+- Upcoming class activities and deadlines.
+- Recent teacher feedback.
+- A small progress chart.
+- A short list of recommended next activities.
+
+Use demo data that produces realistic visualizations and meaningful variation between students.
+
+Prioritize the next action the student should take. Do not make the dashboard a wall of statistics.
+
+### 6.2 Explore Classes
+
+Build a class discovery page with at least 12–16 demo classes.
+
+Examples:
+
+- Python for Curious Beginners
+- Python Adventures: Variables and Data Types
+- Logic and Loops Lab
+- Build Your First Quiz Game
+- Creative Coding with Functions
+- Introduction to Algorithms
+- Python Turtle Drawing
+- Debugging Detectives
+- Lists and Collections
+- Build a Number Guessing Game
+- Problem-Solving Challenge
+- Python Projects for Young Creators
+
+These are illustrative names; create a varied and coherent set of realistic demo classes.
+
+Every class should contain:
+
+- Class title.
+- Teacher name and avatar.
+- Short description.
+- Programming language.
+- Difficulty level.
+- Number of enrolled students.
+- Number of lessons or exercises.
+- Estimated duration.
+- Class thumbnail or restrained visual treatment.
+- Enrollment status.
+- An appropriate action button.
+
+Add search and filters for language, difficulty, teacher, class status, and learning category.
+
+Provide sorting options where useful, such as newest, most popular, and beginner-friendly.
+
+Display the class cards in four columns on sufficiently wide desktop screens.
+
+Each card should open a class detail page or drawer with the class description, learning outcomes, lesson outline, teacher information, and an enrollment action.
+
+### 6.3 Enrollment Workflow
+
+Students must be able to enroll in demo classes.
+
+Implement:
+
+- Enroll button.
+- Enrollment confirmation.
+- Already enrolled state.
+- My Classes list.
+- Class progress.
+- Continue Learning action.
+- Leave-class confirmation if this feature is included.
+
+Enrollment must update the relevant demo state. Do not leave buttons as decorative elements.
+
+### 6.4 My Classes
+
+Display enrolled classes with progress indicators and clear actions.
+
+Allow students to open a class, view its lessons, continue an unfinished activity, review completed exercises, and inspect available teacher feedback.
+
+Use tabs or filters for In Progress, Completed, and Upcoming.
+
+### 6.5 Lessons and Challenges
+
+Create a structured beginner-friendly lesson experience.
+
+Each lesson may contain:
+
+- A short explanation.
+- A small example.
+- A visual or interactive concept illustration.
+- A guided activity.
+- A coding exercise.
+- A short quiz.
+- A completion indicator.
+
+Support beginner programming concepts such as:
+
+- Print statements.
+- Variables.
+- Strings and numbers.
+- User input.
+- Conditions.
+- Loops.
+- Lists.
+- Functions.
+- Simple problem-solving.
+- Basic debugging.
+
+Include mini-challenges and simple learning games where they naturally reinforce the lesson.
+
+Do not turn every lesson into a game. Educational clarity and meaningful practice come first.
+
+### 6.6 Student Progress
+
+Provide a dedicated progress page with:
+
+- Overall learning progress.
+- Class-by-class progress.
+- Exercise completion.
+- Marks and score history.
+- Strengths and areas to improve.
+- Weekly activity chart.
+- Achievement history.
+- Recent feedback.
+- Personal ranking within the relevant class.
+
+Use rankings constructively. Avoid publicly exposing sensitive student information or using discouraging language.
+
+Students should see their own performance and only the class ranking information intended to be shared with learners.
+
+### 6.7 Student Profile
+
+Include editable fields for:
+
+- Display name.
+- Profile avatar.
+- Short biography.
+- Learning level.
+- Preferred programming language.
+- Learning interests.
+
+Do not require real personal details from children. Use fictional demo profiles and age-appropriate examples.
+
+Provide Save and Cancel actions with visible confirmation when a profile is updated.
+
+### 6.8 Student Settings
+
+Include simple settings for:
+
+- Theme preference, if supported.
+- Notification preferences.
+- Learning reminders.
+- Accessibility preferences.
+- Account information.
+- Logout.
+
+Settings must work locally where applicable. Do not add unnecessary account-management complexity.
+
+## 7. Coding Workspace
+
+This is one of the most important parts of CilikLab.
+
+Create a beginner-friendly Python coding environment inspired by professional code editors, but significantly simpler than a full IDE.
+
+The workspace should be focused, uncluttered, and comfortable for children.
+
+### Workspace Layout
+
+Use a sensible three-area layout:
+
+**Left area: Exercise Instructions**
+- Exercise title.
+- Short task description.
+- Learning objective.
+- Example input and expected output where appropriate.
+- Difficulty label.
+- Progress indicator.
+
+**Center area: Code Editor**
+- Syntax-highlighted Python editor.
+- Line numbers.
+- Indentation support.
+- Starter code.
+- Editable source code.
+- Run Code button.
+- Reset Code button.
+- Submit Answer button.
+- Save Draft indicator.
+
+Use an appropriate editor such as Monaco Editor if practical, or another reliable lightweight code editor.
+
+**Right area: Learning Support**
+- Output and test results.
+- Plain-language error explanations.
+- Progressive debugging hints.
+- Request Teacher Help.
+- Execution Trace.
+- Compare Attempts.
+- Explain My Changes.
+
+On smaller screens, convert these areas into tabs, drawers, or collapsible panels. Do not squeeze the entire workspace into a narrow layout.
+
+### Code Execution
+
+Implement real Python execution for supported examples using an appropriate browser-based runtime if available.
+
+Include a clear distinction between:
+
+- Code that has been saved.
+- Code that has been executed.
+- Code that has been submitted.
+- Code that has passed or failed tests.
+
+Show output and test results only when supported by actual execution or explicitly identified demo fixtures.
+
+Provide a reasonable starter-code reset mechanism and handle runtime failures gracefully.
+
+Do not use `eval` to execute arbitrary JavaScript as a substitute for Python execution.
+
+Where execution is unavailable, show a clearly labeled demonstration state rather than fabricating successful execution.
+
+### Exercise Test Results
+
+Each exercise should have demo test cases with expected behavior.
+
+Show:
+
+- Passed tests.
+- Failed tests.
+- Expected output where appropriate.
+- Actual output when genuinely available.
+- A helpful next step.
+
+Keep hidden test cases hidden from students if the demo models an assessment.
+
+## 8. Plain-Language Error Explanations
+
+**Module: Coding Workspace → Error Explanation**
+
+Explain Python errors using language that a child or beginner can understand.
+
+For example, instead of only showing:
+
+`NameError: name 'score' is not defined`
+
+Explain:
+
+"It looks like Python found the name `score`, but it does not know what value it refers to yet. Check whether you created the variable before using it and whether its spelling matches."
+
+When possible:
+
+- Identify the relevant line.
+- Explain what the error means.
+- Suggest what to inspect.
+- Provide a small next step without giving away the complete solution.
+- Preserve the original technical error in an expandable technical panel.
+
+Start with reviewed explanations for common errors, including:
+
+- SyntaxError.
+- NameError.
+- TypeError.
+- IndentationError.
+- IndexError.
+- ValueError.
+- KeyError.
+- ZeroDivisionError.
+- AttributeError.
+
+Use the actual execution error and available source-code context where possible.
+
+Do not pretend every error can be mapped perfectly. For unsupported or ambiguous errors, show the original error and a safe generic explanation.
+
+Do not rewrite the student's entire solution.
+
+## 9. Progressive Debugging Hints
+
+**Module: Coding Workspace → Hint Panel**
+
+Improve the hint experience with three stages revealed separately.
+
+**Stage 1 — Remember the Concept**
+
+Provide a short reminder about the relevant programming concept.
+
+Example: "A loop repeats a block of code. Check how many times your loop should run."
+
+**Stage 2 — Think About Your Attempt**
+
+Ask a question that directs the student toward the relevant part of their own code.
+
+Example: "What value does your counter have just before the loop stops?"
+
+**Stage 3 — Try a Debugging Action**
+
+Give a specific action the student can perform without handing over the full solution.
+
+Example: "Try displaying the counter inside the loop to see its value during each repetition."
+
+Requirements:
+
+- Reveal each stage only when the student requests it.
+- Preserve the revealed stages during the current exercise.
+- Provide a Reset Hints action if appropriate.
+- Use the current exercise, code, and actual error context when available.
+- Validate generated guidance where possible.
+- Provide teacher-approved fallback hints when guidance is unavailable or unsuitable.
+- Avoid showing the complete answer by default.
+- Let students report confusing, incorrect, or overly revealing feedback.
+
+For the demo, provide reviewed, exercise-specific hint content rather than requiring a live AI service.
+
+Clearly distinguish sample guidance from live AI-generated guidance.
+
+## 10. Teacher Dashboard
+
+The teacher dashboard should provide an at-a-glance view of teaching activity and student support needs.
+
+Include:
+
+- Total classes.
+- Total enrolled students.
+- Pending submissions.
+- Average class performance.
+- Students who may need support.
+- Upcoming activities.
+- Recent submissions.
+- Recent student help requests.
+- Course performance chart.
+- Student activity chart.
+- Class score distribution.
+- Quick actions to create a class, review submissions, or open the support queue.
+
+Use bar charts, line charts, and pie or donut charts where they genuinely help the teacher understand the data.
+
+Possible charts:
+
+1. Average scores by class.
+2. Submission completion by class.
+3. Performance distribution.
+4. Weekly student activity.
+5. Assignment completion status.
+
+Use meaningful labels, legends, tooltips, and sensible empty states.
+
+Do not add multiple charts that communicate the same information.
+
+Populate the dashboard with sufficient demo records for the charts to be meaningful.
+
+## 11. Teacher Class Management
+
+### 11.1 My Classes
+
+Display a teacher's classes in a four-column desktop grid where appropriate.
+
+Include:
+
+- Class title.
+- Programming language.
+- Difficulty.
+- Number of students.
+- Average score.
+- Completion rate.
+- Last updated.
+- Class status.
+
+Add search, filtering, and sorting.
+
+Filters may include programming language, difficulty, active or archived status, and performance range.
+
+Clicking a class should open its management page.
+
+### 11.2 Create and Edit Class
+
+Provide a clear form with:
+
+- Class title.
+- Description.
+- Programming language.
+- Difficulty level.
+- Learning objectives.
+- Lesson outline.
+- Enrollment status.
+- Optional class image.
+- Class visibility.
+
+Validate required fields and show clear errors.
+
+Allow teachers to create, edit, preview, publish, and archive demo classes.
+
+New classes must appear in the teacher's class list and, when published, in the student class discovery page.
+
+### 11.3 Class Management Page
+
+Provide tabs or sections for:
+
+- Overview.
+- Lessons and Exercises.
+- Students.
+- Submissions.
+- Performance.
+- Community.
+
+Teachers should be able to inspect enrolled students, view their scores, review submissions, and understand class progress without navigating through excessive screens.
+
+### 11.4 Exercise Management
+
+Allow teachers to create and edit coding exercises with:
+
+- Exercise title.
+- Instructions.
+- Learning objective.
+- Difficulty.
+- Starter code.
+- Test cases or expected behavior.
+- Maximum marks.
+- Due date where appropriate.
+- Reviewed hints.
+- Reference guidance for teachers.
+
+Include validation and a useful exercise preview.
+
+Keep the demo authoring workflow manageable. Do not attempt to build a complex production assessment engine.
+
+## 12. Teacher Rankings and Student Performance
+
+**Module: Teacher Dashboard → Student Performance**
+
+Create a dedicated student performance page with:
+
+- Searchable student list.
+- Class filters.
+- Score and progress columns.
+- Submission status.
+- Recent activity.
+- Help-request indicators.
+- Performance trends.
+- Individual student details.
+
+The teacher should be able to sort by score, progress, number of attempts, and support priority.
+
+Selecting a student opens a detail page with:
+
+- Student's enrolled classes.
+- Exercise marks.
+- Submission history.
+- Previous code attempts.
+- Test results.
+- Progress over time.
+- Teacher feedback.
+- Help requests.
+- Relevant support recommendations.
+
+Make student rankings useful for instructional decisions rather than presenting them as the only measure of learning.
+
+## 13. Teacher Intervention Cards
+
+**Module: Teacher Dashboard → Support Queue**
+
+Transform student performance information into actionable support cards.
+
+Each card should show:
+
+- Student display name and avatar.
+- Relevant class and exercise.
+- Repeated error or difficulty.
+- Number of attempts.
+- Relevant previous attempts.
+- Whether performance is improving.
+- Whether the student explicitly requested help.
+- Suggested teacher action.
+- Priority and time of request.
+
+Prioritize:
+
+1. Explicit requests for teacher help.
+2. Repeated attempts that show little or no improvement.
+3. Repeated errors that prevent progress.
+4. Other noteworthy learning difficulties.
+
+Allow teachers to:
+
+- Open a support card.
+- Inspect the student's exercise and code attempts.
+- Review relevant test results.
+- Send feedback.
+- Attach a saved explanation or hint.
+- Mark the issue as addressed.
+- Dismiss a card.
+
+Use transparent demo rules for support priority. Do not imply that an actual AI model diagnosed a student when the prototype uses predefined data.
+
+Avoid alarmist labels and negative descriptions of children.
+
+## 14. Code Attempt Comparison
+
+**Student Module: Coding Workspace → Compare Attempts**
+
+**Teacher Module: Student Attempt**
+
+Allow students and teachers to compare two saved code versions side by side.
+
+Show:
+
+- Earlier code.
+- Later code.
+- Added lines.
+- Removed lines.
+- Changed lines.
+- Recorded test results for each attempt.
+- Relevant execution errors.
+- Submission timestamps.
+
+Use conventional diff styling that is accessible and easy to read.
+
+Explain the outcome with factual labels such as:
+
+- This change corrected the error.
+- This change introduced a new test failure.
+- These lines remained unchanged.
+
+Only make these claims when supported by recorded execution or test evidence.
+
+Allow students to select two saved attempts from a list.
+
+Teachers should be able to access the comparison from a student's submission history.
+
+Use actual saved code and execution records, not AI-generated guesses about how the code behaved.
+
+## 15. Shared Misconception Grouping
+
+**Module: Teacher Dashboard → Class Support**
+
+Help teachers identify patterns in students' difficulties.
+
+Create demo groups such as:
+
+- Incorrect loop boundaries.
+- Confusion between strings and numbers.
+- Variables used before assignment.
+- Incorrect indentation.
+- Conditions that never become true.
+- List index errors.
+
+Each group should display:
+
+- Misconception label.
+- Number of affected attempts.
+- Representative student attempts.
+- Relevant exercise.
+- Example of the recurring difficulty.
+- Suggested short group explanation.
+- A review status.
+
+Allow teachers to inspect examples, edit the suggested explanation, and decide whether to provide a class-wide mini-lesson.
+
+Any AI-suggested grouping must be presented as a suggestion that the teacher can review. For the prototype, use transparent demo grouping rules and sample records.
+
+Do not label a student as having a fixed ability or permanent misconception.
+
+## 16. Visual Code Tracing
+
+**Module: Coding Workspace → Execution Trace**
+
+Provide a beginner-friendly visual execution trace for supported Python programs.
+
+Allow students to step through the program and observe:
+
+- Current line.
+- Variable values.
+- Loop iterations.
+- Changes in variables.
+- Printed output.
+- Current execution step.
+
+Include controls for:
+
+- Next Step.
+- Previous Step, if supported.
+- Restart Trace.
+- Play or Pause, if implemented reliably.
+
+Begin with a deliberately limited set of Python constructs, such as:
+
+- Variable assignments.
+- Basic numeric and string operations.
+- Print statements.
+- Simple conditions.
+- Basic `for` loops.
+- Basic `while` loops.
+- Simple list access where supported.
+
+Generate traces from actual execution or a deterministic, validated interpreter for the supported subset.
+
+Clearly explain when a program uses unsupported constructs.
+
+Never invent a trace using an AI description that does not correspond to actual execution.
+
+Make the trace visually understandable without requiring children to understand debugging tools used by professional developers.
+
+## 17. Code Change Reflection Notes
+
+**Module: Coding Workspace → Explain My Changes**
+
+After a student corrects or improves a program, provide a small reflection form.
+
+Ask:
+
+- What did you change?
+- Why did you change it?
+- How did you check that it worked?
+
+Allow a short written response.
+
+Save the reflection beside the earlier attempt and corrected attempt in the demo data.
+
+Teachers should be able to read the reflection from the submission details page and provide a response.
+
+Do not make the reflection excessively long or force students to write an essay for every exercise.
+
+## 18. Contextual Assistance Requests
+
+**Module: Coding Workspace → Request Teacher Help**
+
+Allow students to request help directly from the exercise they are working on.
+
+Present three clear difficulty categories:
+
+1. I do not understand the task.
+2. I do not understand the error.
+3. I want someone to check my approach.
+
+Automatically include relevant context:
+
+- Current class.
+- Exercise.
+- Current code.
+- Latest execution error, if available.
+- Relevant test results.
+- Previous attempt count.
+- Student's short message.
+
+Allow the student to add an optional message before sending.
+
+Show a confirmation after the request is created.
+
+The request must appear in the teacher's Support Queue with the relevant exercise context.
+
+Allow teachers to open the request, inspect the code, respond, and mark the request as resolved.
+
+**Privacy requirement:** Sharing a coding session or screen must require a separate, visible student approval. Do not implement hidden screen recording or automatic screen sharing. For this demo, a simple explicit consent interface is sufficient if session-sharing is represented.
+
+## 19. Reusable Teacher Guidance Library
+
+**Module: Teacher Portal → Guidance Library**
+
+Create a library of reusable teacher-reviewed learning resources.
+
+Allow teachers to create, edit, search, filter, and organize:
+
+- Plain-language explanations.
+- Debugging questions.
+- Progressive hints.
+- Common-error explanations.
+- Short concept reminders.
+- Group mini-lesson notes.
+
+Each resource should include:
+
+- Title.
+- Content.
+- Programming concept tags.
+- Difficulty level.
+- Related error type, where applicable.
+- Resource type.
+- Review status.
+- Date updated.
+
+Allow teachers to attach suitable guidance to an exercise or a student support request.
+
+Include sample resources for common beginner Python mistakes.
+
+When saving guidance derived from student work for reuse, remove identifying details. Do not automatically publish a student's code or personal information to the shared library.
+
+Use this library as a reliable fallback source when generated guidance is unavailable or inappropriate.
+
+## 20. Feedback Quality Review
+
+**Student Module: Hint Panel → Report Feedback**
+
+**Teacher Module: Feedback Review**
+
+Students should be able to report a hint or explanation as:
+
+- Confusing.
+- Incorrect.
+- Too revealing.
+
+Allow an optional short explanation.
+
+The teacher's Feedback Review page should show:
+
+- Report category.
+- Related exercise.
+- Reported guidance.
+- Relevant code or execution evidence where available.
+- Student feedback.
+- Review status.
+
+Teachers can:
+
+- Inspect the report.
+- Edit the explanation.
+- Replace unsuitable guidance.
+- Approve the revised guidance.
+- Mark the report as resolved.
+
+Approved replacements should be reusable for similar exercises or errors through the Guidance Library.
+
+For the prototype, use sample reports and local state. Do not claim that guidance was externally reviewed or approved unless the demo workflow actually records that status.
+
+## 21. Interrupted Work Recovery
+
+**Module: Coding Workspace → Draft Recovery**
+
+Prevent students from losing work when they refresh a page or experience an interruption.
+
+Implement:
+
+- Automatic local draft saving.
+- A visible saved-status indicator.
+- A timestamp for the latest saved draft.
+- Draft restoration after refresh.
+- A clear distinction between drafts and submitted attempts.
+- A restore or discard option where appropriate.
+- A helpful message when execution or assistance requires a connection that is unavailable.
+
+Local drafts should be scoped to the relevant demo user, class, and exercise so that users do not accidentally overwrite each other's work on the same browser.
+
+Provide an obvious way to clear local drafts on shared school devices, along with a confirmation.
+
+Never imply that a draft was submitted merely because it was saved locally.
+
+## 22. Class Community
+
+**Student and Teacher Module: Class Community**
+
+Create a friendly, moderated class discussion area.
+
+Include:
+
+- Class-specific discussion feeds.
+- Posts.
+- Comments.
+- Likes or simple reactions.
+- Discussion categories.
+- Teacher announcements.
+- Code review posts.
+- Search or basic filtering.
+- Reporting options.
+
+Populate the community with demo posts related to Python lessons, coding challenges, learning tips, project showcases, and questions.
+
+Keep the interface educational and safe for children.
+
+### Structured Peer Code Review
+
+Extend community comments with a structured Code Review workflow.
+
+Students can select a relevant code line or a small code excerpt and submit:
+
+- An observation about what the code appears to do.
+- A guiding question to help the author think.
+- An optional suggestion that does not reveal the complete solution.
+
+Where practical, display line references and a short code excerpt rather than duplicating an entire program.
+
+Reviews must remain within the relevant class and be visible to the teacher.
+
+Add a report option and a clear moderation state.
+
+Encourage respectful, constructive feedback. Do not encourage students to publish personal information.
+
+## 23. Teacher Reports and Analytics
+
+Create a dedicated reporting page with meaningful demo analytics.
+
+Include:
+
+- Overall class performance.
+- Scores by exercise.
+- Submission completion rates.
+- Class activity trends.
+- Learning progress.
+- Common error categories.
+- Number of outstanding support requests.
+- Hint usage, if recorded in the demo.
+- Improvement between recorded attempts.
+
+Provide class, exercise, and date filters where appropriate.
+
+Use bar charts, line charts, and pie or donut charts only when the chart makes the information easier to understand.
+
+Provide concise explanations of what each chart shows.
+
+Include a demo CSV export for appropriate tables or reports if practical. If implemented, the export must generate a real file from the currently displayed demo data.
+
+Do not display invented live statistics or claim that charts represent real students.
+
+## 24. Notifications
+
+Implement a simple notification center for each role.
+
+Student notifications may include:
+
+- Enrollment confirmation.
+- Teacher feedback.
+- Upcoming class activity.
+- Exercise results.
+- A reply to a help request.
+- A response to a discussion.
+
+Teacher notifications may include:
+
+- New enrollment.
+- New submission.
+- Explicit student help request.
+- Repeated-attempt support alert.
+- New feedback report.
+- New community post requiring attention.
+
+Use demo notifications and allow them to be marked as read.
+
+Keep notifications relevant and avoid creating too many.
+
+## 25. Demo Data Requirements
+
+The prototype must look populated and believable from the first login.
+
+Create centralized demo data modules with related IDs and consistent relationships.
+
+Include at least:
+
+- 1 teacher demo account.
+- 12–20 fictional student records.
+- 12–16 coding classes.
+- Multiple enrolled students per class.
+- At least 30 lesson or exercise records.
+- At least 50 submission or attempt records.
+- Different marks and completion rates.
+- Multiple saved versions of code attempts.
+- Test-result records.
+- Sample error explanations.
+- Progressive hints for multiple exercises.
+- Support requests at different priority levels.
+- Shared misconception groups.
+- Teacher guidance resources.
+- Feedback reports.
+- Community posts and comments.
+- Peer code reviews.
+- Notifications.
+- Reflection notes.
+- Weekly learning activity.
+- Chart-ready analytics.
+
+Use consistent IDs to connect students, classes, lessons, attempts, and support requests.
+
+Vary student scores, activity levels, attempts, and progress so that charts and rankings do not look artificially uniform.
+
+Use fictional names and avatars. Do not use real children's personal information.
+
+Provide different example exercises and code snippets so the workspace is not identical for every class.
+
+Keep demo data centralized rather than hardcoding unrelated arrays into every component.
+
+When teachers create or edit demo data, reflect the change across all relevant pages.
+
+## 26. Functional Interaction Requirements
+
+All visible primary controls should have a meaningful action.
+
+Examples:
+
+- Login buttons must work.
+- Sidebar links must navigate.
+- Class cards must open class details.
+- Enrollment must update enrollment status.
+- Search and filters must change visible results.
+- Teacher-created classes must appear in class listings.
+- Exercise forms must save valid demo exercises.
+- Code editor controls must work within the supported runtime.
+- Output and test results must correspond to actual execution or clearly labeled demo records.
+- Hints must reveal one stage at a time.
+- Attempt comparison must show actual saved versions.
+- Help requests must reach the teacher's Support Queue.
+- Teachers must be able to respond to and resolve requests.
+- Guidance resources must be reusable.
+- Feedback reports must have a review workflow.
+- Profile changes must persist locally.
+- Settings controls must work when implemented.
+- Notifications must update their read state.
+- Community posts and comments must update the feed.
+- Drafts must recover after a refresh.
+- Charts must use the underlying demo data.
+- Logout must return to the entry experience.
+
+If a feature cannot be implemented completely, provide a clear, working prototype interaction and label any limitations honestly. Do not leave buttons that appear functional but do nothing.
+
+## 27. Suggested Project Structure
+
+Organize the React project into maintainable modules. Adapt the structure to the actual tooling if necessary.
+
+Example:
+
+src/
+  app/
+    App.tsx
+    router.tsx
+    providers/
+  components/
+    common/
+    layout/
+    navigation/
+    charts/
+    forms/
+    coding/
+    community/
+  data/
+    demoUsers.ts
+    demoClasses.ts
+    demoLessons.ts
+    demoExercises.ts
+    demoSubmissions.ts
+    demoAttempts.ts
+    demoSupport.ts
+    demoGuidance.ts
+    demoCommunity.ts
+    demoNotifications.ts
+  features/
+    auth/
+    student-dashboard/
+    teacher-dashboard/
+    classes/
+    lessons/
+    coding-workspace/
+    student-progress/
+    student-performance/
+    support-queue/
+    class-support/
+    guidance-library/
+    feedback-review/
+    community/
+    reports/
+    profiles/
+    settings/
+  hooks/
+  services/
+    demoAuth.ts
+    demoStorage.ts
+    codeExecution.ts
+    draftRecovery.ts
+  types/
+  utils/
+  styles/
+
+public/
+  assets/
+    [Use the supplied CilikLab logo if available]
+
+The final implementation may differ, but keep responsibilities clear and avoid placing the entire application in one enormous component.
+
+## 28. Recommended Implementation Order
+
+Build the complete application in a coherent sequence:
+
+1. Establish the design system, routing, and application shell.
+2. Build the landing page and demo login.
+3. Build role-specific sidebars and dashboards.
+4. Implement class discovery, class details, enrollment, and class management.
+5. Build lessons, exercises, and the coding workspace.
+6. Implement error explanations, progressive hints, execution traces, attempt comparison, reflections, and draft recovery.
+7. Implement teacher performance views, support queue, misconception grouping, and contextual help.
+8. Build the guidance library and feedback review workflow.
+9. Implement the class community and structured peer code reviews.
+10. Add reports, charts, notifications, profiles, and settings.
+11. Connect all pages to the shared demo data and persistence layer.
+12. Test navigation, responsive layouts, interactions, and role-specific access.
+13. Fix errors and remove dead controls.
+14. Provide setup and demo instructions.
+
+Do not stop after creating the landing page and dashboard. Continue until all specified major modules have a usable implementation.
+
+## 29. Quality Assurance Checklist
+
+Before considering the prototype complete, verify:
+
+- The React project builds successfully.
+- The application launches using the documented commands.
+- The attached logo is used correctly where available.
+- Student and teacher demo logins work.
+- Each role has its own navigation and dashboard.
+- Every major page is reachable.
+- Class filtering and enrollment work.
+- Teachers can create and edit demo classes and exercises.
+- The coding workspace has a working supported execution path or a clearly labeled fallback.
+- Error explanations preserve the original technical error.
+- Progressive hints reveal separately.
+- Attempts can be compared.
+- Execution tracing reflects real supported execution.
+- Help requests appear in the teacher's queue.
+- Teachers can inspect and resolve support requests.
+- Guidance can be saved and reused.
+- Feedback reports can be reviewed.
+- Drafts survive a refresh.
+- Community posts, comments, and code reviews work.
+- Charts reflect the underlying demo data.
+- Profiles and applicable settings persist locally.
+- Layouts work at desktop, tablet, and mobile sizes.
+- Forms have validation and meaningful feedback.
+- No navigation link is broken.
+- No important button is inert.
+- No false claim of live AI, real authentication, external storage, or successful execution is presented.
+
+## 30. Final Deliverables
+
+Deliver a complete, organized React project containing:
+
+- All source files.
+- All required components and pages.
+- Shared demo data.
+- The application's styling.
+- Configuration files.
+- The supplied logo asset where accessible.
+- A README with installation and startup commands.
+- Demo login credentials.
+- A summary of implemented features.
+- Clear notes about what uses local demo data, which code execution features are genuinely implemented, and which AI features use reviewed demo guidance rather than a live model.
+
+Use straightforward commands such as:
+
+`npm install`
+
+`npm run dev`
+
+Ensure the project can be opened and explored without configuring Supabase, Firebase, or paid API services.
+
+## Final Direction
+
+**Build CilikLab as a coherent, attractive, student-friendly coding education platform—not an overloaded enterprise dashboard.**
+
+Prioritize the learning journey:
+
+**Discover a class → Enroll → Learn a concept → Write code → Run and inspect the result → Receive progressive hints → Improve the solution → Reflect on changes → Get teacher feedback → Track progress.**
+
+Make the teacher experience equally coherent:
+
+**Create a class → Prepare exercises → Monitor progress → Review attempts → Identify support needs → Help students → Reuse guidance → Evaluate class outcomes.**
+
+Every major feature should support one of these two journeys.
+
+Use good design judgment. Prefer a small number of well-designed, useful components over a large number of crowded cards. Make the interface feel consistent, approachable, modern, and ready to demonstrate to educators, students, and competition evaluators.
+
+Start implementing the complete React project now. Do not respond with only a plan or a proposed design. Produce the working application and its source files.

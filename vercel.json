@@ -1,0 +1,14 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {"source":"/api/telegram/status","destination":"/api/entry?route=telegram-status"},
+    {"source":"/api/telegram/webhook","destination":"/api/entry?route=telegram-webhook"},
+    {"source":"/api/telegram/link","destination":"/api/entry?route=telegram-link"},
+    {"source":"/api/meetings","destination":"/api/entry?route=meetings"},
+    {"source":"/api/meetings/:id/signals","destination":"/api/entry?route=signals&id=:id"},
+    {"source":"/api/meetings/:id","destination":"/api/entry?route=meeting&id=:id"},
+    {"source":"/((?!api/).*)","destination":"/index.html"}
+  ]
+}

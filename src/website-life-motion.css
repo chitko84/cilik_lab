@@ -1,0 +1,64 @@
+/* CilikLab v14: photographic & motion polish — additive styles only. */
+:root{--cilik-photo-shadow:0 26px 60px rgba(15,57,75,.14);--cilik-photo-teal:#0f9b90}
+.cilik-motion-active .cilik-reveal:not(.cilik-in-view){opacity:0;transform:translateY(27px) scale(.99)}
+.cilik-reveal{transition:opacity .7s cubic-bezier(.2,.75,.25,1),transform .7s cubic-bezier(.2,.75,.25,1)}
+.cilik-motion-active .cilik-reveal.cilik-in-view{opacity:1;transform:none}
+.cilik-real-photo{filter:saturate(1.08) contrast(1.025)}
+.premium-landing{overflow:clip}
+.premium-landing header{border-color:#dcecef;box-shadow:0 8px 36px rgba(28,88,106,.055)}
+.premium-landing h1{letter-spacing:-.076em;text-wrap:balance}
+.premium-landing main>section:first-child:before{content:'';position:absolute;top:11%;left:47%;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#befff1,transparent 73%);opacity:.65;pointer-events:none;animation:cilik-drift 12s ease-in-out infinite alternate}
+.premium-landing .premium-hero-image{transition:transform 1.2s cubic-bezier(.2,.75,.1,1),filter .7s ease;object-position:50% 38%;filter:saturate(1.06)}
+.premium-landing .relative:hover>.premium-hero-image,.premium-landing .relative:hover .premium-hero-image{transform:scale(1.055)}
+.premium-hero-mascot{width:117px;height:117px;border:3px solid rgba(255,255,255,.9);border-radius:28px;overflow:hidden;background:#d1f8f1;box-shadow:0 19px 40px rgba(3,38,59,.26);transform:rotate(7deg);animation:cilik-mascot-float 5.4s ease-in-out infinite}
+.premium-hero-mascot img{height:100%;width:100%;object-fit:cover}
+.premium-landing .absolute.-bottom-5,.premium-landing .absolute.-top-5{animation:cilik-chip-float 5s ease-in-out infinite}
+.premium-landing .absolute.-top-5{animation-delay:-2.5s}
+.premium-landing main>section:first-child .bg-\[\#143866\]{background:linear-gradient(130deg,#105da0,#0f9b8e)!important;box-shadow:0 16px 31px rgba(14,126,130,.22)}
+.premium-landing button:not(:disabled):active,.premium-main button:not(:disabled):active{transform:scale(.97)}
+.cilik-photo-story-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:17px;margin-top:18px}
+.cilik-photo-story{position:relative;overflow:hidden;border-radius:23px;height:155px;background:linear-gradient(135deg,#e8f8f4,#e9f3fe);box-shadow:0 12px 30px rgba(22,62,91,.08);isolation:isolate}
+.cilik-photo-story img{width:100%;height:100%;object-fit:cover;object-position:center 40%;transition:transform .7s cubic-bezier(.2,.75,.25,1)}
+.cilik-photo-story:hover img{transform:scale(1.07)}
+.cilik-photo-story:after{content:'';position:absolute;inset:25% 0 0;background:linear-gradient(to top,rgba(4,31,55,.78),transparent);pointer-events:none}
+.cilik-photo-story span{position:absolute;left:23px;bottom:20px;color:white;font-size:17px;letter-spacing:-.03em;font-weight:900;z-index:1;text-shadow:0 2px 9px rgba(0,0,0,.14)}
+.premium-landing-photo-card{box-shadow:var(--cilik-photo-shadow);border-color:rgba(255,255,255,.8)}
+.premium-landing-photo-card img{filter:saturate(1.06)}
+.premium-landing-photo-card:hover{transform:translateY(-5px);box-shadow:0 26px 60px rgba(16,72,89,.2)}
+.premium-landing-photo-card:hover img{transform:scale(1.085)}
+.premium-landing-photo-card>span em{border-bottom:1px solid rgba(255,255,255,.5)}
+.premium-dashboard-hero{box-shadow:0 30px 67px rgba(13,71,87,.17);border-color:rgba(255,255,255,.2)}
+.premium-dashboard-hero:before{background-image:none;opacity:0}
+.premium-dashboard-photo{position:absolute;inset:0 0 0 auto;width:52%;height:100%;object-fit:cover;object-position:center;opacity:.66;mask-image:linear-gradient(90deg,transparent 0%,black 40%);pointer-events:none;z-index:0;animation:cilik-photo-ambient 18s ease-in-out infinite alternate}
+.premium-student-hero{background:linear-gradient(115deg,#10425d 0%,#097b77 57%,#7ab5a5 100%)}
+.premium-teacher-hero{background:linear-gradient(110deg,#183650,#226280 60%,#558cb8 100%)}
+.premium-dashboard-hero:after{background:rgba(255,255,255,.07);animation:cilik-drift 13s ease-in-out infinite alternate}
+.cilik-life-strip{position:relative;overflow:hidden;display:flex;align-items:center;gap:18px;background:linear-gradient(108deg,#fffdf8,#f4fbfc);border:1px solid #e0eaf0;border-radius:23px;padding:12px 17px 12px 12px;box-shadow:0 12px 34px rgba(13,59,88,.065)}
+.cilik-life-media{width:205px;align-self:stretch;min-height:114px;border-radius:17px;overflow:hidden;flex:none}
+.cilik-life-media img{width:100%;height:100%;min-height:114px;object-fit:cover;transition:transform .55s ease}
+.cilik-life-strip:hover .cilik-life-media img{transform:scale(1.06)}
+.cilik-life-body{flex:1;min-width:0}
+.cilik-life-body>span{display:block;font-size:10px;letter-spacing:.16em;font-weight:900;color:#089887}
+.cilik-life-body h2{margin-top:7px;font-size:clamp(19px,2vw,24px);font-weight:900;letter-spacing:-.045em;color:#163d54;line-height:1.2}
+.cilik-life-body p{color:#738799;font-size:12px;line-height:1.55;margin-top:7px}
+.cilik-life-strip>button{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#107d79;color:#fff;padding:12px 16px;border-radius:14px;font-weight:800;font-size:12px;flex:none}
+.premium-feature-tile,.premium-teacher-feature,.premium-class-cover,.premium-learning-ribbon,.premium-workspace-ribbon{transition:transform .28s cubic-bezier(.2,.75,.25,1),box-shadow .28s ease,border-color .28s ease}
+.premium-feature-tile:hover,.premium-teacher-feature:hover,.premium-learning-ribbon:hover{box-shadow:0 23px 50px rgba(18,78,104,.13);border-color:#c8e6e0}
+.premium-feature-tile:hover{transform:translateY(-4px)}
+.premium-feature-tile img{filter:saturate(1.05)}
+.premium-teacher-feature img,.premium-learning-ribbon>img,.premium-workspace-ribbon img{transition:transform .6s ease;filter:saturate(1.05)}
+.premium-teacher-feature:hover img,.premium-learning-ribbon:hover>img,.premium-workspace-ribbon:hover img{transform:scale(1.055)}
+.premium-main .rounded-xl,.premium-main .rounded-2xl,.premium-main .rounded-3xl{scroll-margin-top:85px}
+.premium-main .bg-white.rounded-xl:hover,.premium-main .bg-white.rounded-2xl:hover{border-color:#d2e9e6}
+.premium-topbar{backdrop-filter:blur(22px) saturate(160%);background:rgba(255,255,255,.86)}
+.premium-sidebar{backdrop-filter:blur(24px) saturate(140%)}
+.premium-side-item:not(:disabled):hover{transform:translateX(5px)}
+.premium-main button:not(:disabled):hover,.premium-landing button:not(:disabled):hover{filter:saturate(1.09)}
+.premium-main button:focus-visible,.premium-landing button:focus-visible{outline-offset:4px}
+@keyframes cilik-mascot-float{0%,100%{transform:translateY(0) rotate(7deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+@keyframes cilik-chip-float{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes cilik-drift{0%{translate:0 0}100%{translate:34px 15px}}
+@keyframes cilik-photo-ambient{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+@media(max-width:900px){.cilik-life-strip{flex-wrap:wrap}.cilik-life-media{width:30%;min-height:100px}.cilik-life-strip>button{margin-left:auto}.premium-dashboard-photo{width:59%;opacity:.4}}
+@media(max-width:650px){.premium-hero-mascot{width:84px;height:84px;right:9px;top:12px;border-radius:20px}.cilik-photo-story-grid{grid-template-columns:1fr;gap:10px}.cilik-photo-story{height:145px}.cilik-photo-story span{font-size:15px;left:15px;bottom:14px}.cilik-life-strip{gap:10px;padding:10px;align-items:start}.cilik-life-media{width:100px;min-height:92px}.cilik-life-media img{min-height:92px}.cilik-life-body{flex:1}.cilik-life-body h2{font-size:17px}.cilik-life-body p{font-size:11px}.cilik-life-strip>button{width:100%;margin:0}.premium-dashboard-photo{width:75%;opacity:.27}.premium-landing-photo-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.cilik-reveal,.cilik-motion-active .cilik-reveal:not(.cilik-in-view){opacity:1!important;transform:none!important;transition:none!important}.premium-hero-mascot,.premium-landing .absolute.-bottom-5,.premium-landing .absolute.-top-5,.premium-dashboard-photo,.premium-dashboard-hero:after,.premium-landing main>section:first-child:before{animation:none!important}.premium-photo,.premium-landing .premium-hero-image,.premium-teacher-feature img,.premium-feature-tile img,.premium-landing-photo-card img,.cilik-photo-story img{transition:none!important}}

@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* Custom scrollbar for coding workspace and logs */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.7);
+}
+
+/* Phase 1: a calm, accessible visual language that retains every existing module. */
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { margin:0; background:#f5f8fd; color:#14243c; }
+button, a, input, select, textarea { -webkit-tap-highlight-color:transparent; }
+button { cursor:pointer; }
+button:disabled { cursor:not-allowed; }
+:focus-visible { outline: 3px solid #2c9dd7 !important; outline-offset: 3px; }
+.cilik-shell { background:linear-gradient(160deg,#f3f8fc 0%, #f7f8ff 55%, #f6fbfc 100%); }
+.cilik-shell main > div > div.bg-white,
+.cilik-shell main > div > section.bg-white,
+.cilik-shell main .bg-white.rounded-xl,
+.cilik-shell main .bg-white.rounded-2xl { border-color:#e4eaf2; box-shadow:0 7px 23px rgba(35,68,114,.035); }
+.cilik-shell main .rounded-xl { border-radius:1rem; }
+.cilik-shell main .rounded-2xl { border-radius:1.3rem; }
+.cilik-shell main h1 { letter-spacing:-.035em; }
+.cilik-shell main button { transition: background-color .2s, box-shadow .2s, transform .2s; }
+.cilik-shell main button:not(:disabled):active { transform:scale(.98); }
+.language-switch button { min-width:35px; }
+.mobile-tabbar { padding-bottom:env(safe-area-inset-bottom); }
+@media(max-width:767px) {
+  .cilik-shell main { width:100%; padding-left:14px; padding-right:14px; }
+  .cilik-shell main > div { max-width:100%; }
+  .cilik-shell main h1 { font-size:1.35rem; line-height:1.4; }
+  .cilik-shell main .p-6 { padding:1rem; }
+  .cilik-shell main .grid { min-width:0; }
+  .cilik-shell main textarea { min-width:0; }
+  .cilik-shell main pre { overflow-x:auto; max-width:100%; }
+  .cilik-shell main button { min-height:36px; }
+  .cilik-shell main .overflow-x-auto { -webkit-overflow-scrolling:touch; }
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.001ms!important; transition-duration:.001ms!important; } }
+
+/* Phase 2: lightweight comic page motion, readable touch controls. */
+@keyframes cilik-bob {0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.cilik-bob{animation:cilik-bob 1.5s ease-in-out infinite}
+@keyframes cilik-page-in {from{opacity:.4;transform:translateX(10px) rotateY(-3deg)}to{opacity:1;transform:none}}
+.cilik-comic-page{animation:cilik-page-in .25s ease-out;touch-action:pan-y}
+@media(prefers-reduced-motion:reduce){.cilik-bob,.cilik-comic-page{animation:none}}
+
+/* Cilik Arcade: calm feedback and a tactile game surface, without clutter. */
+@keyframes arcade-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.arcade-avatar { animation: arcade-float 1.6s ease-in-out infinite; }
+.arcade-gameboard { box-shadow: inset 0 2px 12px rgba(99,102,241,.09); }
+@media (prefers-reduced-motion: reduce) { .arcade-avatar { animation: none; } .arcade-gameboard * { transition-duration: 0ms !important; } }
+
+
+/* Arcade polish pass */
+.arcade-shell{position:relative;isolation:isolate}
+.arcade-shell::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at top right, rgba(99,102,241,.08), transparent 36%),radial-gradient(circle at bottom left, rgba(14,165,233,.08), transparent 34%);pointer-events:none}
+.arcade-hero-glow{box-shadow:0 22px 50px rgba(79,70,229,.20)}
+.arcade-level-chip{box-shadow:0 8px 16px rgba(99,102,241,.10)}
+.arcade-kid-card{border-radius:28px;background:linear-gradient(180deg,#fff, #f8fafc);border:1px solid rgba(226,232,240,.9);box-shadow:0 10px 30px rgba(15,23,42,.06)}
+.arcade-stat-card{position:relative;overflow:hidden}
+.arcade-stat-card::after{content:"";position:absolute;right:-18px;top:-18px;width:72px;height:72px;border-radius:999px;background:rgba(255,255,255,.28)}
+.arcade-mission{background:linear-gradient(135deg, rgba(238,242,255,.95), rgba(224,231,255,.95));border:1px solid rgba(165,180,252,.45)}
+.arcade-codepanel{box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 14px 30px rgba(15,23,42,.22)}
+.arcade-choice{transition:transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease}
+.arcade-choice:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(99,102,241,.08)}
+.arcade-board-badge{backdrop-filter:blur(7px);background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.7);box-shadow:0 8px 20px rgba(99,102,241,.14)}
+.arcade-control{box-shadow:0 12px 24px rgba(79,70,229,.18)}
+.arcade-level-track{background:linear-gradient(90deg,rgba(255,255,255,.22),rgba(255,255,255,.08))}
+.arcade-mini-card{background:linear-gradient(180deg,#fff, #f8fbff)}
+.arcade-command-chip{background:linear-gradient(180deg,#eef2ff, #e0e7ff);border:1px solid #c7d2fe}
+.arcade-code-line{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(248,250,252,.95))}
+.arcade-speech{position:relative}
+.arcade-speech::before{content:"";position:absolute;left:24px;bottom:-10px;width:18px;height:18px;background:inherit;border-left:inherit;border-bottom:inherit;transform:rotate(-45deg)}
+.arcade-grid-bg{background-image:radial-gradient(rgba(255,255,255,.8) 1.2px, transparent 1.2px);background-size:20px 20px}
+
+/* Phase 2 Arcade Premium: tactile mini-game experience on phones and desktop. */
+.arcade-game-page,.arcade-shell{--arcade-indigo:#4746cf;--arcade-ink:#18244b}
+.arcade-game-page{padding-bottom:1rem}
+.arcade-hero-orbit{position:absolute;border-radius:100%;pointer-events:none;background:rgba(255,255,255,.08)}
+.arcade-hero-orbit-one{height:250px;width:250px;right:-40px;top:-120px}
+.arcade-hero-orbit-two{height:180px;width:180px;left:-70px;bottom:-115px}
+.arcade-eyebrow{display:inline-flex;border-radius:999px;background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.22);padding:.28rem .7rem;text-transform:uppercase;letter-spacing:.11em;font-size:.65rem;font-weight:900}
+.arcade-xp-tag{border:1px solid #ffe1a0;background:#fff4d6;border-radius:16px;padding:9px 13px;white-space:nowrap;box-shadow:0 5px 15px rgba(217,119,6,.08)}
+.arcade-game-hero{box-shadow:0 12px 34px rgba(49,46,129,.15)}
+.arcade-context-art img{display:block}
+.arcade-level-wrap{box-shadow:0 7px 26px rgba(35,68,114,.035)}
+.arcade-level-scroll{scrollbar-width:thin;scrollbar-color:#c7d2fe transparent;scroll-snap-type:x proximity}
+.arcade-level-chip{scroll-snap-align:center}
+.arcade-stat-card{min-width:0}
+.arcade-stat-card .text-2xl{font-size:clamp(1.1rem,2vw,1.5rem)}
+.arcade-direction-pad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;width:216px;max-width:100%;margin:auto}
+.arcade-direction-pad>span{display:block}
+.arcade-direction-button{height:58px;border:1px solid #9ca3f9;color:white;border-radius:17px;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#757afa,#4a44d9);box-shadow:0 5px 0 #36329b,0 12px 24px rgba(79,70,229,.17);transition:transform .13s,box-shadow .13s;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.arcade-direction-button:not(:disabled):active{transform:translateY(4px);box-shadow:0 1px 0 #36329b,0 4px 12px rgba(79,70,229,.15)}
+.arcade-direction-button:disabled{opacity:.35;cursor:not-allowed}
+.arcade-direction-pad-desktop{width:225px}
+.arcade-mobile-gamebar{display:none}
+.arcade-mobile-pad-spacer{display:none}
+.arcade-floating-stars{position:absolute;color:#fef3c7;right:28%;top:14%;font-size:26px;letter-spacing:35px;opacity:.65;transform:rotate(-12deg);pointer-events:none}
+.arcade-feature-heading{padding:0 3px}
+.arcade-game-cover{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+button:hover .arcade-game-cover{transform:scale(1.035)}
+.arcade-play-action{background:linear-gradient(95deg,#eef2ff,#eff6ff);border-radius:14px;padding:11px 13px}
+.arcade-escape-toggle{display:grid;grid-template-columns:1fr 1fr;border-radius:16px;background:#e9ecff;gap:5px;padding:5px}
+.arcade-escape-toggle button{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:11px;color:#555e82;font-size:.86rem;font-weight:900;transition:background .15s,color .15s}
+.arcade-escape-toggle button.selected{background:#fff;color:#4338ca;box-shadow:0 4px 14px rgba(79,70,229,.12)}
+.arcade-map-edit{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:13px 15px;background:#4f46e5;color:white;border-radius:16px;font-size:.88rem;font-weight:900;box-shadow:0 6px 18px rgba(79,70,229,.2)}
+.arcade-map-edit svg:last-child{margin-left:auto}
+.arcade-mission-mobile summary{list-style:none}
+.arcade-mission-mobile summary::-webkit-details-marker{display:none}
+.arcade-speech::before{display:none}
+.arcade-kid-card{box-shadow:0 12px 34px rgba(15,23,42,.045)}
+@media (max-width:767px){
+  .cilik-shell main .arcade-game-page{padding-bottom:150px}
+  .cilik-shell main .arcade-game-page:has(.arcade-mobile-gamebar){padding-bottom:180px}
+  .cilik-shell main .arcade-game-page h1{font-size:1.5rem;line-height:1.25}
+  .arcade-game-hero{padding:14px 16px;border-radius:22px}
+  .arcade-game-desc{display:none}
+  .arcade-eyebrow{font-size:.57rem;padding:.17rem .5rem}
+  .arcade-game-title{margin-top:6px}
+  .arcade-game-hero .arcade-total-trophy{display:none}
+  .arcade-xp-tag{font-size:12px;padding:7px 10px}
+  .arcade-topbar{min-height:40px}
+  .arcade-level-wrap{padding:7px 8px}
+  .arcade-level-chip{width:43px;height:42px;border-radius:12px;font-size:13px}
+  .arcade-map-grid{margin-top:32px;gap:3px;max-width:min(100%,350px)}
+  .arcade-board-badge{font-size:10px;padding:5px 9px}
+  .arcade-gameboard{border-radius:23px}
+  .arcade-gameboard .arcade-avatar{border-width:1px}
+  .arcade-stat-card{padding:9px;border-radius:15px}
+  .arcade-stat-card .text-2xl{font-size:18px}
+  .arcade-stat-card .text-\[11px\]{font-size:9px}
+  .arcade-kid-card{border-radius:22px}
+  .arcade-game-page .arcade-speech{display:none}
+  .arcade-mobile-pad-spacer{display:block;height:15px}
+  .arcade-mobile-gamebar{position:fixed;display:block;z-index:23;left:50%;transform:translateX(-50%);bottom:calc(68px + env(safe-area-inset-bottom));width:min(calc(100vw - 24px),420px);padding:8px 13px 12px;border-radius:24px;background:rgba(255,255,255,.97);backdrop-filter:blur(18px);border:1px solid #e3e7f7;box-shadow:0 12px 38px rgba(28,38,87,.18)}
+  .arcade-mobile-gamebar-label{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;font-weight:900;color:#4542aa;margin-bottom:6px}
+  .arcade-mobile-gamebar-label strong{color:#b45309}
+  .arcade-direction-pad-mobile{width:165px;gap:5px}
+  .arcade-direction-pad-mobile .arcade-direction-button{height:39px;border-radius:12px;box-shadow:0 3px 0 #36329b,0 5px 9px rgba(79,70,229,.12)}
+  .arcade-direction-pad-mobile .arcade-direction-button svg{width:18px;height:18px}
+  .arcade-floating-stars{display:none}
+  .arcade-hero-glow{box-shadow:0 10px 28px rgba(49,46,129,.14)}
+  .arcade-shell .arcade-game-cover{max-width:none}
+  .arcade-shell .arcade-feature-heading{margin-top:2px}
+  .arcade-shell .arcade-kid-card .min-h-10{min-height:0}
+  .arcade-shell .arcade-play-action{padding:10px 12px}
+}
+@media (min-width:768px) and (max-width:1023px){
+  .arcade-direction-pad-desktop{width:185px}
+  .arcade-direction-pad-desktop .arcade-direction-button{height:52px}
+}
+@media (prefers-reduced-motion:reduce){.arcade-game-cover,.arcade-direction-button{transition:none!important}}
+
+/* CilikLab adventure expansion: minimal premium educational game feel. */
+.space-twinkle{background-image:radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 2px);background-size:31px 39px;opacity:.45;animation:space-stars 7s linear infinite}
+.space-ship{filter:drop-shadow(0 5px 9px rgba(34,211,238,.5));transition:left .22s ease-out}
+.space-target{filter:drop-shadow(0 4px 9px rgba(125,100,255,.4));transition:opacity .3s,transform .3s}
+.space-target-hit{transform:scale(.3) rotate(25deg)}
+.space-laser{animation:space-fire .24s ease-in forwards;pointer-events:none}
+@keyframes space-fire{from{transform:scaleY(.15) translateY(160%);opacity:1}to{transform:scaleY(1) translateY(-30%);opacity:0}}
+@keyframes space-stars{to{background-position:0 100px}}
+.ciko-3d-stage{height:222px;width:240px;position:relative;display:flex;align-items:center;justify-content:center;perspective:700px}
+.ciko-robot{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;transform-style:preserve-3d;animation:ciko-levitate 3.2s ease-in-out infinite;filter:drop-shadow(0 12px 16px rgba(14,116,144,.2))}
+.ciko-robot-head{width:148px;height:122px;position:relative;border-radius:43px 43px 48px 48px;border:5px solid #fff;background:linear-gradient(130deg,#e7ffff 0%,#9af0ee 43%,#38b2d4 100%);box-shadow:inset -17px -9px 20px rgba(2,77,128,.18),inset 10px 12px 16px rgba(255,255,255,.9),0 9px 0 #0e7490;transform:rotateY(-9deg) rotateX(5deg)}
+.ciko-eye{position:absolute;top:43px;left:29px;width:21px;height:26px;border-radius:50%;background:#164775;box-shadow:inset 3px 2px 2px rgba(255,255,255,.35)}
+.ciko-eye:nth-child(2){left:91px}
+.ciko-mouth{position:absolute;width:33px;height:12px;left:53px;top:83px;border-radius:0 0 22px 22px;border-bottom:5px solid #196c95;transition:transform .15s}
+.ciko-mouth-talk{animation:ciko-mouth .4s ease-in-out infinite}
+.ciko-robot-body{width:105px;height:74px;margin-top:7px;border-radius:27px 27px 37px 37px;border:5px solid #fff;background:linear-gradient(120deg,#d2fff9,#42c7d8);box-shadow:inset -13px -5px 14px rgba(2,80,130,.18);display:grid;place-items:center;transform:translateZ(6px)}
+.ciko-heart{font-size:30px;color:#0f83bc}
+.ciko-robot-arms{position:absolute;top:141px;width:150px;display:flex;justify-content:space-between;pointer-events:none}
+.ciko-robot-arms span{width:24px;height:49px;border-radius:20px;background:linear-gradient(#b7faf5,#3aaac4);border:3px solid #fff;transform:rotate(19deg)}
+.ciko-robot-arms span:nth-child(2){transform:rotate(-19deg)}
+.ciko-antenna{width:13px;height:28px;position:absolute;top:-27px;border-radius:9px;background:#19b8ac;border:3px solid white}
+.ciko-antenna:before{content:"";position:absolute;top:-15px;left:-9px;width:25px;height:24px;border-radius:50%;background:#ffc857;border:3px solid white;box-shadow:0 0 14px rgba(255,200,87,.7)}
+.ciko-shadow{position:absolute;width:135px;height:20px;bottom:6px;background:rgba(24,107,138,.13);border-radius:50%;filter:blur(7px)}
+.ciko-robot-speaking .ciko-robot-head{box-shadow:inset -17px -9px 20px rgba(2,77,128,.18),inset 10px 12px 16px rgba(255,255,255,.9),0 9px 0 #0e7490,0 0 26px #67e8f9}
+@keyframes ciko-levitate{0%,100%{transform:translateY(0) rotateY(-6deg)}50%{transform:translateY(-9px) rotateY(6deg)}}
+@keyframes ciko-mouth{0%,100%{transform:scaleY(.6)}50%{transform:scaleY(2.5)}}
+@media(prefers-reduced-motion:reduce){.space-twinkle,.space-laser,.ciko-robot,.ciko-mouth-talk{animation:none!important}.space-ship{transition:none}}
+
+/* CilikLab premium 2026 Arcade theme refresh. Legacy game logic stays unchanged. */
+.arcade-game-page .arcade-game-hero{background:linear-gradient(110deg,#197e78,#256d81 58%,#3d628c)!important;box-shadow:0 13px 32px rgba(22,91,98,.15)}
+.arcade-game-page .arcade-level-chip.bg-indigo-600{background-color:#1a8c82!important;border-color:#1a8c82!important}
+.arcade-game-page .arcade-direction-button{background:linear-gradient(140deg,#26aaa2,#147f79);border-color:#188780;box-shadow:0 5px 0 #126a67,0 12px 24px rgba(20,112,101,.17)}
+.arcade-game-page .arcade-direction-button:not(:disabled):active{box-shadow:0 1px 0 #126a67,0 4px 12px rgba(20,112,101,.17)}
+.arcade-game-page .arcade-kid-card{border-color:#e5edf0;background:#fff;box-shadow:0 10px 30px rgba(22,82,92,.045)}
+.arcade-game-page .arcade-xp-tag{border-color:#f1dda6;background:#fff5dc}
+.arcade-game-page .arcade-gameboard{box-shadow:0 14px 33px rgba(42,97,111,.1),inset 0 2px 12px rgba(99,102,241,.04)}
+.arcade-game-page button.bg-indigo-600:not(.arcade-level-chip){background-color:#168b81!important}
+@media(max-width:767px){.arcade-game-page .arcade-game-hero{border-radius:18px}.arcade-game-page .arcade-kid-card{border-radius:18px}}

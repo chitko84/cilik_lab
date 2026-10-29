@@ -1,0 +1,242 @@
+/* CilikLab v23 — Field Notes design system
+   VISUAL-ONLY overrides. No new controls, workflows, or saved-state changes.
+   Editorial learning studio: trustworthy photography, typography, restrained motion.
+*/
+:root{
+ --studio-paper:#fbfaf7;--studio-canvas:#f5f6f1;--studio-ink:#20372d;
+ --studio-forest:#265c4b;--studio-forest-dark:#1d493c;
+ --studio-sage:#e9f0e6;--studio-muted:#67796e;
+ --studio-line:#e1e8df;--studio-warm:#f7f1e9;--studio-accent:#ad6d4d;
+ --studio-radius:17px;--studio-shadow:0 7px 24px rgba(40,57,43,.052);
+ --studio-shadow-hover:0 16px 38px rgba(35,62,45,.095);
+}
+html{scroll-padding-top:85px}
+body{background:var(--studio-canvas);color:var(--studio-ink);font-feature-settings:'kern' 1,'liga' 1}
+.premium-site-shell{background:var(--studio-canvas)!important;color:var(--studio-ink)}
+/* Good design comes from consistent measures and rhythm, not excessive shadows. */
+.premium-main{max-width:1480px;padding-top:clamp(25px,3.2vw,45px);padding-bottom:clamp(90px,6vw,120px)}
+.premium-page-enter{min-width:0}
+.premium-main :is(h1,h2,h3,h4),.premium-landing :is(h1,h2,h3,h4){
+ font-family:ui-sans-serif,'Avenir Next','Segoe UI',system-ui,sans-serif;
+ color:var(--studio-ink);font-weight:760;letter-spacing:-.035em;
+}
+.premium-main h1{line-height:1.15}
+.premium-main h2{line-height:1.2}
+.premium-main p{line-height:1.7}
+.premium-main :is(.text-slate-500,.text-slate-600){color:var(--studio-muted)}
+.premium-main .space-y-6>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0}
+.premium-main .bg-white:not(button):not(a){border-color:var(--studio-line)}
+.premium-main :is(.rounded-xl,.rounded-2xl,.rounded-3xl):is(.bg-white,.border){box-shadow:var(--studio-shadow)}
+/* Top navigation: slim, crisp and legible. */
+.premium-topbar{min-height:70px;height:70px;background:rgba(255,255,252,.98)!important;
+ border-bottom:1px solid var(--studio-line);box-shadow:0 2px 10px rgba(34,53,39,.035);backdrop-filter:blur(18px)}
+.premium-topbar img{max-height:43px;object-fit:contain}
+.premium-topbar .text-sky-600{color:#4a7764}
+.premium-topbar :is(button,[role=button]){transition:background-color .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease}
+.premium-topbar button:not(:disabled):hover{background-color:#edf4eb}
+.premium-topbar button:has(svg):focus-visible{border-radius:10px}
+.premium-topbar .bg-slate-100{background:#f1f3ee}
+.premium-topbar .bg-white.shadow-xs{color:var(--studio-forest-dark)}
+/* Sidebar: breathing room and a clear active route, with no fake nav items. */
+@media(min-width:768px){.premium-sidebar{top:70px;height:calc(100vh - 70px)}}
+.premium-sidebar{background:#fffefa!important;border-color:var(--studio-line)!important;
+ box-shadow:inset -1px 0 0 var(--studio-line);width:260px}
+.premium-sidebar .premium-side-nav{padding-inline:2px}
+.premium-sidebar .premium-side-item{min-height:46px!important;gap:11px!important;border:1px solid transparent!important;
+ border-radius:12px!important;color:#586b60;transition:background .2s,color .2s,border-color .2s}
+.premium-sidebar .premium-side-item:hover{background:#eef4ea!important;color:#245745!important;border-color:#dfe9dc!important}
+.premium-sidebar .premium-side-item:is(.bg-sky-50,.bg-indigo-50){background:#e6f1e8!important;color:#225b45!important;
+ border-color:#d3e3d7!important;box-shadow:inset 3px 0 #37795a!important}
+.premium-sidebar .premium-side-item svg{width:18px;height:18px;stroke-width:1.85}
+.premium-sidebar .text-slate-400{color:#87948b}
+/* Landing page — strong, natural editorial storytelling. */
+.premium-landing{background:var(--studio-paper)!important;color:var(--studio-ink)}
+.premium-landing header{background:rgba(255,255,253,.97)!important;border-color:var(--studio-line)!important;box-shadow:0 2px 10px rgba(28,53,36,.04)}
+.premium-landing header nav a{color:#5b7163;transition:color .2s}
+.premium-landing header nav a:hover{color:var(--studio-forest)!important}
+.premium-landing main>section:first-child{max-width:1480px;min-height:0;padding-top:clamp(48px,6vw,95px);padding-bottom:clamp(68px,7vw,105px)}
+.premium-landing main>section:first-child .relative.grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5.7vw,90px)}
+.premium-landing main>section:first-child h1{font-family:ui-sans-serif,'Avenir Next','Segoe UI',system-ui,sans-serif;
+ font-size:clamp(45px,5.6vw,80px);font-weight:770;line-height:1.065;letter-spacing:-.06em;color:#1f4738;max-width:770px}
+.premium-landing main>section:first-child h1 span{color:#347a5d!important;background:none!important;-webkit-text-fill-color:currentColor!important}
+.premium-landing main>section:first-child p{font-size:clamp(15px,1.2vw,18px);line-height:1.8;color:#65776c;max-width:565px}
+.premium-landing main>section:first-child .space-y-7>span:first-child{background:#ebf2e9;color:#2c6f53;border:1px solid #dce7d9;letter-spacing:.03em;font-weight:750}
+.premium-landing main>section:first-child .relative.h-\[365px\]{border:6px solid white;
+ border-radius:26px 26px 52px 26px!important;box-shadow:0 24px 52px rgba(28,55,39,.14);background:#dceadd}
+.premium-landing .premium-hero-photo-show .cilik-slide-image img{filter:contrast(1.015) saturate(.93);object-position:center 43%}
+.premium-landing main>section:first-child .premium-hero-mascot{width:87px;height:87px;right:18px!important;bottom:74px!important;top:auto!important;filter:drop-shadow(0 8px 12px rgba(30,48,38,.12))}
+.premium-landing main>section:first-child .absolute.-top-5,.premium-landing main>section:first-child .absolute.-bottom-5{
+ border:1px solid #e2e9de!important;border-radius:12px!important;background:#fffefa!important;box-shadow:0 14px 34px rgba(24,48,38,.09)!important}
+.premium-landing :is(button.bg-\[\#143866\],button.bg-\[\#143866\]:hover){background:#275b47!important;border-radius:12px!important;box-shadow:0 9px 21px rgba(35,82,62,.15)}
+.premium-landing main>section:first-child button{border-radius:12px!important;min-height:51px}
+/* Feature photography: confident crops, bottom-aligned type, no billboard style. */
+.premium-landing-discover{padding-bottom:clamp(48px,6vw,92px)}
+.premium-landing-discover-head{margin-bottom:27px;align-items:end}
+.premium-landing-discover-head h2{font-size:clamp(31px,3.35vw,46px);font-weight:750;color:#244739;max-width:720px}
+.premium-landing-discover-head p{line-height:1.75;color:#667a6b;max-width:290px}
+.premium-landing-image-grid{gap:17px;grid-template-columns:1.16fr .84fr;grid-template-rows:repeat(2,minmax(188px,1fr))}
+.premium-landing-photo-card{border-radius:19px!important;overflow:hidden;border:1px solid #e6e9df;
+ box-shadow:0 8px 21px rgba(31,55,41,.062);transition:transform .24s ease,box-shadow .24s ease}
+.premium-landing-photo-card:first-child{grid-row:span 2}
+.premium-landing-photo-card img{object-fit:cover;filter:saturate(.93) contrast(1.025);transition:transform .5s cubic-bezier(.22,.75,.25,1),filter .3s}
+.premium-landing-photo-card:hover{transform:translateY(-3px);box-shadow:var(--studio-shadow-hover)}
+.premium-landing-photo-card:hover img{transform:scale(1.03);filter:saturate(1)}
+.premium-landing-photo-card:after{background:linear-gradient(to top,rgba(16,36,27,.87),rgba(16,36,27,.11) 71%,transparent)}
+.premium-landing-photo-card>span{left:23px;right:23px;bottom:23px}
+.premium-landing-photo-card strong{font-size:clamp(21px,2vw,29px);letter-spacing:-.025em}
+.premium-landing-photo-card:not(:first-child) strong{font-size:clamp(18px,1.55vw,23px)}
+.cilik-photo-story-grid{gap:17px;margin-top:17px}
+.cilik-photo-story{border-radius:17px;height:178px;overflow:hidden}
+.cilik-photo-story img{filter:saturate(.91)}
+/* Existing benefit cards have supporting photos — editorial, not decorative ribbons. */
+.premium-landing #explore{background:#f1f4ee!important;border-block:1px solid #e6ebe2}
+.premium-landing #explore h2,.premium-landing #python h2{font-weight:760;letter-spacing:-.045em;color:#234739}
+.v21-learning-grid{gap:20px}
+.v21-learning-card{background:#fffefa;border:1px solid var(--studio-line);border-radius:17px;box-shadow:var(--studio-shadow)}
+.v21-learning-photo{aspect-ratio:1.9;overflow:hidden;background:#e6e9df}
+.v21-learning-photo img{filter:saturate(.95) contrast(1.02);object-position:center 42%}
+.v21-learning-body{padding:26px 26px 30px}
+.v21-learning-card h3{color:#274638;font-weight:760;letter-spacing:-.025em}
+.v21-learning-card p{color:#65766c;line-height:1.75}
+.v21-learning-icon{border-radius:11px;background:#eef4e9;border:3px solid white;box-shadow:0 3px 12px rgba(33,59,38,.09)}
+/* Learning, class-discovery, teacher tools and settings share the same card language. */
+.premium-main .premium-dashboard-hero{border-radius:20px!important;padding:clamp(23px,3vw,39px)!important;
+ background:#244f3e!important;box-shadow:0 17px 40px rgba(30,58,41,.105)!important;min-height:235px}
+.premium-main .premium-teacher-hero{background:#2d5043!important}
+.premium-dashboard-photo{width:56%!important;opacity:.54!important;filter:saturate(.89) contrast(1.05)!important;object-position:center 42%}
+.premium-dashboard-hero h1{font-size:clamp(27px,3vw,39px);color:white!important;font-weight:780}
+.premium-dashboard-hero p{color:#eff5ed!important;max-width:610px}
+.premium-dashboard-hero button{border-radius:11px!important;min-height:43px}
+.premium-main .premium-feature-tile{border:1px solid #e0e7dc;border-radius:16px;box-shadow:var(--studio-shadow);
+ transition:transform .23s ease,box-shadow .23s ease,border-color .23s ease}
+.premium-main .premium-feature-tile:hover{transform:translateY(-3px);box-shadow:var(--studio-shadow-hover);border-color:#c9d8c8}
+.premium-main .premium-feature-tile img{filter:saturate(.91);object-position:center 43%}
+.premium-main .premium-feature-tile:after{background:linear-gradient(0deg,rgba(20,40,31,.84),rgba(20,40,31,.06) 80%)}
+.premium-main .premium-teacher-feature{border-radius:17px;box-shadow:var(--studio-shadow)}
+.premium-main .premium-learning-ribbon{border:1px solid var(--studio-line);border-radius:19px;background:#eff4ed;box-shadow:var(--studio-shadow)}
+.premium-main .premium-learning-ribbon h2{color:#24493a;font-weight:780}
+.premium-main .premium-learning-ribbon p{color:#63776b}
+.premium-main .premium-class-cover{border-radius:15px 15px 0 0;overflow:hidden}
+.premium-main .premium-class-cover img{filter:saturate(.94);transition:transform .35s ease}
+.premium-main .premium-class-cover:hover img{transform:scale(1.025)}
+.premium-main :is(.premium-comic-cover,.premium-comic-cover-art){border-radius:13px 13px 0 0}
+/* Filters, forms, tabs: consistent touch areas, without changing handlers. */
+.premium-main :is(input:not([type=checkbox]):not([type=radio]),select,textarea){border-color:#dce4d9;border-radius:11px}
+.premium-main :is(input:not([type=checkbox]):not([type=radio]),select,textarea):focus-visible{outline:2px solid #4d9374!important;outline-offset:2px!important;border-color:#70a386}
+.premium-main :is(input,select,textarea)::placeholder{color:#89978e}
+.premium-main select{background-color:#fffefa}
+.premium-main input[type=checkbox],.premium-main input[type=radio]{accent-color:#2e7b5a}
+/* Be selective about motion. Do not interfere with the game board or its drag mechanics. */
+.premium-main .bg-white.rounded-xl:not(button),.premium-main .bg-white.rounded-2xl:not(button){border-color:var(--studio-line)}
+.premium-main .bg-white.rounded-xl:not(button):not([role=dialog]),.premium-main .bg-white.rounded-2xl:not(button):not([role=dialog]){box-shadow:var(--studio-shadow)}
+.premium-main button:disabled{opacity:.58;cursor:not-allowed}
+.premium-main :is(button,a):focus-visible,.premium-landing :is(button,a):focus-visible{outline:3px solid #3d8264!important;outline-offset:3px!important}
+.premium-main :is(button,a):not(:disabled){-webkit-tap-highlight-color:transparent}
+/* Arcade: keep individual games expressive; make the navigation and lobby coherent. */
+.playhaven-root{--ph-deep:#244739;--ph-aqua:#2e775a;--ph-border:#e1e8de}
+.playhaven-root:before{background:transparent}
+.playhaven-hero{background:#edf4e9;border:1px solid #dfe9dc;border-radius:20px;box-shadow:var(--studio-shadow)}
+.playhaven-hero h1{color:#274837;font-size:clamp(33px,4.4vw,53px)}
+.playhaven-hero h1 em{color:#2d8662}
+.playhaven-main-button{background:#246c53;border-color:#246c53;box-shadow:0 8px 18px rgba(31,92,67,.14);border-radius:12px}
+.playhaven-outline-button{border-radius:12px}
+.playhaven-shortcut,.playhaven-card{background:#fffefa;border-color:var(--studio-line);border-radius:16px;box-shadow:var(--studio-shadow)}
+.playhaven-shortcut:hover,.playhaven-card:hover{box-shadow:var(--studio-shadow-hover);border-color:#cadbcf}
+.playhaven-cover img{filter:saturate(.96) contrast(1.02)}
+.playhaven-card-body{gap:11px;padding:18px}
+.playhaven-card-title h3{font-weight:780;color:#2b4d3a}
+.playhaven-card-body p{line-height:1.58}
+.playhaven-game-count{background:#edf3e9;color:#32694e;border-color:#dfe9da}
+.playhaven-ciko{background:#eff5eb;border:1px solid #dce8d8;border-radius:18px}
+/* Ciko chat: soft speech bubbles and naturally rounded Q&A cards. */
+.ciko-premium .ciko-welcome-hero{background:#2d6250!important;border:1px solid #dce8dc;border-radius:20px}
+.ciko-premium :is(.ciko-character-card,.ciko-conversation-card,.ciko-library,.ciko-recent){border:1px solid var(--studio-line);border-radius:18px;box-shadow:var(--studio-shadow)}
+.ciko-premium .ciko-bubble-panel{background:#f5f8f3;border:1px solid #e0eae0;border-radius:16px}
+.ciko-premium .ciko-question-line{background:#fffdfa;border:1px solid #dfe8df;border-radius:12px}
+.ciko-premium .ciko-question-line:focus-within{border-color:#6caa8c;box-shadow:0 0 0 3px #cce6d34d}
+.ciko-premium .ciko-question-line button{background:#286f58;border-radius:9px;box-shadow:none}
+.ciko-premium .ciko-question-card{border-radius:13px;border-color:#e3e9df;background:#fffefa}
+.ciko-premium .ciko-topic-tabs button.active{background:#2d765e;border-color:#2d765e;box-shadow:none}
+.ciko-premium .ciko-answer-text{line-height:1.8;color:#364e43}
+/* New creative games: tidy chrome but never restyle in-game pieces or execution. */
+.cl20-head{border:1px solid #dfe9dc;background:#eef5ec;border-radius:19px;box-shadow:var(--studio-shadow)}
+.cl20-headline h1{color:#234938;letter-spacing:-.045em}
+.cl20-head-icon{border-radius:22px;box-shadow:0 9px 18px #265c4823}
+.cl20-paper{border:1px solid var(--studio-line);border-radius:17px;box-shadow:var(--studio-shadow)}
+.cl20-primary{background:#2b745c;border-color:#2b745c;box-shadow:0 6px 15px #2b745c25}
+.cl20-primary:hover{background:#215c48}
+.cl20-choice{border-radius:13px;background:#fbfcf8;border-color:#dfe8dd}
+/* Photo slideshow stays operable; fewer theatrical accents. */
+.cilik-slideshow{border-radius:inherit}
+.cilik-slideshow .cilik-slide-image img{filter:saturate(.96)}
+.cilik-slideshow .cilik-slide-controls{background:rgba(25,54,41,.83);border:1px solid rgba(255,255,255,.24)}
+/* RTL and mixed language; preserve programming layout. */
+[dir=rtl] .premium-dashboard-photo{left:0!important;right:auto!important;mask-image:linear-gradient(to left,transparent 0%,rgba(0,0,0,.35) 26%,black 75%)}
+[dir=rtl] :is(.premium-sidebar .premium-side-item.bg-sky-50,.premium-sidebar .premium-side-item.bg-indigo-50){box-shadow:inset -3px 0 #37795a!important}
+[dir=rtl] :is(pre,code,.font-mono,textarea[spellcheck=false]){direction:ltr;text-align:left;unicode-bidi:plaintext}
+/* Tablet and mobile: visual rhythm with generous, not cramped, taps. */
+@media(max-width:1100px){
+ .premium-landing main>section:first-child .relative.grid{gap:36px}
+ .premium-main{padding-top:26px}
+ .playhaven-card-body{padding:15px}
+}
+@media(max-width:850px){
+ .premium-landing main>section:first-child .relative.grid{grid-template-columns:1fr}
+ .premium-landing main>section:first-child .relative.min-h-\[360px\]{width:100%;max-width:670px;margin:0 auto}
+ .premium-landing main>section:first-child h1{max-width:750px}
+ .premium-main .premium-dashboard-photo{width:72%!important;opacity:.36!important}
+}
+@media(max-width:640px){
+ .premium-topbar{height:64px;min-height:64px}
+ .premium-main{padding-top:20px}
+ .premium-main :is(h1,h2,h3){letter-spacing:-.026em}
+ .premium-landing main>section:first-child{padding-top:36px;padding-bottom:64px}
+ .premium-landing main>section:first-child h1{font-size:clamp(35px,8.3vw,51px);line-height:1.09}
+ .premium-landing main>section:first-child p{font-size:14px;line-height:1.72}
+ .premium-landing main>section:first-child .relative.h-\[365px\]{border:4px solid white;border-radius:17px 17px 29px 17px!important}
+ .premium-landing main>section:first-child .premium-hero-mascot{width:66px;height:66px;bottom:58px!important}
+ .premium-landing-image-grid{display:flex!important;flex-direction:column;gap:12px}
+ .premium-landing-photo-card,.premium-landing-photo-card:first-child{min-height:0;height:238px!important}
+ .premium-landing-photo-card:first-child{height:285px!important}
+ .premium-landing-discover-head h2{font-size:clamp(29px,7.7vw,36px)}
+ .premium-landing-discover-head p{max-width:100%;text-align:start}
+ .cilik-photo-story-grid{grid-template-columns:1fr 1fr;gap:10px}
+ .cilik-photo-story{height:150px}
+ .v21-learning-photo{aspect-ratio:1.9}
+ .v21-learning-body{padding:24px 20px}
+ .premium-main .premium-dashboard-hero{padding:22px!important;min-height:0;border-radius:16px!important}
+ .premium-main .premium-dashboard-photo{width:98%!important;opacity:.24!important}
+ .premium-main .premium-feature-tile{border-radius:13px}
+ .playhaven-card,.playhaven-shortcut{border-radius:13px}
+ .playhaven-hero{border-radius:17px}
+ .playhaven-card-body{padding:12px}
+ .ciko-premium .ciko-conversation-card,.ciko-premium .ciko-library{padding:17px}
+}
+@media(max-width:390px){
+ .cilik-photo-story-grid{grid-template-columns:1fr}
+ .cilik-photo-story{height:180px}
+ .premium-landing-photo-card,.premium-landing-photo-card:first-child{height:240px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .premium-landing-photo-card,.premium-landing-photo-card img,.playhaven-card,.playhaven-shortcut,.premium-main .premium-feature-tile,.premium-main .premium-feature-tile img{transition:none!important;transform:none!important}
+}
+/* Data-dense teacher and progress views: information-first table styling. */
+.premium-main table{width:100%;border-collapse:separate;border-spacing:0;font-variant-numeric:tabular-nums}
+.premium-main table thead :is(th,td){background:#f3f6f0;color:#50685a;font-weight:750;letter-spacing:.015em;
+ border-bottom:1px solid #dde6dd;text-align:start}
+.premium-main table tbody tr{transition:background-color .2s ease}
+.premium-main table tbody tr:hover{background:#f8faf6}
+.premium-main table tbody td{border-bottom-color:#edf0eb}
+.premium-main :is(.bg-emerald-50,.bg-teal-50){border-color:#d8e9d8}
+.premium-main :is(.text-sky-700,.text-indigo-700):not(.arcade-game-page *){color:#286b50}
+/* Avoid layout drift in translated interfaces and narrow input controls. */
+.premium-main :is(.flex,.grid)>*{min-width:0}
+.premium-main :is(button,a){overflow-wrap:anywhere}
+.premium-main :is(.overflow-x-auto,.overflow-y-auto){overscroll-behavior:contain}
+.premium-main pre,.premium-main code{direction:ltr;unicode-bidi:isolate}
+@media(max-width:767px){
+ .premium-main table{font-size:12px}
+ .premium-main table :is(th,td){padding:10px 9px}
+ .premium-main button{min-height:40px}
+ .premium-sidebar{top:0;height:100vh}
+}

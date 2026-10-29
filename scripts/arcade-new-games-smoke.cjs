@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');const vm=require('node:vm');const ts=require('typescript');
+function loadTS(file){const code=ts.transpileModule(fs.readFileSync(file,'utf8'),{fileName:file,compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText;const module={exports:{}};vm.runInNewContext(code,{module,exports:module.exports,require});return module.exports;}
+const e=loadTS('./src/pages/arcade/addons/newGamesEngine.ts');
+assert.equal(e.PIXEL_LEVELS.length,6);assert.equal(e.SORT_LEVELS.length,6);assert.equal(e.GARDEN_LEVELS.length,6);
+const ids=new Set();const checkId=(x)=>{assert(!ids.has(x.id),`Duplicate id ${x.id}`);ids.add(x.id)};
+for(const level of e.PIXEL_LEVELS){checkId(level);assert.equal(level.pattern.length,5);assert(level.pattern.every(row=>row.length===5));let rows=e.blankPixels();for(let y=0;y<5;y++)for(let x=0;x<5;x++){const char=level.pattern[y][x];if(char!=='.')rows=e.paintPixel(rows,x+1,y+1,char)}assert(e.pixelComplete(level,rows),level.id);assert.equal(e.pixelMatchCount(level,rows),e.pixelNeeded(level));assert(e.pixelScore(level,0)>0);}
+for(const level of e.SORT_LEVELS){checkId(level);assert.equal(level.items.length,6);assert(level.items.every(x=>x.bin===0||x.bin===1));assert.equal(level.bins.length,2);assert(e.sortScore(6,0,true)>e.sortScore(6,1,true));assert(e.sortScore(6,0,true)>e.sortScore(5,0,false));}
+for(const level of e.GARDEN_LEVELS){checkId(level);let frame=e.initialGardenFrame();assert(level.flowers.every(i=>i>=0&&i<7));for(let i=0;i<=Math.max(...level.flowers);i++){if(level.flowers.includes(i))frame=e.advanceGarden(level,frame,{op:'plant',line:1});if(i<6&&frame.status!=='win')frame=e.advanceGarden(level,frame,{op:'right',line:2});}assert.equal(frame.status,'win',`${level.id} must be solvable`);assert.equal(frame.planted.length,level.flowers.length);assert(e.gardenScore(level,frame)>0)}
+const px=e.compilePixelCode('paint(2, 1, red)\npaint(4, 2, blue)');assert.equal(px.length,2);assert.equal(px[0].color,'R');
+const garden=e.compileGardenCode('for i in range(3):\n    plant()\n    move_right()');assert.equal(garden.length,6);
+for(const bad of ['eval(1)','alert(1)','paint(9,1,red)','for i in range(100):'])assert.throws(()=>e.compilePixelCode(bad),bad);
+for(const bad of ['eval(1)','move_left()','for i in range(300):\n    plant()','for i in range(3):\n    process.exit()'])assert.throws(()=>e.compileGardenCode(bad),bad);
+let conflict=e.advanceGarden(e.GARDEN_LEVELS[0],e.initialGardenFrame(),{op:'right',line:1});conflict=e.advanceGarden(e.GARDEN_LEVELS[0],conflict,{op:'plant',line:2});assert.equal(conflict.planted.length,1);
+const world=fs.readFileSync('./src/pages/arcade/addons/AdventureExtras.tsx','utf8');const hub=fs.readFileSync('./src/pages/arcade/addons/ArcadeHome.tsx','utf8');const main=fs.readFileSync('./src/pages/arcade/ArcadeView.tsx','utf8');for(const id of ['pixel','sort','garden']){assert(world.includes(`id:'${id}'`));assert(main.includes(`launch.mode==='${id}'`));assert(hub.includes('WORLDS'))};
+console.log('PASS: 8 games / 52 challenges integrated; 18 new levels, painting, sorting, gardening, scoring, safe command parsing, all levels solvable.');

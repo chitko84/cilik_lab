@@ -1,0 +1,6 @@
+{
+  "name": "CilikLab",
+  "description": "Little Learners' Lab — A creative coding education platform where young minds explore, code, and grow through interactive Python exercises, visual tracing, progressive debugging hints, and teacher guidance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

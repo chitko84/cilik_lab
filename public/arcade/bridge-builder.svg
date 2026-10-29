@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" fill="none">
+<defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dff8fb"/><stop offset="1" stop-color="#d7f2e4"/></linearGradient></defs>
+<rect width="1200" height="680" rx="48" fill="url(#bg)"/>
+<rect x="92" y="120" width="1016" height="430" rx="38" fill="#ffffff" fill-opacity=".86"/>
+<rect x="150" y="338" width="840" height="110" rx="26" fill="#89d3f5"/>
+<g><rect x="176" y="300" width="82" height="142" rx="22" fill="#c49a6c" fill-opacity=".95"/><text x="217" y="383" font-size="44" text-anchor="middle">🟫</text></g><g><rect x="264" y="300" width="82" height="142" rx="22" fill="#c49a6c" fill-opacity=".95"/><text x="305" y="383" font-size="44" text-anchor="middle">🤖</text></g><g><rect x="352" y="300" width="82" height="142" rx="22" fill="#b68b59" fill-opacity=".95"/><text x="393" y="383" font-size="44" text-anchor="middle">🪵</text></g><g><rect x="440" y="300" width="82" height="142" rx="22" fill="#c49a6c" fill-opacity=".95"/><text x="481" y="383" font-size="44" text-anchor="middle">🟫</text></g><g><rect x="528" y="300" width="82" height="142" rx="22" fill="#b68b59" fill-opacity=".95"/><text x="569" y="383" font-size="44" text-anchor="middle">🪵</text></g><g><rect x="616" y="300" width="82" height="142" rx="22" fill="#c49a6c" fill-opacity=".95"/><text x="657" y="383" font-size="44" text-anchor="middle">🟫</text></g><g><rect x="704" y="300" width="82" height="142" rx="22" fill="#c49a6c" fill-opacity=".95"/><text x="745" y="383" font-size="44" text-anchor="middle">🟫</text></g><g><rect x="792" y="300" width="82" height="142" rx="22" fill="#4fc3f7" fill-opacity=".95"/><text x="833" y="383" font-size="44" text-anchor="middle">💧</text></g><g><rect x="880" y="300" width="82" height="142" rx="22" fill="#ffe68a" fill-opacity=".95"/><text x="921" y="383" font-size="44" text-anchor="middle">🏁</text></g>
+<rect x="150" y="176" width="390" height="110" rx="26" fill="#203454"/>
+<text x="178" y="215" fill="#9ec4f4" font-size="24" font-family="monospace">move_right()</text>
+<text x="178" y="248" fill="#d9ffe2" font-size="24" font-family="monospace">place()</text>
+<text x="178" y="281" fill="#d9ffe2" font-size="24" font-family="monospace">move_right()</text>
+<circle cx="910" cy="216" r="82" fill="#effcf5"/>
+<text x="910" y="238" font-size="112" text-anchor="middle">🌉</text>
+<text x="154" y="103" fill="#177c7f" font-family="Arial" font-size="28" font-weight="700">BRIDGE BUILDER</text>
+<text x="154" y="584" fill="#3a5676" font-family="Arial" font-size="28" font-weight="700">Plan ahead, place planks, and guide the robot safely across.</text>
+</svg>

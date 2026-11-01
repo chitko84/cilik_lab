@@ -1,12 +1,18 @@
 import React from 'react';
-import { BookOpen, Code2, Home, Menu, TrendingUp, UserRound, Users, BookMarked, LifeBuoy, Gamepad2, Bot } from 'lucide-react';
+import { ShieldCheck, BarChart3, BookOpen, Code2, Home, Menu, TrendingUp, UserRound, Users, BookMarked, LifeBuoy, Gamepad2, Bot } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { useLanguage } from '../../context/LanguageContext';
 
 export function MobileBottomNav({onMore}: {onMore:()=>void}) {
   const {role, activeTab, setActiveTab} = useApp();
   const {t} = useLanguage();
-  const items = role === 'student' ? [
+  const items = role === 'operator' ? [
+    {id:'op_dashboard',label:'Home',icon:Home},
+    {id:'op_students',label:'Students',icon:Users},
+    {id:'op_teachers',label:'Teachers',icon:BookMarked},
+    {id:'op_analytics',label:'Reports',icon:BarChart3},
+    {id:'more',label:'More',icon:Menu},
+  ] : role === 'student' ? [
     {id:'dashboard',label:t('home'),icon:Home},
     {id:'explore_classes',label:t('learn'),icon:BookOpen},
     {id:'cilik_arcade',label:t('play'),icon:Gamepad2},
@@ -21,7 +27,7 @@ export function MobileBottomNav({onMore}: {onMore:()=>void}) {
   ];
   const isLearn = ['lessons','my_classes','explore_classes','comic_library'].includes(activeTab);
   return (
-    <nav aria-label={role === 'student'?'Student mobile navigation':'Teacher mobile navigation'}
+    <nav aria-label={role === 'operator' ? 'Operator demo mobile navigation' : role === 'student' ? 'Student mobile navigation' : 'Teacher mobile navigation'}
       className="mobile-tabbar md:hidden fixed inset-x-0 bottom-0 z-30 bg-white/95 border-t border-slate-200 backdrop-blur-xl shadow-[0_-10px_32px_rgba(25,54,90,.09)]">
       <div className="max-w-lg mx-auto grid grid-cols-5 h-[65px] pb-[env(safe-area-inset-bottom)]">
         {items.map(item => {

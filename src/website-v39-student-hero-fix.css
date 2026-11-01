@@ -1,0 +1,109 @@
+/* Student dashboard welcome banner: explicit content columns prevent the
+ * welcome paragraph from running across the bright classroom photograph.
+ * This file is deliberately loaded after the earlier site themes. */
+.premium-main .premium-student-hero {
+  display: grid !important;
+  grid-template-columns: minmax(0, 42%) minmax(0, 1fr);
+  align-items: center !important;
+  column-gap: clamp(16px, 2.5vw, 32px) !important;
+  row-gap: 16px !important;
+  height: auto;
+  min-width: 0;
+}
+.premium-main .premium-student-hero .student-hero-copy {
+  grid-column: 1;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.premium-main .premium-student-hero .student-hero-copy > :is(h1, p) {
+  max-width: 100%;
+  min-width: 0;
+  margin-inline: 0;
+}
+.premium-main .premium-student-hero .student-hero-copy p {
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+.premium-main .premium-student-hero .student-hero-copy > div {
+  max-width: 100%;
+  white-space: normal;
+}
+.premium-main .premium-student-hero .student-hero-next {
+  grid-column: 2;
+  justify-self: end;
+  align-self: center;
+  width: max-content;
+  min-width: 178px;
+  max-width: 100%;
+}
+/* Dark, fully readable copy panel on the left; photograph remains visible on
+ * the right behind the action card. */
+.premium-main .premium-student-hero::after {
+  background: linear-gradient(90deg,
+    rgba(21, 60, 47, .99) 0%,
+    rgba(21, 60, 47, .99) 40%,
+    rgba(21, 60, 47, .83) 49%,
+    rgba(21, 60, 47, .17) 68%,
+    rgba(21, 60, 47, .02) 100%) !important;
+}
+/* Medium screens: stack the content so the paragraph never competes with
+ * the photo or the action card. The photo is darkened for legibility. */
+@media (max-width: 980px) {
+  .premium-main .premium-student-hero {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start !important;
+  }
+  .premium-main .premium-student-hero .student-hero-copy {
+    grid-column: 1;
+    width: 100% !important;
+    max-width: min(100%, 560px) !important;
+  }
+  .premium-main .premium-student-hero .student-hero-next {
+    grid-column: 1;
+    justify-self: start;
+    width: min(100%, 320px);
+    max-width: 100%;
+    min-width: 0;
+  }
+  .premium-main .premium-student-hero::after {
+    background: linear-gradient(90deg,
+      rgba(21, 60, 47, .99) 0%,
+      rgba(21, 60, 47, .97) 57%,
+      rgba(21, 60, 47, .76) 100%) !important;
+  }
+}
+@media (max-width: 640px) {
+  .premium-main .premium-student-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .premium-main .premium-student-hero .student-hero-copy,
+  .premium-main .premium-student-hero .student-hero-next {
+    grid-column: 1;
+    justify-self: stretch;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .premium-main .premium-student-hero .student-hero-copy h1 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+/* Preserve right-to-left layout when the selected interface locale is RTL. */
+[dir="rtl"] .premium-main .premium-student-hero::after {
+  background: linear-gradient(270deg,
+    rgba(21, 60, 47, .99) 0%,
+    rgba(21, 60, 47, .99) 40%,
+    rgba(21, 60, 47, .83) 49%,
+    rgba(21, 60, 47, .17) 68%,
+    rgba(21, 60, 47, .02) 100%) !important;
+}
+@media (max-width: 980px) {
+  [dir="rtl"] .premium-main .premium-student-hero::after {
+    background: linear-gradient(270deg,
+      rgba(21, 60, 47, .99) 0%,
+      rgba(21, 60, 47, .97) 57%,
+      rgba(21, 60, 47, .76) 100%) !important;
+  }
+}

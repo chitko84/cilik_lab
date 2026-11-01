@@ -16,6 +16,29 @@ import {
   UserProfile,
 } from '../types';
 
+/** Local demo identity only; never a privileged or authenticated account. */
+export const CURRENT_OPERATOR: UserProfile = {
+  id: 'usr_operator_demo',
+  role: 'operator',
+  name: 'CilikLab Demo Operator',
+  email: 'operator-demo@ciliklab.example',
+  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CilikLabOperator',
+  gradeLevel: 'Platform operations · Demo',
+  bio: 'Sample operations workspace for demonstrations. No real user accounts are changed.',
+  streakDays: 0,
+  totalPoints: 0,
+  completedLessonsCount: 0,
+  enrolledClassesCount: 0,
+  badges: [],
+  preferences: {
+    theme: 'light',
+    emailNotifications: false,
+    soundEffects: false,
+    learningReminders: false,
+    accessibilityHighContrast: false,
+  },
+};
+
 export const CURRENT_STUDENT: UserProfile = {
   id: 'usr_student_01',
   role: 'student',

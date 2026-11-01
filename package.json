@@ -24,7 +24,7 @@
     "report:l10n": "node scripts/localization-coverage.cjs",
     "test:site:slides": "node scripts/site-v19-slides-smoke.cjs",
     "test:creative": "node scripts/creative-learning-smoke.cjs",
-    "test:all": "npm run test:arcade:all && npm run test:creative && npm run test:site:all && npm run test:l10n && npm run test:site:slides && npm run test:site:v25 && npm run test:l10n:v28 && npm run test:v30 && npm run test:v31 && npm run test:v32 && npm run test:v33 && npm run test:v34 && npm run test:v35 && npm run test:vercel && npm run test:site:v37",
+    "test:all": "npm run test:arcade:all && npm run test:creative && npm run test:site:all && npm run test:l10n && npm run test:site:slides && npm run test:site:v25 && npm run test:l10n:v28 && npm run test:v30 && npm run test:v31 && npm run test:v32 && npm run test:v33 && npm run test:v34 && npm run test:v35 && npm run test:vercel && npm run test:site:v37 && npm run test:site:v38",
     "test:site:design": "node scripts/site-v21-design-smoke.cjs",
     "test:site:v22": "node scripts/site-v22-visual-smoke.cjs",
     "test:site:v23": "node scripts/site-v23-design-smoke.cjs",
@@ -44,7 +44,13 @@
     "test:v35": "node scripts/v35-comics-bilingual-smoke.cjs",
     "test:vercel": "node scripts/v36-vercel-api-smoke.cjs",
     "configure:telegram-webhook": "node scripts/configure-telegram-webhook.mjs",
-    "test:site:v37": "node scripts/v37-homepage-intro-smoke.cjs"
+    "test:site:v37": "node scripts/v37-homepage-intro-smoke.cjs",
+    "test:robolab": "node scripts/robolab-smoke.cjs",
+    "test:site:v38": "node scripts/v38-landing-comics-smoke.cjs",
+    "test:operator": "node scripts/operator-nav-smoke.cjs",
+    "test:operator:analytics": "node scripts/operator-analytics-smoke.cjs",
+    "test:hero": "node scripts/hero-operator-smoke.cjs",
+    "test:landing:mobile-cta": "node scripts/v40-mobile-landing-cta-smoke.cjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

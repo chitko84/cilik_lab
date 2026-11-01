@@ -7,6 +7,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import {
   CURRENT_STUDENT,
   CURRENT_TEACHER,
+  CURRENT_OPERATOR,
   INITIAL_ATTEMPTS,
   INITIAL_CLASSES,
   INITIAL_COMMUNITY_POSTS,
@@ -117,8 +118,14 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<UserProfile>(() => {
+    const query = new URLSearchParams(window.location.search);
+    // Support the previous operator URL, but display a non-privileged demo view.
+    if (query.get('operator') === '1' || query.get('role') === 'operator') return CURRENT_OPERATOR;
     const saved = localStorage.getItem(`${STORAGE_KEY}_user`);
-    return saved ? JSON.parse(saved) : CURRENT_STUDENT;
+    if (!saved) return CURRENT_STUDENT;
+    try { const user = JSON.parse(saved) as UserProfile;
+      return user.role === 'operator' ? CURRENT_OPERATOR : user;
+    } catch { return CURRENT_STUDENT; }
   });
 
   const [classes, setClasses] = useState<CodingClass[]>(() => {
@@ -165,7 +172,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [activeExerciseId, setActiveExerciseId] = useState<string>('ex_01');
   const [activeClassId, setActiveClassId] = useState<string>('cls_01');
-  const [activeTab, setActiveTab] = useState<string>('landing'); // 'landing' | 'dashboard' | ...
+  const [activeTab, setActiveTab] = useState<string>(() => { const query = new URLSearchParams(window.location.search); return query.get('operator') === '1' || query.get('role') === 'operator' ? 'op_dashboard' : 'landing'; }); // 'landing' | 'dashboard' | ...
   const [activeComicId, setActiveComicId] = useState<string | null>(null);
   const selectComic = (id: string) => { setActiveComicId(id); setActiveTab('comic_library'); };
   useEffect(() => { if (activeTab !== 'comic_library') setActiveComicId(null); }, [activeTab]);
@@ -204,15 +211,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [currentUser]);
 
   const loginAs = (role: UserRole) => {
-    if (role === 'teacher') {
-      setCurrentUser(CURRENT_TEACHER);
-    } else {
-      setCurrentUser(CURRENT_STUDENT);
-    }
-    setActiveTab('dashboard');
+    setCurrentUser(role === 'teacher' ? CURRENT_TEACHER : role === 'operator' ? CURRENT_OPERATOR : CURRENT_STUDENT);
+    setActiveTab(role === 'operator' ? 'op_dashboard' : 'dashboard');
   };
 
   const setRole = (role: UserRole) => {
+    // A role query is only a convenient demo entrypoint, not an auth token.
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('role') || url.searchParams.has('operator')) {
+      url.searchParams.delete('role'); url.searchParams.delete('operator');
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
     loginAs(role);
   };
 

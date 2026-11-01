@@ -81,7 +81,7 @@ export const StudentDashboard: React.FC = () => {
       {/* Top Welcome Banner */}
       <div className="premium-dashboard-hero premium-student-hero p-6 rounded-2xl text-white shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <RealPhoto photo="learningPartners" alt="Students learning together on laptops in a classroom" className="premium-dashboard-photo" fallback="/visuals/hero-adventure.webp"/>
-        <div className="space-y-2">
+        <div className="student-hero-copy space-y-2">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-white text-xs font-semibold backdrop-blur-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t('welcomeAgain')}, {currentUser.name}!</span>
@@ -95,7 +95,7 @@ export const StudentDashboard: React.FC = () => {
         </div>
 
         {/* Quick action card */}
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shrink-0 w-full md:w-auto">
+        <div className="student-hero-next bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shrink-0 w-full md:w-auto">
           <div className="text-[11px] font-semibold text-sky-200 uppercase tracking-wider mb-1">
             {language === 'ms' ? 'Seterusnya' : 'Up next'}
           </div>

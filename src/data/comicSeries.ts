@@ -1,7 +1,6 @@
-/** CilikLab original English comic series — 10 books, 80 authored story pages.
- * Artwork paths are reserved for future published comic illustrations; the
- * preview art remains visible until each page asset is supplied.
- * Malaysian editions are deliberately NOT marked published.
+/** CilikLab coding adventure series: 10 books.
+ * Published editions are linked to the actual Heyzine flipbooks.
+ * The original short scripts and existing cover art are preserved unchanged.
  */
 export interface SeriesPage {index:number;narration:string;speaker:string;speech:string;code:string|null;art:string}
 export interface SeriesBook {id:string;title:string;topic:string;world:string;characters:string;objective:string;description:string;cover:string;pages:SeriesPage[]}
@@ -768,3 +767,24 @@ export const COMIC_SERIES: SeriesBook[] = [
   }
 ];
 export const COMIC_SERIES_IDS=new Set(COMIC_SERIES.map(book=>book.id));
+
+/** Published editions. Missing URLs mean the edition is coming soon.
+ * Keep English and Bahasa Melayu URLs separate; do not manufacture preview links.
+ */
+export type SeriesEdition = 'en' | 'ms';
+export const SERIES_FLIPBOOKS: Readonly<Record<string, Partial<Record<SeriesEdition, string>>>> = {
+  '01-lost-loop': {
+    en: 'https://heyzine.com/flip-book/cc10d9ca9b.html',
+    ms: 'https://heyzine.com/flip-book/37d18a2e91.html',
+  },
+  '02-variable-treasure': {
+    en: 'https://heyzine.com/flip-book/48dcc3748c.html',
+    ms: 'https://heyzine.com/flip-book/82e68cb1ab.html',
+  },
+  '03-if-else-jungle': {
+    en: 'https://heyzine.com/flip-book/19b888f86a.html',
+    ms: 'https://heyzine.com/flip-book/eceb5e4395.html',
+  },
+};
+export const getSeriesFlipbook = (id: string, edition: SeriesEdition): string | null =>
+  SERIES_FLIPBOOKS[id]?.[edition] ?? null;

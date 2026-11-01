@@ -24,3 +24,6 @@ createRoot(document.getElementById('root')!).render(<App />);
 
 import './website-v35-comics.css';
 import './website-v37-home-intro.css';
+import './website-v38-comics-home.css';
+import './website-v39-student-hero-fix.css';
+import './website-v40-mobile-landing-header.css';

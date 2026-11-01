@@ -13,6 +13,7 @@ import {SparkCircuit} from './addons/SparkCircuit';
 import {ArcadeHome} from './addons/ArcadeHome';
 import {SportsArena} from './addons/SportsArena';
 import {ChallengeLab} from './addons/ChallengeLab';
+import {RoboLab} from './robolab/RoboLab';
 import {useApp} from '../../context/AppContext';
 import confetti from 'canvas-confetti';
 import {ArrowDown,ArrowLeft,ArrowRight,ArrowUp,Check,CheckCircle2,ChevronLeft,ChevronRight,Code2,GripVertical,Lightbulb,Play,RotateCcw,Sparkles,Star,Terminal,Trophy,Volume2,VolumeX,Pause,Eye,Keyboard,Map as MapIcon} from 'lucide-react';
@@ -24,7 +25,7 @@ import type {MazeFrame} from '../../services/arcadeRules';
 import {DETECTIVE_CASES,ESCAPE_LEVELS,LOGIC_LEVELS,MAZE_LEVELS,parseMaze,shortestPath} from './arcadeData';
 import type {Direction,MazeLevel,LocalText,Point} from './arcadeData';
 
-type Mode='home'|'maze'|'detective'|'logic'|'escape'|'space'|'pixel'|'sort'|'garden'|'melody'|'bridge'|'rescue'|'story'|'pet'|'circuit'|'coach'|'quests'|'world'|'creator'|'achievements'|'insights'|'cipher'|'fossil';
+type Mode='home'|'maze'|'detective'|'logic'|'escape'|'space'|'pixel'|'sort'|'garden'|'melody'|'bridge'|'rescue'|'story'|'pet'|'circuit'|'coach'|'quests'|'world'|'creator'|'achievements'|'insights'|'cipher'|'fossil'|'robolab';
 const copy=(ms:string,en:string,lang:string)=>lang==='ms'?ms:en;
 const t=(value:LocalText,lang:string)=>value[lang==='ms'?'ms':'en'];
 const cheer=()=>{try{confetti({particleCount:75,spread:65,origin:{y:.7},disableForReducedMotion:true});}catch{/* animations optional */}};
@@ -221,6 +222,7 @@ export function ArcadeView(){
   return {id:'maze',index:0};
  };
  const next=nextGame();
+ if(launch.mode==='robolab')return <RoboLab key={`robolab-${launch.level}`} initialLevel={launch.level} onBack={back}/>;
  if(launch.mode==='maze')return <CodeMaze key={`maze-${launch.level}`} initialLevel={launch.level} onBack={back}/>;
  if(launch.mode==='escape')return <CodeEscape key={`escape-${launch.level}`} initialLevel={launch.level} onBack={back}/>;
  if(launch.mode==='detective')return <BugDetective key={`detective-${launch.level}`} initialLevel={launch.level} onBack={back}/>;

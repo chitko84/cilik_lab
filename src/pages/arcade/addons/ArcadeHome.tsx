@@ -16,9 +16,9 @@ export function ArcadeHome({onOpen,onCiko}:{onOpen:(mode:ArcadeGame|'world'|'cre
  const [genre,setGenre]=React.useState<string>('all');
  const genres=[
   {id:'action',en:'Action',ms:'Aksi',emoji:'🚀',games:['space','escape','track','cipher']},
-  {id:'simulation',en:'Simulation',ms:'Simulasi',emoji:'🪴',games:['pet','garden','circuit']},
+  {id:'simulation',en:'Simulation',ms:'Simulasi',emoji:'🪴',games:['pet','garden','circuit','robolab']},
   {id:'puzzle',en:'Puzzle',ms:'Teka-teki',emoji:'🧩',games:['logic','detective','circuit','bridge','fossil','cipher']},
-  {id:'adventure',en:'Adventure',ms:'Pengembaraan',emoji:'🧭',games:['maze','story','rescue','escape','fossil']},
+  {id:'adventure',en:'Adventure',ms:'Pengembaraan',emoji:'🧭',games:['maze','story','rescue','escape','fossil','robolab']},
   {id:'racing',en:'Racing',ms:'Perlumbaan',emoji:'🏁',games:['track','space']},
   {id:'role',en:'Role Playing',ms:'Main Peranan',emoji:'⚔️',games:['story','pet','rescue','cipher']},
   {id:'strategy',en:'Strategy',ms:'Strategi',emoji:'🎯',games:['football','basketball','sort','bridge']},
@@ -27,7 +27,7 @@ export function ArcadeHome({onOpen,onCiko}:{onOpen:(mode:ArcadeGame|'world'|'cre
   {id:'board',en:'Board',ms:'Papan',emoji:'♟️',games:['logic','maze','pixel','fossil']}
  ];
  const categories=[{id:'all' as const,ms:'Semua',en:'All'},{id:'code' as const,ms:'Tulis Kod',en:'Write Code'},{id:'logic' as const,ms:'Logik',en:'Logic'},{id:'creative' as const,ms:'Kreatif',en:'Creative'},{id:'adventure' as const,ms:'Pengembaraan',en:'Adventure'}];
- const groups:Record<string,string[]>={code:['escape','space','garden','pixel','melody','bridge','rescue','story','pet','circuit','football','basketball','track','cipher'],logic:['detective','logic','sort','circuit','cipher','fossil'],creative:['pixel','garden','melody','creator','story','pet','cipher'],adventure:['maze','escape','space','bridge','rescue','story','circuit','fossil']};
+ const groups:Record<string,string[]>={code:['robolab','escape','space','garden','pixel','melody','bridge','rescue','story','pet','circuit','football','basketball','track','cipher'],logic:['detective','logic','sort','circuit','cipher','fossil'],creative:['pixel','garden','melody','creator','story','pet','cipher'],adventure:['robolab','maze','escape','space','bridge','rescue','story','circuit','fossil']};
  const displayedWorlds=WORLDS.filter(w=>(genre==='all'||genres.find(g=>g.id===genre)?.games.includes(w.id))&&(filter==='all'||groups[filter].includes(w.id))&&`${localizedGameTitle(w.id,w.name,locale)} ${w.desc.ms} ${w.desc.en}`.toLowerCase().includes(search.trim().toLowerCase()));
  
  const all=WORLDS.flatMap(w=>[...w.ids]),completed=all.filter(x=>progress.completed.includes(x)).length;

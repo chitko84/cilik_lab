@@ -6,11 +6,13 @@ import { LanguageSwitch } from '../components/layout/LanguageSwitch';
 import {RealPhoto} from '../components/visual/RealPhoto';
 import {PhotoSlideshow} from '../components/visual/PhotoSlideshow';
 import {ProjectIntroduction} from './landing/ProjectIntroduction';
+import {MoreAboutCilikLab} from './landing/MoreAboutCilikLab';
 
 const adventureArt = '/visuals/hero-adventure.webp';
 
 export const LandingPage: React.FC = () => {
-  const {loginAs} = useApp();
+  const {loginAs,setActiveTab} = useApp();
+  const openComics=()=>{loginAs('student');setActiveTab('comic_library');};
   const {language,t} = useLanguage();
   const [code,setCode] = useState('name = "Ali"\nprint("Hello, " + name + "!")');
   const [output,setOutput] = useState('Hello, Ali!');
@@ -25,17 +27,18 @@ export const LandingPage: React.FC = () => {
   };
   return <div className="landing-v2 premium-landing min-h-screen bg-[#f8faff] text-slate-900 selection:bg-sky-200/60">
     <header className="sticky z-30 top-0 bg-white/90 backdrop-blur-xl border-b border-[#e4eaf5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 h-[74px] flex justify-between items-center gap-3">
-        <a className="shrink-0" href="#top" aria-label="CilikLab home"><img src="/assets/aistudio/CilikLab_Logo_Transparent_d0d42c03.png" alt="CilikLab" className="h-10 sm:h-12 max-w-[172px] sm:max-w-[190px] object-contain" /></a>
+      <div className="landing-header-inner max-w-7xl mx-auto px-4 sm:px-8 h-[74px] flex justify-between items-center gap-3">
+        <a className="landing-header-brand shrink-0" href="#top" aria-label="CilikLab home"><img src="/assets/aistudio/CilikLab_Logo_Transparent_d0d42c03.png" alt="CilikLab" className="h-10 sm:h-12 max-w-[172px] sm:max-w-[190px] object-contain" /></a>
         <nav className="hidden lg:flex items-center gap-9 text-sm text-slate-600 font-semibold" aria-label="Site navigation">
           <a href="#explore" className="hover:text-sky-700">{t('discover')}</a>
-          <a href="#python" className="hover:text-sky-700">Python</a>
+          <a href="#comiccode" className="hover:text-sky-700">ComicCode</a>
+          <a href="#more-to-explore" className="hover:text-sky-700">{language==='ms'?'Aktiviti':'Activities'}</a>
           <a href="#educators" className="hover:text-sky-700">{t('teacherAccess')}</a>
         </nav>
-        <div className="flex items-center gap-2 sm:gap-3">
-          <LanguageSwitch compact className="shrink-0" />
+        <div className="landing-header-actions flex items-center gap-2 sm:gap-3">
+          <LanguageSwitch compact className="landing-header-language shrink-0" />
           <button onClick={()=>loginAs('teacher')} className="hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-100"><Users className="w-4 h-4" />{t('teacherAccess')}</button>
-          <button onClick={()=>loginAs('student')} className="rounded-full bg-[#143866] text-white px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-bold hover:bg-[#0b2850] shadow-[0_6px_20px_rgba(20,56,102,.14)]">{t('startLearning')} <ArrowRight className="inline-block w-4 h-4 ml-1" /></button>
+          <button onClick={()=>loginAs('student')} className="landing-start-button rounded-full bg-[#143866] text-white px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-bold hover:bg-[#0b2850] shadow-[0_6px_20px_rgba(20,56,102,.14)]"><span className="landing-start-label">{t('startLearning')}</span><ArrowRight className="landing-start-arrow inline-block w-4 h-4 ml-1" aria-hidden="true" /></button>
         </div>
       </div>
     </header>
@@ -113,8 +116,10 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
+      <MoreAboutCilikLab openComics={openComics} startStudent={()=>loginAs('student')} startTeacher={()=>loginAs('teacher')}/>
+
       <section id="educators" className="bg-[#eaf4fa] py-16 sm:py-20"><div className="premium-v18-educators max-w-7xl mx-auto px-5 sm:px-9"><div className="premium-v18-educators-photo"><RealPhoto photo="tabletClass" alt="Educator using a tablet to teach a small group in a classroom" fallback="/visuals/coding-friends.webp"/></div><div className="premium-v18-educators-copy"><span className="text-xs font-extrabold uppercase tracking-widest text-teal-700">{t('teacherPortal')}</span><h2 className="text-2xl sm:text-4xl font-extrabold mt-3 tracking-tight">{t('forTeachers')}</h2><p className="text-sm sm:text-base text-slate-600 mt-4 leading-7">{t('forTeachersDesc')}</p><button onClick={()=>loginAs('teacher')} className="shrink-0 flex items-center gap-2 px-6 py-4 rounded-2xl bg-[#143866] hover:bg-[#0b294e] text-white text-sm font-extrabold">{t('enterTeacher')} <ArrowRight className="w-4 h-4" /></button></div></div></section>
     </main>
-    <footer className="bg-white py-7 border-t border-slate-200"><div className="max-w-7xl mx-auto px-5 sm:px-9 flex flex-wrap items-center justify-between gap-4"><div className="flex items-center gap-2"><img src="/assets/aistudio/CilikLab_Logo_Transparent_d0d42c03.png" className="w-24" alt="CilikLab"/><span className="text-xs text-slate-500">© 2026. {t('footer')}</span></div></div></footer>
+    <footer className="bg-white py-7 border-t border-slate-200"><div className="max-w-7xl mx-auto px-5 sm:px-9 flex flex-wrap items-center justify-between gap-4"><div className="flex items-center gap-2"><img src="/assets/aistudio/CilikLab_Logo_Transparent_d0d42c03.png" className="w-24" alt="CilikLab"/><span className="text-xs text-slate-500">© 2026. {t('footer')}</span></div><nav aria-label="Footer navigation" className="flex gap-4 flex-wrap text-xs text-slate-600 font-semibold"><a href="#learning-journey" className="hover:text-teal-700">{language==='ms'?'Cara belajar':'How it works'}</a><a href="#comiccode" className="hover:text-teal-700">ComicCode</a><a href="#questions" className="hover:text-teal-700">FAQ</a><a href="#educators" className="hover:text-teal-700">{t('teacherAccess')}</a><a href="/?role=operator" className="hover:text-teal-700">{language==='ms'?'Paparan Operator Demo':'Operator Demo View'}</a></nav></div></footer>
   </div>;
 };

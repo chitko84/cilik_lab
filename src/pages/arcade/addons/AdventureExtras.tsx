@@ -1,3 +1,4 @@
+import {ROBOLAB_LEVELS} from '../robolab/levels';
 import {translatePair,localizedQuizTopic,localizedGameTitle,localizedGameDescription,localizedBadge} from '../../../locales/contentTranslations';
 import React,{useMemo,useState} from 'react';
 import {ArrowLeft,ArrowRight,CheckCircle2,ChevronLeft,ChevronRight,Compass,Grid3X3,Star,Trophy,Medal,BarChart3,Plus,Save,Trash2,RotateCcw,Play,Undo2,Redo2,Lightbulb} from 'lucide-react';
@@ -17,6 +18,7 @@ import {CIPHER_LEVELS,PATTERN_LEVELS} from './ChallengeLabEngine';
 
 const tx=translatePair;
 export const WORLDS=[
+ {id:'robolab',name:'Ciko RoboLab 3D',icon:'🤖',art:'/arcade/ciko-robolab.svg',ids:ROBOLAB_LEVELS.map(x=>x.id),color:'from-teal-50 to-sky-50',desc:{ms:'Jelajah 8 dunia 3D dan kawal robot menggunakan Python.',en:'Explore 8 immersive 3D worlds and program your robot with Python.'}},
  {id:'maze',name:'Robot Forest',icon:'🌳',art:'/arcade/code-maze.svg',ids:MAZE_LEVELS.map(x=>x.id),color:'from-teal-50 to-emerald-50',desc:{ms:'Jelajah hutan dan kumpul bintang.',en:'Explore the forest and collect stars.'}},
  {id:'escape',name:'Space Escape',icon:'🚀',art:'/arcade/code-escape.svg',ids:ESCAPE_LEVELS.map(x=>x.id),color:'from-indigo-50 to-sky-50',desc:{ms:'Tulis kod untuk buka pintu.',en:'Write code to open the door.'}},
  {id:'detective',name:'Bug City',icon:'🔍',art:'/arcade/bug-detective.svg',ids:DETECTIVE_CASES.map(x=>x.id),color:'from-orange-50 to-amber-50',desc:{ms:'Cari dan baiki kesilapan kod.',en:'Find and fix coding mistakes.'}},
@@ -37,7 +39,7 @@ export const WORLDS=[
  {id:'basketball',name:'Hoop Heroes',icon:'🏀',art:'/arcade/hoop-heroes.svg',ids:SPORT_LEVELS.basketball.map(x=>x.id),color:'from-orange-50 to-rose-50',desc:{ms:'Bina urutan gerak untuk jaringkan bakul.',en:'Build a play, pass the ball and shoot a basket.'}},
  {id:'track',name:'Track & Field Quest',icon:'🏅',art:'/arcade/track-quest.svg',ids:SPORT_LEVELS.track.map(x=>x.id),color:'from-sky-50 to-amber-50',desc:{ms:'Lari, lompat dan selesaikan cabaran trek.',en:'Run, jump and plan your way through the track.'}},
 ] as const;
-export type ArcadeGame='maze'|'escape'|'detective'|'logic'|'space'|'pixel'|'sort'|'garden'|'melody'|'bridge'|'rescue'|'story'|'pet'|'circuit'|'football'|'basketball'|'track'|'cipher'|'fossil';
+export type ArcadeGame='maze'|'escape'|'detective'|'logic'|'space'|'pixel'|'sort'|'garden'|'melody'|'bridge'|'rescue'|'story'|'pet'|'circuit'|'football'|'basketball'|'track'|'cipher'|'fossil'|'robolab';
 const totalCount=WORLDS.reduce((sum,x)=>sum+x.ids.length,0);
 export function AdventureMap({onBack,onGame}:{onBack:()=>void;onGame:(game:ArcadeGame,index:number)=>void}){
  const {language,locale}=useLanguage();const {progress,total}=useLearningExtras();

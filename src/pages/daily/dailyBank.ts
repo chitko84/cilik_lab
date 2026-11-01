@@ -1,4 +1,5 @@
 import {EXTRA_DAILY_PROBLEMS} from './dailyExpandedBank';
+import {HERO_DAILY_PROBLEMS} from './dailyHeroBank';
 /** 100 deterministic, locally assessed Python practice problems.
  * No network, LLM, hidden execution, or invented test results are involved.
  * Each challenge has an authored runnable solution and an exact stdout contract.
@@ -43,7 +44,7 @@ const ORIGINAL_DAILY_PROBLEMS:DailyProblem[]=worlds.flatMap((w,j)=>{
  points:p.difficulty==='Starter'?20:p.difficulty==='Explorer'?35:50
  }));
 });
-export const DAILY_PROBLEMS:DailyProblem[]=[...ORIGINAL_DAILY_PROBLEMS,...EXTRA_DAILY_PROBLEMS];
+export const DAILY_PROBLEMS:DailyProblem[]=[...ORIGINAL_DAILY_PROBLEMS,...EXTRA_DAILY_PROBLEMS,...HERO_DAILY_PROBLEMS];
 export type DailyRecord={id:string;score:number;attempts:number;lastSolved:string;lastAttempt:string;code:string};
 export const DAILY_KEY='ciliklab_daily_solver_v1';
 export function readDailyRecords():Record<string,DailyRecord>{try{const v=JSON.parse(localStorage.getItem(DAILY_KEY)||'{}');return v&&typeof v==='object'&&!Array.isArray(v)?v:{};}catch{return {}}}

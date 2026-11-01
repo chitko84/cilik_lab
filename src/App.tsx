@@ -37,6 +37,7 @@ import {DailyCodingSolver} from './pages/daily/DailyCodingSolver';
 import {LiveClassroom} from './pages/meetings/LiveClassroom';
 import type { ComicId } from './data/comicBooks';
 import {PremiumMotion} from './components/visual/PremiumMotion';
+import {OperatorDemoView} from './pages/operator/OperatorDemoView';
 
 const MainLayout: React.FC = () => {
   const { role, activeTab, activeComicId, setActiveTab } = useApp();
@@ -50,6 +51,9 @@ const MainLayout: React.FC = () => {
 
   // Render role-specific and shared views
   const renderContent = () => {
+    // Operator is an explicitly labeled, local-only demo experience. No sign-in or admin privileges.
+    if (role === 'operator') return <OperatorDemoView page={activeTab} />;
+
     // Shared tabs
     if (activeTab === 'community') return <CommunityView />;
     if (activeTab === 'profile') return <ProfileView />;

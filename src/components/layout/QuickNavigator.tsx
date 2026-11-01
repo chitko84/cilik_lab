@@ -18,6 +18,18 @@ const studentDestinations = [
   {id:'student_progress',ms:'Kemajuan',en:'My Progress',icon:TrendingUp,keywords:'score xp learning'},
   {id:'settings',ms:'Tetapan',en:'Settings',icon:Settings,keywords:'preferences language'}
 ];
+const operatorDestinations = [
+  {id:'op_dashboard',ms:'Ringkasan',en:'Operator Dashboard',icon:Home,keywords:'operator demo overview'},
+  {id:'op_students',ms:'Murid',en:'Students',icon:GraduationCap,keywords:'student users accounts'},
+  {id:'op_teachers',ms:'Guru',en:'Teachers',icon:Users,keywords:'teacher educators'},
+  {id:'op_classes',ms:'Kelas',en:'Classes & Enrollments',icon:BookOpen,keywords:'class enrollment'},
+  {id:'op_schedules',ms:'Jadual',en:'Schedules & Meetings',icon:Users,keywords:'schedule meeting'},
+  {id:'op_content',ms:'Kandungan',en:'Learning Content',icon:BookOpen,keywords:'learning books lessons'},
+  {id:'op_moderation',ms:'Moderasi',en:'Community Moderation',icon:Users,keywords:'moderation'},
+  {id:'op_support',ms:'Sokongan',en:'Support Requests',icon:Users,keywords:'support'},
+  {id:'op_analytics',ms:'Analitik',en:'Reports & Analytics',icon:TrendingUp,keywords:'statistics'},
+  {id:'op_activity',ms:'Aktiviti',en:'Activity Log',icon:BookOpen,keywords:'history'},
+];
 const teacherDestinations = [
   {id:'dashboard',ms:'Utama Guru',en:'Teacher Dashboard',icon:Home,keywords:'home'},
   {id:'teacher_classes',ms:'Kelas Guru',en:'My Classes',icon:GraduationCap,keywords:'courses'},
@@ -35,7 +47,7 @@ export function QuickNavigator(){
   const {language}=useLanguage();
   const [open,setOpen]=useState(false),[query,setQuery]=useState('');
   const inputRef=useRef<HTMLInputElement>(null);
-  const destinations=role==='teacher'?teacherDestinations:studentDestinations;
+  const destinations=role==='operator'?operatorDestinations:role==='teacher'?teacherDestinations:studentDestinations;
   const results=useMemo(()=>destinations.filter(item=>(`${item.ms} ${item.en} ${item.keywords}`).toLowerCase().includes(query.trim().toLowerCase())),[destinations,query]);
   useEffect(()=>{
     const onKey=(event:KeyboardEvent)=>{

@@ -31,6 +31,7 @@ import {
   ClipboardList,
   BarChart3,
   Clock3,
+  History,
   ListChecks,
   UserRoundCog,
   X,
@@ -77,6 +78,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onCloseMobile })
     ] },
     { title: language === 'ms' ? 'Kod dan latihan' : 'Coding & Practice', items: [
       { id: 'coding_workspace', label: t('workspace'), icon: Code2, highlight: true },
+      { id: 'code_time_machine', label: language === 'ms' ? 'Mesin Masa Kod Ciko' : 'Ciko Code Time Machine', icon: History },
       { id: 'daily_solver', label: language === 'ms' ? 'Cabaran Kod Harian' : 'Daily Coding Solver', icon: Trophy },
       { id: 'knowledge_quiz', label: language === 'ms' ? 'Kuiz Pengetahuan' : 'Knowledge Quiz', icon: FileQuestion },
     ] },

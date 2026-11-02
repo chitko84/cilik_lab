@@ -16,6 +16,8 @@ const published={
   '01-lost-loop':['cc10d9ca9b','37d18a2e91'],
   '02-variable-treasure':['48dcc3748c','82e68cb1ab'],
   '03-if-else-jungle':['19b888f86a','eceb5e4395'],
+  '04-bug-monster':['992ea8cce7','1744548240'],
+  '10-code-team-heroes':['6097136c07','6eff892368'],
 };
 for(const [id,links] of Object.entries(published)){
   const entry=series.slice(series.indexOf(`'${id}': {`,series.indexOf('SERIES_FLIPBOOKS:')));
@@ -24,8 +26,8 @@ for(const [id,links] of Object.entries(published)){
   assert(entry.includes(`ms: 'https://heyzine.com/flip-book/${links[1]}.html'`),`Missing Malay ${id}`);
 }
 const publishedBlock=series.slice(series.indexOf('export const SERIES_FLIPBOOKS:'));
-assert.strictEqual((publishedBlock.match(/https:\/\/heyzine.com\/flip-book\//g)||[]).length,6,'Exactly six editions should be published');
-for(const id of ['04-bug-monster','05-function-factory','06-space-station','07-python-castle','08-robot-delivery','09-maze-conditions','10-code-team-heroes'])
+assert.strictEqual((publishedBlock.match(/https:\/\/heyzine.com\/flip-book\//g)||[]).length,10,'Exactly ten editions should be published');
+for(const id of ['05-function-factory','06-space-station','07-python-castle','08-robot-delivery','09-maze-conditions'])
  assert(!publishedBlock.includes(`'${id}': {`),`Book ${id} must remain coming soon`);
 for(const token of ['getSeriesFlipbook','comicEditionHref','comic-series-unavailable','Coming soon','iframe','Open on Heyzine','referrerPolicy'])
  assert(reader.includes(token),`Missing edition reader feature: ${token}`);
@@ -41,4 +43,4 @@ for(const file of ['src/data/comicSeries.ts','src/pages/comics/SeriesReader.tsx'
  assert.strictEqual(errors.length,0,`Syntax errors in ${file}: ${errors.map(d=>d.messageText).join('; ')}`);
 }
 require('postcss').parse(css38);
-console.log('PASS — 10 books, exactly 6 published edition URLs, Books 4–10 coming soon, Heyzine embeds/fallback, preserved artwork, TypeScript syntax & responsive CSS');
+console.log('PASS — 10 books, exactly 10 published edition URLs, Books 5–9 coming soon, Heyzine embeds/fallback, preserved artwork, TypeScript syntax & responsive CSS');

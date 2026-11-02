@@ -1,0 +1,80 @@
+/** Ciko Creator Studio game logic. Browser-only and deterministic: no eval, imports or arbitrary code execution. */
+export type Theme = 'space'|'heroes'|'dinos';
+export type Tool = '#'|'C'|'X'|'E'|'S'|'.';
+export const W=20, H=11;
+export type CreatorGame={id:string;name:string;description:string;theme:Theme;map:string[];code:string;created:number;updated:number;best:number;published:boolean};
+export type Params={player_speed:number;enemy_speed:number;goal_count:number;lives:number;time_limit:number;jump_power:number;gravity:number;coin_value:number};
+export type Statement={kind:'add'|'set'|'boost'|'heal'|'bonus';name?:'score'|'health';value:number;condition?:{name:'score'|'health';op:string;value:number}};
+export type Program={params:Params;onCollect:Statement[];onHit:Statement[]};
+const defaults:Params={player_speed:4,enemy_speed:1.1,goal_count:4,lives:3,time_limit:90,jump_power:9,gravity:23,coin_value:1};
+export const START_CODE=`# Change these numbers, then press Apply Code.\nplayer_speed = 4\nenemy_speed = 1.1\ngoal_count = 4\nlives = 3\ntime_limit = 90\njump_power = 9\ngravity = 23\ncoin_value = 1\n\ndef on_collect():\n    score += 1\n\ndef on_hit():\n    health -= 1`;
+const configs:Record<Theme,{name:string;description:string;code:string;rows:string[]}>= {
+ space:{name:'Galactic Star Rescue',description:'Pilot Ciko through the galaxy. Gather power stars while dodging moving asteroids.',code:START_CODE.replace('player_speed = 4','player_speed = 5').replace('enemy_speed = 1.1','enemy_speed = 1.5'),rows:[
+ '....................','..C..C...X....C.....','...###..............','...........X.....C..','....C...............','......X......###....','..C..........C......','........X...........','....C.......C.......','..S..............E..','....................']},
+ heroes:{name:'Superhero Sky City',description:'Leap between rooftops, collect energy crystals and reach the rescue portal.',code:START_CODE.replace('player_speed = 4','player_speed = 5').replace('goal_count = 4','goal_count = 3').replace('jump_power = 9','jump_power = 10'),rows:[
+ '....................','....................','....................','....................','..........C.........','........#####.......','...C................','..####....C...C.....','...............####.','..S..C.C..X....C..E.','####################']},
+ dinos:{name:'Dinosaur Rescue Island',description:'Explore the lost island, gather rescue eggs and guide your explorer safely to base.',code:START_CODE,rows:[
+ '####################','#S...C...#.........#','#..##....#..C...C..#','#........#.....X...#','#...X..........##..#','#......C....C......#','#..##..............#','#.....#..C..X......#','#.C...#......C..E..#','#...............C..#','####################']}
+};
+function validateMap(rows:string[]):boolean{return Array.isArray(rows)&&rows.length===H&&rows.every(s=>typeof s==='string'&&s.length===W&&/^[.#SCXE]+$/.test(s))&&rows.join('').includes('S')&&rows.join('').includes('E');}
+export function makeGame(theme:Theme,id?:string):CreatorGame{const c=configs[theme];return {id:id||`creator-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,name:c.name,description:c.description,theme,map:c.rows.map(x=>x),code:c.code,created:Date.now(),updated:Date.now(),best:0,published:false};}
+export function validateGame(x:unknown):CreatorGame|null{if(!x||typeof x!=='object')return null;const o=x as Partial<CreatorGame>;if(!['space','heroes','dinos'].includes(String(o.theme))||!validateMap(o.map as string[]))return null;if(typeof o.code!=='string'||o.code.length>6500||typeof o.name!=='string'||o.name.length>75)return null;return {id:typeof o.id==='string'&&o.id.length<100?o.id:'imported',name:o.name.slice(0,75),description:typeof o.description==='string'?o.description.slice(0,300):'',theme:o.theme as Theme,map:(o.map as string[]).slice(),code:o.code,created:Number(o.created)||Date.now(),updated:Date.now(),best:Number(o.best)||0,published:false};}
+/** Seeded, traversability-aware world variation: the prompt changes actual tile layouts, not just titles. */
+export function remixWorld(game:CreatorGame,idea:string):string[]{
+ let seed=2166136261;for(const c of idea){seed=Math.imul(seed^c.charCodeAt(0),16777619)>>>0;}
+ const rnd=()=>{seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return(seed>>>0)/4294967296;};
+ const a=game.map.map(row=>row.split(''));const start=cells(game.map,'S')[0];if(!start)return game.map;
+ const q:[[number,number]]=[[Math.floor(start.x),Math.floor(start.y)]];const seen=new Set([`${q[0][0]},${q[0][1]}`]);for(let i=0;i<q.length;i++){const [x,y]=q[i];for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=W||ny>=H||a[ny][nx]==='#')continue;const k=`${nx},${ny}`;if(!seen.has(k)){seen.add(k);q.push([nx,ny]);}}}
+ // Keep the grounded route to the exit accessible in platform games.
+ const options=q.filter(([x,y])=>a[y][x]!== 'S'&&a[y][x]!=='E'&&a[y][x]!=='#'&&x>1&&x<W-2&&((game.theme!=='heroes')||y===9));
+ if(game.theme==='heroes'){
+   // Preserve platform rewards and the necessary three crystals along ground level.
+   for(const [x,y] of q)if(y===9&&a[y][x]==='C')a[y][x]='.';
+ }else for(const row of a)for(let x=0;x<row.length;x++)if(row[x]==='C')row[x]='.';
+ for(let i=options.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[options[i],options[j]]=[options[j],options[i]];}
+ const count=game.theme==='heroes'?Math.min(5,options.length):Math.min(9,options.length);let chosen=0;
+ // Prefer separated reward locations to promote exploration.
+ for(const [x,y] of options){if(chosen>=count)break;if(a[y][x]!=='.')continue;const spacing=game.theme==='heroes'?2:1.8;if(options.length>15&&a.some((row,yy)=>row.some((c,xx)=>c==='C'&&Math.hypot(x-xx,y-yy)<spacing)))continue;a[y][x]='C';chosen++;}
+ if(chosen<count)for(const [x,y] of options){if(chosen>=count)break;if(a[y][x]==='.')a[y][x]='C',chosen++;}
+ // A few hazard positions change from prompt to prompt; avoid putting hazards on the starting cell.
+ if(game.theme!=='heroes'){
+  const desired=/(danger|hard|enemy|asteroid|villain|obstacle|challenge)/i.test(idea)?4:2;
+  for(const row of a)for(let x=0;x<row.length;x++)if(row[x]==='X')row[x]='.';
+  let placed=0;for(const [x,y] of options){if(placed>=desired)break;if(a[y][x]==='.'&&Math.hypot(x-start.x+.5,y-start.y+.5)>3){a[y][x]='X';placed++;}}
+ }
+ return a.map(row=>row.join(''));
+}
+export function interpretIdea(text:string):{game:CreatorGame;explanation:string}{const s=text.toLowerCase();const theme:Theme=/(dino|jungle|egg|forest|island|fossil)/.test(s)?'dinos':/(superhero|hero|city|jump|rooftop|cape|villain|platform)/.test(s)?'heroes':'space';const game=makeGame(theme);const subject=text.trim().replace(/[\n\r]/g,' ').slice(0,68);if(subject.length>6){game.name=subject.replace(/^(make|create|build|design|i want|a game (about|where))\s*/i,'').replace(/[.!]+$/,'').replace(/^./,m=>m.toUpperCase()).slice(0,60)||game.name;}const code=game.code;const speed=s.match(/(?:speed|fast)\s*(?:of|=|to)?\s*(\d+(?:\.\d+)?)/);const targets=s.match(/(\d+)\s*(?:stars|crystals|eggs|coins|gems|items|points)/);const hearts=s.match(/(\d+)\s*(?:lives|hearts|health)/);let next=code;if(speed)next=next.replace(/player_speed = [\d.]+/,`player_speed = ${Math.max(1,Math.min(9,Number(speed[1])))}`);if(targets)next=next.replace(/goal_count = \d+/,`goal_count = ${Math.max(1,Math.min(8,Number(targets[1])))}`);if(hearts)next=next.replace(/lives = \d+/,`lives = ${Math.max(1,Math.min(8,Number(hearts[1])))}`);game.code=next;game.map=remixWorld(game,text);game.description=`Your custom ${theme==='space'?'space flight':theme==='heroes'?'superhero platformer':'island rescue'} — edit the level and game rules, then press Play.`;return {game,explanation:`Created a playable ${theme==='space'?'space dodge-and-collect':theme==='heroes'?'jump-and-rescue platform':'top-down exploration'} game. Recognized ${[speed?'speed':'',targets?'collection goal':'',hearts?'lives':''].filter(Boolean).join(', ')||'your theme'}. Customize tiles and Python rules next.`};}
+export function paint(map:string[],x:number,y:number,tool:Tool):string[]{if(x<0||x>=W||y<0||y>=H)return map;if((y===H-1&&tool==='S')||(tool==='#'&&map[y][x]==='S'))return map;const next=map.map(s=>s.split(''));if(tool==='S'||tool==='E'){for(let row of next)for(let i=0;i<row.length;i++)if(row[i]===tool)row[i]='.';}next[y][x]=tool;return next.map(row=>row.join(''));}
+const bounds:Record<keyof Params,[number,number]>={player_speed:[1,10],enemy_speed:[0,6],goal_count:[1,8],lives:[1,10],time_limit:[15,300],jump_power:[5,18],gravity:[9,37],coin_value:[1,10]};
+export function parseCode(code:string):{program?:Program;error?:string}{if(code.length>6500)return {error:'Code is too long (maximum 6,500 characters).'};const p:Program={params:{...defaults},onCollect:[],onHit:[]};let section:'onCollect'|'onHit'|null=null;let cond:Statement['condition']|undefined;const lines=code.split('\n');if(lines.length>150)return {error:'Keep the script under 150 lines.'};for(let i=0;i<lines.length;i++){const raw=lines[i],line=raw.trim();if(!line||line.startsWith('#'))continue;const indent=raw.length-raw.trimStart().length;const fn=line.match(/^def (on_collect|on_hit)\(\):$/);if(fn&&indent===0){section=fn[1]==='on_collect'?'onCollect':'onHit';cond=undefined;continue;}if(indent===0){section=null;cond=undefined;const assign=line.match(/^([a-z_]+)\s*=\s*(\d+(?:\.\d+)?)$/);if(!assign||!(assign[1] in p.params))return {error:`Line ${i+1}: use a supported number setting, or def on_collect()/on_hit().`};const key=assign[1] as keyof Params,n=Number(assign[2]),[min,max]=bounds[key];if(n<min||n>max)return {error:`Line ${i+1}: ${key} must be between ${min} and ${max}.`};p.params[key]=n;continue;}if(!section)return {error:`Line ${i+1}: indented code must be inside an event function.`};const condition=line.match(/^if (score|health)\s*(>=|<=|==|>|<)\s*(\d+):$/);if(condition&&indent===4){cond={name:condition[1] as 'score'|'health',op:condition[2],value:Number(condition[3])};continue;}if(line==='pass')continue;if(indent!==4&&indent!==8)return {error:`Line ${i+1}: use four spaces in a function, or eight inside an if.`};if(indent===8&&!cond)return {error:`Line ${i+1}: add an if condition before this line.`};if(indent===4)cond=undefined;const op=line.match(/^(score|health)\s*(\+=|-=|=)\s*(\d+(?:\.\d+)?)$/);const cmd=line.match(/^(boost|heal|bonus)\((\d+(?:\.\d+)?)\)$/);let st:Statement;if(op)st={kind:op[2]==='='?'set':'add',name:op[1] as 'score'|'health',value:Number(op[3])*(op[2]==='-='?-1:1)};else if(cmd)st={kind:cmd[1] as 'boost'|'heal'|'bonus',value:Number(cmd[2])};else return {error:`Line ${i+1}: supported actions are score += n, health -= n, boost(n), heal(n), bonus(n).`};if(Math.abs(st.value)>100)return {error:`Line ${i+1}: action values must be 0–100.`};if(indent===8)st.condition=cond;p[section].push(st);if(p[section].length>30)return {error:`Line ${i+1}: too many event actions.`};}
+return {program:p};}
+export type Actor={x:number;y:number};
+export type PlayState={player:Actor;vx:number;vy:number;items:Actor[];enemies:Actor[];score:number;health:number;elapsed:number;boost:number;collected:number;status:'ready'|'playing'|'won'|'lost'|'paused';reason:string;invulnerable:number;effects:{x:number;y:number;age:number}[]};
+const key=(x:number,y:number)=>`${Math.round(x)},${Math.round(y)}`;
+export const cells=(map:string[],letter:string)=>{const out:Actor[]=[];map.forEach((row,y)=>{for(let x=0;x<row.length;x++)if(row[x]===letter)out.push({x:x+.5,y:y+.5});});return out;};
+export function newRun(game:CreatorGame):PlayState{const start=cells(game.map,'S')[0]||{x:1.5,y:8.5};return {player:{...start},vx:0,vy:0,items:cells(game.map,'C'),enemies:cells(game.map,'X'),score:0,health:parseCode(game.code).program?.params.lives||3,elapsed:0,boost:0,collected:0,status:'ready',reason:'',invulnerable:0,effects:[]};}
+const collides=(map:string[],x:number,y:number,r=.27)=>{for(const xx of [x-r,x+r])for(const yy of [y-r,y+r]){const tx=Math.floor(xx),ty=Math.floor(yy);if(tx<0||tx>=W||ty<0||ty>=H||map[ty][tx]==='#')return true;}return false;};
+const near=(a:Actor,b:Actor,d=.59)=>Math.hypot(a.x-b.x,a.y-b.y)<d;
+const conditionOK=(s:PlayState,c?:Statement['condition'])=>{if(!c)return true;const n=c.name==='score'?s.score:s.health;return c.op==='>='?n>=c.value:c.op==='<='?n<=c.value:c.op==='>'?n>c.value:c.op==='<'?n<c.value:n===c.value;};
+function applyStatements(s:PlayState,actions:Statement[]){for(const a of actions){if(!conditionOK(s,a.condition))continue;if(a.kind==='boost')s.boost=Math.min(8,s.boost+a.value);else if(a.kind==='heal')s.health=Math.min(10,s.health+a.value);else if(a.kind==='bonus')s.score+=a.value;else if(a.name==='score')s.score=a.kind==='set'?a.value:s.score+a.value;else if(a.name==='health')s.health=a.kind==='set'?a.value:s.health+a.value;}s.score=Math.max(0,s.score);s.health=Math.max(0,s.health);}
+export function stepGame(game:CreatorGame,p:Program,previous:PlayState,controls:{left?:boolean;right?:boolean;up?:boolean;down?:boolean;jump?:boolean},dt:number):PlayState{
+ if(previous.status!=='playing')return previous;const d=Math.min(Math.max(0,dt),.04),s:PlayState={...previous,player:{...previous.player},items:previous.items.map(a=>({...a})),effects:previous.effects.map(e=>({...e})),enemies:previous.enemies.map(a=>({...a}))};s.elapsed+=d;s.invulnerable=Math.max(0,s.invulnerable-d);s.boost=Math.max(0,s.boost-d);s.effects=s.effects.map(e=>({...e,age:e.age+d})).filter(e=>e.age<.65);
+ const speed=p.params.player_speed*(s.boost>0?1.5:1);let dx=Number(controls.right||false)-Number(controls.left||false),dy=Number(controls.down||false)-Number(controls.up||false);
+ if(game.theme==='heroes'){
+  s.vx=dx*speed;const nextX=s.player.x+s.vx*d;if(!collides(game.map,nextX,s.player.y,.3))s.player.x=nextX;
+  const grounded=collides(game.map,s.player.x,s.player.y+.39,.32);if(controls.jump&&grounded)s.vy=-p.params.jump_power;
+  s.vy=Math.min(16,s.vy+p.params.gravity*d);const yNext=s.player.y+s.vy*d;if(!collides(game.map,s.player.x,yNext,.31))s.player.y=yNext;else s.vy=0;
+ }else{
+  if(dx||dy){const size=Math.hypot(dx,dy);dx/=size;dy/=size;}const nx=s.player.x+dx*speed*d,ny=s.player.y+dy*speed*d;if(!collides(game.map,nx,s.player.y))s.player.x=nx;if(!collides(game.map,s.player.x,ny))s.player.y=ny;
+ }
+ s.items=s.items.filter(a=>{if(!near(s.player,a,.56))return true;s.collected++;s.score+=p.params.coin_value;applyStatements(s,p.onCollect);s.effects.push({x:a.x,y:a.y,age:0});return false;});
+ for(let i=0;i<s.enemies.length;i++){const initial=cells(game.map,'X')[i];const enemy=s.enemies[i];if(game.theme==='heroes'){enemy.y=initial.y;enemy.x=initial.x+Math.sin(s.elapsed*(p.params.enemy_speed||.001)+i)*Math.min(.55,.35*p.params.enemy_speed);}else{const radius=Math.min(.45,.15*p.params.enemy_speed);enemy.x=initial.x+Math.sin(s.elapsed*p.params.enemy_speed*1.3+i)*radius;enemy.y=initial.y+Math.cos(s.elapsed*p.params.enemy_speed*.9+i)*radius;}
+ if(near(s.player,enemy,.62)&&s.invulnerable===0){s.invulnerable=1.2;applyStatements(s,p.onHit);if(!p.onHit.length)s.health-=1;s.effects.push({x:s.player.x,y:s.player.y,age:0});}}
+ const exit=cells(game.map,'E')[0];if(s.health<=0){s.status='lost';s.reason='Your hero ran out of health. Try again!';}else if(s.elapsed>=p.params.time_limit){s.status='lost';s.reason='Time is up! Adjust your code or try another route.';}else if(exit&&near(s.player,exit,.68)&&s.collected>=p.params.goal_count){s.status='won';s.reason='You built it and beat it!';}return s;
+}
+export function scoreGame(s:PlayState,p:Program){return Math.max(0,Math.round(s.score*100+Math.max(0,p.params.time_limit-s.elapsed)*5+s.health*50));}
+export const STORAGE='ciliklab_creator_studio_v1';
+export function loadGames():CreatorGame[]{try{const a=JSON.parse(localStorage.getItem(STORAGE)||'[]');if(!Array.isArray(a))return [];return a.slice(0,40).map(validateGame).filter(Boolean) as CreatorGame[];}catch{return [];}}
+export function saveGames(games:CreatorGame[]):boolean{try{localStorage.setItem(STORAGE,JSON.stringify(games.slice(0,40)));return true;}catch{return false;}}
+export const templates=['space','heroes','dinos'] as Theme[];

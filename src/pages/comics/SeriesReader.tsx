@@ -45,9 +45,9 @@ export function ComicSeriesCards({openEdition}:{openEdition:(id:string,edition:C
     <div className="comic-series-header">
       <div><span className="comic-series-eyebrow"><Sparkles size={16}/> COMICCODE · CIKOLAB ADVENTURES</span>
         <h2>{malay?'10 buku, 10 pengembaraan pengaturcaraan':'10 books. 10 coding adventures.'}</h2>
-        <p>{malay?'Buku 1–3 sudah tersedia dalam Bahasa Inggeris dan Bahasa Melayu. Buku 4–10 akan datang!':'Books 1–3 are available in English and Bahasa Melayu. Books 4–10 are coming soon!'}</p>
+        <p>{malay?'Buku 1–4 dan 10 sudah tersedia dalam Bahasa Inggeris dan Bahasa Melayu. Buku 5–9 akan datang!':'Books 1–4 and 10 are available in English and Bahasa Melayu. Books 5–9 are coming soon!'}</p>
       </div>
-      <span className="comic-series-count">{malay?'3 buku tersedia · 7 akan datang':'3 available · 7 coming soon'}</span>
+      <span className="comic-series-count">{malay?'5 buku tersedia · 5 akan datang':'5 available · 5 coming soon'}</span>
     </div>
     <div className="comic-series-grid">
       {COMIC_SERIES.map((book,i)=>{

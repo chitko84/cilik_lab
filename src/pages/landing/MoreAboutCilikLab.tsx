@@ -27,12 +27,12 @@ export function MoreAboutCilikLab({openComics,startStudent,startTeacher}:Props){
   const faqs=ms?[
     ['Untuk siapa CilikLab?','CilikLab dibina untuk kanak-kanak, pelajar baharu dan guru yang mahu meneroka asas pengaturcaraan secara interaktif.'],
     ['Bahasa pengaturcaraan apa yang boleh digunakan?','Ruang pembelajaran utama dan RoboLab menggunakan Python. Cabaran Pengekodan Harian pula menyediakan pilihan Python, C dan Java.'],
-    ['Bagaimana saya boleh membaca komik?','Buku 1–3 mempunyai edisi Bahasa Inggeris dan Bahasa Melayu yang boleh dibaca sebagai flipbook. Buku 4–10 akan datang.'],
+    ['Bagaimana saya boleh membaca komik?','Buku 1–4 dan 10 mempunyai edisi Bahasa Inggeris dan Bahasa Melayu yang boleh dibaca sebagai flipbook. Buku 5–9 akan datang.'],
     ['Adakah terdapat ciri untuk guru?','Ya. Ruang guru menyediakan pengurusan kelas, panduan, sokongan murid dan ciri bilik darjah langsung.'],
   ]:[
     ['Who is CilikLab for?','CilikLab is designed for young learners, coding beginners and educators who want a friendly, interactive approach to programming.'],
     ['Which programming languages are supported?','The core lessons and RoboLab focus on Python. The Daily Coding Challenge also supports C and Java.'],
-    ['How do I read the comics?','Books 1–3 have complete English and Malay flipbooks you can read here or on Heyzine. Books 4–10 are coming soon.'],
+    ['How do I read the comics?','Books 1–4 and 10 have complete English and Malay flipbooks you can read here or on Heyzine. Books 5–9 are coming soon.'],
     ['Is there a separate teacher experience?','Yes. Teachers have class management, learning guidance, student support and live-classroom features.'],
   ];
   return <>
@@ -44,13 +44,13 @@ export function MoreAboutCilikLab({openComics,startStudent,startTeacher}:Props){
     </section>
     <section id="comiccode" className="morelab-comics" aria-labelledby="morelab-comics-title">
       <div className="morelab-container">
-        <div className="morelab-section-bar"><div className="morelab-section-title"><span><BookOpen size={16}/>{ms?'PERPUSTAKAAN COMICCODE':'COMICCODE LIBRARY'}</span><h2 id="morelab-comics-title">{ms?'Pengembaraan kod, dalam cerita':'Coding adventures you can read'}</h2><p>{ms?'Tiga buku telah diterbitkan dalam dua bahasa. Tujuh lagi pengembaraan akan datang.':'Discover three complete bilingual flipbooks, with seven more adventures on the way.'}</p></div><button type="button" onClick={openComics} className="morelab-outline-link">{ms?'Semua 10 buku':'Explore all 10 books'} <ArrowRight size={17}/></button></div>
+        <div className="morelab-section-bar"><div className="morelab-section-title"><span><BookOpen size={16}/>{ms?'PERPUSTAKAAN COMICCODE':'COMICCODE LIBRARY'}</span><h2 id="morelab-comics-title">{ms?'Pengembaraan kod, dalam cerita':'Coding adventures you can read'}</h2><p>{ms?'Lima buku telah diterbitkan dalam dua bahasa. Lima lagi pengembaraan akan datang.':'Discover five complete bilingual flipbooks, with five more adventures on the way.'}</p></div><button type="button" onClick={openComics} className="morelab-outline-link">{ms?'Semua 10 buku':'Explore all 10 books'} <ArrowRight size={17}/></button></div>
         <div className="morelab-comic-grid">{books.map((book,i)=><article className="morelab-comic" key={book.title}>
           <div className="morelab-comic-visual"><img src={book.image} loading="lazy" alt=""/><span>BOOK {String(i+1).padStart(2,'0')}</span></div>
           <div className="morelab-comic-content"><small>{book.topic}</small><h3>{book.title}</h3><p>{ms?'Tersedia dalam dua bahasa':'Available in two languages'}</p>
             <div className="morelab-comic-actions"><a href={book.en} target="_blank" rel="noopener noreferrer">English <ArrowRight size={15}/></a><a href={book.ms} target="_blank" rel="noopener noreferrer">Bahasa Melayu <ArrowRight size={15}/></a></div>
           </div></article>)}</div>
-        <div className="morelab-coming"><BookOpen size={19}/><span>{ms?'Buku 4–10: Edisi English dan Bahasa Melayu akan datang.':'Books 4–10: English and Malay editions coming soon.'}</span></div>
+        <div className="morelab-coming"><BookOpen size={19}/><span>{ms?'Buku 5–9: Edisi English dan Bahasa Melayu akan datang.':'Books 5–9: English and Malay editions coming soon.'}</span></div>
       </div>
     </section>
     <section id="more-to-explore" className="morelab-features" aria-labelledby="morelab-features-title"><div className="morelab-container">

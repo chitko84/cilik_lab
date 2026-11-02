@@ -785,6 +785,14 @@ export const SERIES_FLIPBOOKS: Readonly<Record<string, Partial<Record<SeriesEdit
     en: 'https://heyzine.com/flip-book/19b888f86a.html',
     ms: 'https://heyzine.com/flip-book/eceb5e4395.html',
   },
+  '04-bug-monster': {
+    en: 'https://heyzine.com/flip-book/992ea8cce7.html',
+    ms: 'https://heyzine.com/flip-book/1744548240.html',
+  },
+  '10-code-team-heroes': {
+    en: 'https://heyzine.com/flip-book/6097136c07.html',
+    ms: 'https://heyzine.com/flip-book/6eff892368.html',
+  },
 };
 export const getSeriesFlipbook = (id: string, edition: SeriesEdition): string | null =>
   SERIES_FLIPBOOKS[id]?.[edition] ?? null;

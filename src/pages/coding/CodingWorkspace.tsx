@@ -51,6 +51,7 @@ export const CodingWorkspace: React.FC = () => {
     createSupportRequest,
     reportGuidanceFeedback,
     currentUser,
+    setActiveTab,
   } = useApp();
 
   // Active exercise
@@ -310,6 +311,8 @@ export const CodingWorkspace: React.FC = () => {
             </h1>
           </div>
         </div>
+
+        <button type="button" onClick={()=>{try{sessionStorage.setItem('ciliklab_time_machine_transfer_v1',code)}catch{}setActiveTab('code_time_machine')}} className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-xs font-bold text-emerald-800 hover:bg-emerald-100"><History className="w-4 h-4" /> Debug in Time Machine</button>
 
         {/* Exercise Quick Dropdown */}
         <div className="flex items-center gap-2">

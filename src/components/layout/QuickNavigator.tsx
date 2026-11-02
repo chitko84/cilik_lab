@@ -11,6 +11,7 @@ const studentDestinations = [
   {id:'knowledge_quiz',ms:'Kuiz Pengetahuan',en:'Knowledge Quiz',icon:BookOpen,keywords:'general knowledge animals science space superheroes trivia'},
   {id:'lessons',ms:'Pelajaran',en:'Lessons',icon:BookOpen,keywords:'learn python'},
   {id:'coding_workspace',ms:'Makmal Kod',en:'Coding Workspace',icon:Code2,keywords:'run code programming'},
+  {id:'code_time_machine',ms:'Mesin Masa Kod Ciko',en:'Code Time Machine',icon:Code2,keywords:'debug trace time machine python variables rewind history'},
   {id:'comic_library',ms:'Komik Python',en:'Python Comics',icon:LibraryBig,keywords:'read stories'},
   {id:'explore_classes',ms:'Teroka Kelas',en:'Explore Classes',icon:Compass,keywords:'discover courses'},
   {id:'my_classes',ms:'Kelas Saya',en:'My Classes',icon:GraduationCap,keywords:'enrolled course'},

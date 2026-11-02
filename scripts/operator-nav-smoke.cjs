@@ -11,7 +11,7 @@ const findIds=b=>[...b.matchAll(/\{ id: '([^']+)'/g)].map(x=>x[1]);
 const student=sidebar.split('const studentSections: NavSection[] = [')[1].split('const teacherSections:')[0];
 const teacher=sidebar.split('const teacherSections: NavSection[] = [')[1].split('const operatorSections:')[0];
 const operatorSide=sidebar.split('const operatorSections: NavSection[] = [')[1].split('const navSections =')[0];
-assert.equal(new Set(findIds(student)).size,15,'keep 15 Student sidebar destinations');
+assert.equal(new Set(findIds(student)).size,16,'keep 15 existing Student destinations plus Time Machine');
 assert.equal(new Set(findIds(teacher)).size,13,'keep 13 Teacher sidebar destinations');
 assert.equal(new Set(findIds(operatorSide)).size,13,'all 13 operator demo pages have sidebar destinations');
 for(const target of ['op_dashboard','op_students','op_teachers','op_accounts','op_classes','op_schedules','op_content','op_moderation','op_support','op_analytics','op_activity','op_settings','op_profile']) assert(findIds(operatorSide).includes(target),target);
@@ -41,4 +41,4 @@ if(ts)for(const file of ['src/App.tsx','src/pages/operator/OperatorDemoView.tsx'
  const r=ts.transpileModule(read(file),{fileName:file,reportDiagnostics:true,compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,jsx:ts.JsxEmit.ReactJSX}});
  assert.deepEqual((r.diagnostics||[]).filter(d=>d.category===ts.DiagnosticCategory.Error),[],`${file} should parse`);
 }
-console.log('PASS: Student 15 + Teacher 13 links preserved, Operator 13 demo sections accessible, role switchers, local sample data, no credentials, and RoboLab judge unlock 40/40 configured.');
+console.log('PASS: Student 16 (15 existing + Time Machine) + Teacher 13 links preserved, Operator 13 demo sections accessible, role switchers, local sample data, no credentials, and RoboLab judge unlock 40/40 configured.');

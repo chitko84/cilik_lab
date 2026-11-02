@@ -10,6 +10,7 @@ import { AppProvider, useApp } from './context/AppContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { MobileBottomNav } from './components/layout/MobileBottomNav';
 import { CodingWorkspace } from './pages/coding/CodingWorkspace';
+import { CodeTimeMachine } from './pages/time-machine/CodeTimeMachine';
 import { CommunityView } from './pages/community/CommunityView';
 import { LandingPage } from './pages/LandingPage';
 import { ProfileView } from './pages/profile/ProfileView';
@@ -59,6 +60,7 @@ const MainLayout: React.FC = () => {
     if (activeTab === 'profile') return <ProfileView />;
     if (activeTab === 'settings') return <SettingsView />;
     if (activeTab === 'coding_workspace') return <CodingWorkspace />;
+    if (activeTab === 'code_time_machine') return <CodeTimeMachine />;
     if (activeTab === 'live_classroom') return <LiveClassroom />;
     if (activeTab === 'comic_library') return <ComicLibrary initialBook={activeComicId as ComicId | null} />;
 

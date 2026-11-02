@@ -50,7 +50,9 @@
     "test:operator": "node scripts/operator-nav-smoke.cjs",
     "test:operator:analytics": "node scripts/operator-analytics-smoke.cjs",
     "test:hero": "node scripts/hero-operator-smoke.cjs",
-    "test:landing:mobile-cta": "node scripts/v40-mobile-landing-cta-smoke.cjs"
+    "test:landing:mobile-cta": "node scripts/v40-mobile-landing-cta-smoke.cjs",
+    "test:creator": "node --experimental-strip-types scripts/creator-studio-smoke.mjs",
+    "test:time-machine": "node scripts/time-machine-smoke.cjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
